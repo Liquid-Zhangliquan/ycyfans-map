@@ -23,4 +23,8 @@
    * 粉丝区域分布渲染（根据每个省份不同粉丝数量，渲染色块[参考1](https://gallery.echartsjs.com/editor.html?c=xa5_zRRpes)）
    * 粉丝热力图（根据每个省份不同粉丝数量，键入插值）
    * 粉丝应援流向图（比方说，鸟巢举办超越妹妹的活动，各地粉丝从各自所在地向北京迁徙轨迹动画[轨迹流向1](https://gallery.echartsjs.com/editor.html?c=xHyiG_MDEz)[轨迹流向2，流向要改成向中间流](https://gallery.echartsjs.com/editor.html?c=xN7FI60doi)）
+   * 超越活动地图弹窗展示（地区+活动  然后连线做成轨迹动画，弹窗依次展示）
    * ...包括但不仅限于
+* 扩展模块
+   *  ~~反黑粉（需要别人提供）~~
+   *  ~~超越日常动态（需要别人提供）~~
