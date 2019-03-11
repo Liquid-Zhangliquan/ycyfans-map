@@ -36,9 +36,9 @@ const webpackConfig = merge(require('./webpack.base.conf'), {
     ], {
       root: path.resolve(__dirname, '../')
     }),
-    // new webpack.DllReferencePlugin({
-    //   manifest: require('../dll/extlib-manifest.json')
-    // }),
+    new webpack.DllReferencePlugin({
+      manifest: require('../dll/extlib-manifest.json')
+    }),
     new ParallelUglifyPlugin({
       cacheDir: path.join(__dirname, '../cache/'),
       sourceMap: false,
@@ -94,8 +94,8 @@ const webpackConfig = merge(require('./webpack.base.conf'), {
 
     new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, '../dll/extlib.dll.*.js'),
-      publicPath: utils.resolve('dist/public/scripts'),
-      outputPath: utils.resolve('dist/public/scripts'),
+      publicPath: './public/scripts',
+      outputPath: '../dist/public/scripts',
       includeSourcemap: false
     }),
 

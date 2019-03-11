@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('mini-css-extract-plugin');
 const resolve = _path => path.resolve(__dirname, '..', _path);
 
 const assetsPath = function (_path) {
-  return path.posix.join('dist', _path);
+  return path.posix.join('public', _path);
 };
 
 const cssLoaders = function (options) {
