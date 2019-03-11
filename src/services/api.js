@@ -1,0 +1,5 @@
+const notice = {};
+
+export {
+  notice,
+}
