@@ -1,22 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Layout, Menu, Icon, message } from 'antd';
-import GlobalHeader from '../components/Header';
+import {
+  Layout, Menu, Icon,
+} from 'antd';
 import pathToRegexp from 'path-to-regexp';
 import PropTypes from 'prop-types';
+import { renderRoutes } from 'react-router-config';
+import GlobalHeader from '../components/Header';
 import PendingRouterLoader from '../utils/router';
 import { urlToList } from '../utils/common';
-import { renderRoutes } from "react-router-config";
-const { Header, Content, Footer, Sider } = Layout;
-const SubMenu = Menu.SubMenu;
 
-const getMenuMatchKeys = (flatMenuKeys, paths) => {
-  return paths.reduce(
-    (matchKeys, path) =>
-      matchKeys.concat(flatMenuKeys.filter(item => pathToRegexp(item).test(path))),
-    []
-  )
-};
+const {
+  Header, Content, Footer, Sider,
+} = Layout;
+const { SubMenu } = Menu;
+
+const getMenuMatchKeys = (flatMenuKeys, paths) => paths.reduce(
+  (matchKeys, path) => matchKeys.concat(flatMenuKeys.filter(item => pathToRegexp(item).test(path))),
+  [],
+);
 
 class Index extends React.Component {
   // static mapStateToProps = function (state) {
@@ -24,25 +26,20 @@ class Index extends React.Component {
   // };
 
   static propTypes = {
-    store: PropTypes.any,
-    history: PropTypes.object,
+    history: PropTypes.any,
     route: PropTypes.any,
     dispatch: PropTypes.any,
-    currentUser: PropTypes.object,
-    fetchingNotices: PropTypes.any,
-    notices: PropTypes.any,
-    location: PropTypes.object
+    location: PropTypes.object,
   };
 
   static contextTypes = {
-    store: PropTypes.object
+    store: PropTypes.objectOf(PropTypes.object),
   };
 
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context);
     this.state = {
       collapsed: false,
-      model: {}
     };
 
     this.menus = [
@@ -50,30 +47,30 @@ class Index extends React.Component {
         name: '页面模块',
         key: 'dashboard',
         path: '/index/dashboard',
-        icon: 'pie-chart'
+        icon: 'pie-chart',
       },
       {
         name: '地图模块',
         key: 'resources',
         icon: 'database',
-        path: '/map'
+        path: '/map',
       },
       {
         name: '扩展模块',
         key: 'schedule',
         icon: 'schedule',
-        path: '/plugins'
-      }
+        path: '/plugins',
+      },
     ];
   }
 
   // 组件已经加载到dom中
-  componentDidMount () {
+  componentDidMount() {
   }
 
   toggleCollapse = () => {
     this.setState({
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   };
 
@@ -83,19 +80,22 @@ class Index extends React.Component {
   };
 
   getMenus = () => {
-    let selectedKeys = this.getSelectedMenuKeys();
+    const selectedKeys = this.getSelectedMenuKeys();
     if (!selectedKeys.length) {
       // selectedKeys = [openKeys[openKeys.length - 1]];
     }
-    return <Menu
-      theme="dark"
-      defaultSelectedKeys={['dashboard']}
-      mode="inline"
-      onClick={this.handleMenuClick}
-      selectedKeys={selectedKeys}
-      style={{ padding: '16px 0', width: '100%' }}>
-      {this.getMenuItems(this.menus)}
-    </Menu>
+    return (
+      <Menu
+        theme="dark"
+        defaultSelectedKeys={['dashboard']}
+        mode="inline"
+        onClick={this.handleMenuClick}
+        selectedKeys={selectedKeys}
+        style={{ padding: '16px 0', width: '100%' }}
+      >
+        {this.getMenuItems(this.menus)}
+      </Menu>
+    );
   };
 
   getMenuItems = menusData => {
@@ -103,9 +103,7 @@ class Index extends React.Component {
       return [];
     }
     return menusData
-      .map(item => {
-        return this.getSubMenuOrItem(item);
-      })
+      .map(item => this.getSubMenuOrItem(item))
       .filter(item => item);
   };
 
@@ -126,24 +124,24 @@ class Index extends React.Component {
                 item.name
               )
             }
-            key={item.path}>
+            key={item.path}
+          >
             {childrenItems}
           </SubMenu>
         );
       }
       return null;
-    } else {
-      return (
-        <Menu.Item key={item.path}>
-          {
+    }
+    return (
+      <Menu.Item key={item.path}>
+        {
             item.icon ? (
               <Icon type={item.icon} />
             ) : (null)
           }
-          <span>{item.name}</span>
-        </Menu.Item>
-      );
-    }
+        <span>{item.name}</span>
+      </Menu.Item>
+    );
   };
 
   handleHeaderClick = ({ key }) => {
@@ -152,20 +150,19 @@ class Index extends React.Component {
       dispatch({
         type: 'login/logout',
       });
-      history.push('/login')
+      history.push('/login');
     }
   };
 
   handleMenuCollapse = () => {};
 
-  getFlatMenuKeys = menu =>
-    menu.reduce((keys, item) => {
-      keys.push(item.path);
-      if (item.children) {
-        return keys.concat(this.getFlatMenuKeys(item.children));
-      }
-      return keys;
-    }, []);
+  getFlatMenuKeys = menu => menu.reduce((keys, item) => {
+    keys.push(item.path);
+    if (item.children) {
+      return keys.concat(this.getFlatMenuKeys(item.children));
+    }
+    return keys;
+  }, []);
 
   // Get the currently selected menu
   getSelectedMenuKeys = () => {
@@ -175,12 +172,8 @@ class Index extends React.Component {
     return getMenuMatchKeys(this.getFlatMenuKeys(this.menus), urlToList(pathname));
   };
 
-  render () {
+  render() {
     const { route } = this.props;
-    const {
-      width, title, content,
-      visible, footer, className
-    } = this.state.model;
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider
@@ -189,13 +182,15 @@ class Index extends React.Component {
           width={210}
           trigger={null}
           collapsed={this.state.collapsed}
-          onCollapse={this.onCollapse}>
+          onCollapse={this.onCollapse}
+        >
           <div className="main-logo">
             {this.state.collapsed ? '' : '菜单'}
             <Icon
               className="main-trigger"
               type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggleCollapse}/>
+              onClick={this.toggleCollapse}
+            />
           </div>
           {this.getMenus(this.menus)}
         </Sider>
@@ -212,7 +207,7 @@ class Index extends React.Component {
               {renderRoutes(route.routes)}
             </PendingRouterLoader>
           </Content>
-          <Footer style={{ textAlign: 'center' }}></Footer>
+          <Footer style={{ textAlign: 'center' }} />
         </Layout>
       </Layout>
     );

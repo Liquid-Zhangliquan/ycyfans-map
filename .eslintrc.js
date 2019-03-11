@@ -16,6 +16,10 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'react/forbid-prop-types': 0,
+    'react/require-default-props': 0,
+    'import/prefer-default-export': 0,
+
     'no-plusplus': 0,
     'import/no-unresolved': 0,
     'no-param-reassign': 0,
@@ -28,6 +32,7 @@ module.exports = {
     'generator-star-spacing': 0,
     'no-prototype-builtins': 0,
     'no-underscore-dangle': 0,
+    'implicit-arrow-linebreak': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   },

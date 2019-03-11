@@ -7,22 +7,20 @@ import { HashRouter as Router } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import { LocaleProvider } from 'antd';
-import routes from './routes/index';
 import { Provider } from 'react-redux';
+import routes from './routes/index';
 import { store } from './redux/index';
 // import serviceWorker from './utils/serviceWorker';
 const env = process.env.NODE_ENV || 'development';
-const RootApp = () => {
-  return (
-    <LocaleProvider locale={zhCN}>
-      <Provider store={store}>
-        <Router>
-          {routes}
-        </Router>
-      </Provider>
-    </LocaleProvider>
-  )
-};
+const RootApp = () => (
+  <LocaleProvider locale={zhCN}>
+    <Provider store={store}>
+      <Router>
+        {routes}
+      </Router>
+    </Provider>
+  </LocaleProvider>
+);
 
 // Render the main component into the dom
 if (env === 'development') {
@@ -30,9 +28,9 @@ if (env === 'development') {
     const render = Component => {
       ReactDOM.render(
         <AppContainer>
-          <Component/>
+          <Component />
         </AppContainer>,
-        document.getElementById('app')
+        document.getElementById('app'),
       );
     };
     render(RootApp);
@@ -47,8 +45,8 @@ if (env === 'development') {
 } else {
   window.onload = function () {
     ReactDOM.render(
-      <RootApp/>,
-      document.getElementById('app')
+      <RootApp />,
+      document.getElementById('app'),
     );
   };
 }

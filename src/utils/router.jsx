@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, withRouter, Redirect } from 'react-router-dom'
+import { Route, withRouter, Redirect } from 'react-router-dom';
 
-class PendingRouterLoader extends React.Component {
-
+class PendingRouterLoader extends React.PureComponent {
   static propTypes = {
     routes: PropTypes.array,
     children: PropTypes.any,
     location: PropTypes.object,
-    redirect: PropTypes.object
+    redirect: PropTypes.object,
   };
 
   render() {
-    const { children, location, routes, redirect } = this.props;
+    const {
+      children, location, routes, redirect,
+    } = this.props;
     const _isRedirect = redirect
       && redirect.to
       && location.pathname === redirect.from
@@ -20,15 +21,17 @@ class PendingRouterLoader extends React.Component {
     return (
       <div style={{
         width: '100%',
-        height: '100%'
-      }}>
+        height: '100%',
+      }}
+      >
         <Route
           routes={routes}
           location={location}
-          render={() => children} />
+          render={() => children}
+        />
         {_isRedirect ? <Redirect from={redirect.from} to={redirect.to} /> : null}
       </div>
-    )
+    );
   }
 }
 

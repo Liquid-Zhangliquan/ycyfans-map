@@ -5,7 +5,7 @@ const utils = require('./helper');
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/index.js'
+    app: './src/index.jsx'
   },
   output: {
     path: utils.resolve('dist'),
@@ -26,7 +26,8 @@ module.exports = {
   },
   module: {
     rules: [
-      ...(process.env.USEESLINT ? [utils.createLintingRule()] : []),
+      // ...(process.env.USEESLINT ? [utils.createLintingRule()] : []),
+      ...[utils.createLintingRule()],
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',

@@ -46,7 +46,8 @@
     "redux-thunk": "^2.3.0",
     "prop-types": "^15.7.2",
     "react-router-config": "^4.4.0-beta.6",
-    "path-to-regexp": "^3.0.0"
+    "path-to-regexp": "^3.0.0",
+    "react-async-component": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -57,6 +58,7 @@
     "@babel/plugin-proposal-decorators": "^7.3.0",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
     "eslint": "^5.15.1",
     "eslint-loader": "^2.1.2",
     "eslint-config-airbnb": "^17.1.0",
@@ -64,6 +66,7 @@
     "eslint-import-resolver-webpack": "^0.11.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-import": "^2.16.0",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
     "babel-loader": "^8.0.5",
@@ -96,8 +99,7 @@
     "clean-webpack-plugin": "^1.0.1",
     "@hot-loader/react-dom": "^16.8.3",
     "webpack-parallel-uglify-plugin": "^1.1.0",
-    "add-asset-html-webpack-plugin": "^3.1.3",
-    "react-async-component": "^2.0.0"
+    "add-asset-html-webpack-plugin": "^3.1.3"
   },
   "lint-staged": {
     "**/*.{js,jsx,scss}": [
