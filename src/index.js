@@ -1,0 +1,56 @@
+import './assets/style/view/index.scss';
+import './assets/style/common/normalize.css';
+import 'antd/dist/antd.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { HashRouter as Router } from 'react-router-dom';
+import { AppContainer } from 'react-hot-loader';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+import { LocaleProvider } from 'antd';
+import routes from './routes/index';
+import { Provider } from 'react-redux';
+import { store } from './redux/index';
+// import serviceWorker from './utils/serviceWorker';
+const env = process.env.NODE_ENV || 'development';
+const RootApp = () => {
+  return (
+    <LocaleProvider locale={zhCN}>
+      <Provider store={store}>
+        <Router>
+          {routes}
+        </Router>
+      </Provider>
+    </LocaleProvider>
+  )
+};
+
+// Render the main component into the dom
+if (env === 'development') {
+  window.onload = function () {
+    const render = Component => {
+      ReactDOM.render(
+        <AppContainer>
+          <Component/>
+        </AppContainer>,
+        document.getElementById('app')
+      );
+    };
+    render(RootApp);
+
+    // HMR
+    if (module.hot) {
+      module.hot.accept('./routes', () => {
+        render(RootApp);
+      });
+    }
+  };
+} else {
+  window.onload = function () {
+    ReactDOM.render(
+      <RootApp/>,
+      document.getElementById('app')
+    );
+  };
+}
+
+// serviceWorker();

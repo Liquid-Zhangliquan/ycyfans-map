@@ -10,7 +10,7 @@ const portfinder = require('portfinder');
 const baseWebpackConfig = require('./webpack.base.conf');
 
 const HOST = process.env.HOST || '127.0.0.1';
-const PORT = (process.env.PORT && Number(process.env.PORT)) || 4000;
+const PORT = (process.env.PORT && Number(process.env.PORT)) || 2333;
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
@@ -21,7 +21,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     })
   },
   output: {
-    path: path.resolve(__dirname, '../_site'),
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
     publicPath: '/',
     library: undefined,
@@ -59,7 +59,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'website/index.html',
+      template: 'src/index.html',
       inject: true
     }),
     // copy custom static assets

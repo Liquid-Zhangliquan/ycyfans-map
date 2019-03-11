@@ -1,8 +1,36 @@
 import React from 'react';
+
 import { renderRoutes } from 'react-router-config'
-import Login from '../views/user/login';
-import Index from '../views/index';
+import { asyncComponent } from 'react-async-component';
+// const Login = asyncComponent(() => import(/* webpackChunkName: "login" */ '../views/user/login'));
+// const Index = asyncComponent(() => import(/* webpackChunkName: "index" */ '../views/index'));
 import PendingRouterLoader from '../utils/router';
+
+const Login = asyncComponent({
+  resolve: () => new Promise(resolve =>
+    // Webpack's code splitting API w/naming
+    require.ensure(
+      [],
+      (require) => {
+        resolve(require('../views/user/login'));
+      },
+      'login'
+    )
+  )
+});
+
+const Index = asyncComponent({
+  resolve: () => new Promise(resolve =>
+    // Webpack's code splitting API w/naming
+    require.ensure(
+      [],
+      (require) => {
+        resolve(require('../views/index'));
+      },
+      'index'
+    )
+  )
+});
 
 const mainRouter = [
   {

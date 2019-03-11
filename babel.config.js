@@ -10,11 +10,16 @@ module.exports = {
     '@babel/preset-react',
   ],
   plugins: [
+    "@babel/plugin-syntax-dynamic-import",
+    [
+      "@babel/plugin-proposal-decorators",
+      { "legacy": true }
+    ],
     [
       '@babel/plugin-proposal-class-properties', // 兼容class内的箭头函数
       { loose: true },
     ],
-    '@babel/external-helpers',
+    // '@babel/external-helpers',
     'react-hot-loader/babel',
   ],
   ignore: [

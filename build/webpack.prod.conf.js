@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-// const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
@@ -22,7 +22,7 @@ const webpackConfig = merge(require('./webpack.base.conf'), {
   },
   devtool: false,
   output: {
-    path: utils.resolve('_site'),
+    path: utils.resolve('dist'),
     filename: utils.assetsPath('scripts/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('scripts/[id].[chunkhash].js'),
     publicPath: './',
@@ -32,7 +32,7 @@ const webpackConfig = merge(require('./webpack.base.conf'), {
   },
   plugins: [
     new CleanWebpackPlugin([
-      '_site'
+      'dist'
     ], {
       root: path.resolve(__dirname, '../')
     }),
@@ -94,8 +94,8 @@ const webpackConfig = merge(require('./webpack.base.conf'), {
 
     new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, '../dll/extlib.dll.*.js'),
-      publicPath: utils.resolve('_site/static/scripts'),
-      outputPath: utils.resolve('_site/static/scripts'),
+      publicPath: utils.resolve('dist/public/scripts'),
+      outputPath: utils.resolve('dist/public/scripts'),
       includeSourcemap: false
     }),
 

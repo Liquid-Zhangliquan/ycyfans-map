@@ -8,7 +8,7 @@ module.exports = {
     app: './src/index.js'
   },
   output: {
-    path: utils.resolve('_site'),
+    path: utils.resolve('dist'),
     filename: '[name].js',
     publicPath: '/',
     libraryTarget: 'var'

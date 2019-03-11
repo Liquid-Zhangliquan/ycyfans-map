@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Layout, Menu, Icon, message, Button } from 'antd';
+import { Layout, Menu, Icon, message } from 'antd';
 import GlobalHeader from '../components/Header';
 import pathToRegexp from 'path-to-regexp';
 import PropTypes from 'prop-types';
@@ -42,27 +42,29 @@ class Index extends React.Component {
     super(props, context);
     this.state = {
       collapsed: false,
-      notices: [],
-      model: {
-        title: '',
-        confirmLoading: false,
-        width: 360,
-        content: '',
-        visible: false,
-        footer: ''
-      }
+      model: {}
     };
 
-    this.menus = [];
-
-    this.context.store.subscribe(() => {
-      const _data = this.context.store.getState()['notice'];
-      _data.then(res => {
-        this.setState({
-          notices: res
-        })
-      });
-    });
+    this.menus = [
+      {
+        name: '页面模块',
+        key: 'dashboard',
+        path: '/index/dashboard',
+        icon: 'pie-chart'
+      },
+      {
+        name: '地图模块',
+        key: 'resources',
+        icon: 'database',
+        path: '/map'
+      },
+      {
+        name: '扩展模块',
+        key: 'schedule',
+        icon: 'schedule',
+        path: '/plugins'
+      }
+    ];
   }
 
   // 组件已经加载到dom中
@@ -78,24 +80,6 @@ class Index extends React.Component {
   handleMenuClick = ({ item, key }) => {
     const { history } = this.props;
     history.push(key);
-  };
-
-  handleNoticeVisibleChange = (visible) => {
-    const { dispatch } = this.props;
-    if (visible) {
-      dispatch({
-        type: 'ACTION_NOTICE',
-      });
-    }
-  };
-
-  handleNoticeClear = (type) => {
-    message.success(`清空了${type}`);
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'global/clearNotices',
-      payload: type,
-    });
   };
 
   getMenus = () => {
@@ -191,14 +175,6 @@ class Index extends React.Component {
     return getMenuMatchKeys(this.getFlatMenuKeys(this.menus), urlToList(pathname));
   };
 
-  hideModal = () => {
-    this.setState({
-      model: {
-        visible: false
-      }
-    });
-  };
-
   render () {
     const { route } = this.props;
     const {
@@ -215,7 +191,7 @@ class Index extends React.Component {
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}>
           <div className="main-logo">
-            {this.state.collapsed ? '' : '事件管理系统'}
+            {this.state.collapsed ? '' : '菜单'}
             <Icon
               className="main-trigger"
               type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
@@ -227,11 +203,8 @@ class Index extends React.Component {
           <Header style={{ padding: 0, height: 50 }}>
             <GlobalHeader
               collapsed={this.state.collapsed}
-              notices={this.state.notices}
-              onNoticeClear={this.handleNoticeClear}
               onMenuClick={this.handleHeaderClick}
               onCollapse={this.handleMenuCollapse}
-              onNoticeVisibleChange={this.handleNoticeVisibleChange}
             />
           </Header>
           <Content style={{ margin: '0 0' }}>
@@ -239,9 +212,7 @@ class Index extends React.Component {
               {renderRoutes(route.routes)}
             </PendingRouterLoader>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            HDSXTECH ©2018 河南省联网中心
-          </Footer>
+          <Footer style={{ textAlign: 'center' }}></Footer>
         </Layout>
       </Layout>
     );
