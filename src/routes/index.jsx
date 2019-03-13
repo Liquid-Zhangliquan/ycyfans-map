@@ -41,18 +41,16 @@ const mainRouter = [
     key: 'login',
     path: '/login',
     component: Login,
+    redirect: {
+      from: '/',
+      to: '/login',
+    },
   },
   {
     name: '柱状图',
     key: 'hexagon',
     path: '/hexagon',
     component: Hexagon,
-  },
-  {
-    redirect: {
-      from: '/',
-      to: '/login',
-    },
   },
 ];
 

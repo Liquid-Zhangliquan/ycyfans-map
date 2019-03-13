@@ -1,7 +1,7 @@
 import 'maptalks/dist/maptalks.css';
 import './hexagon.scss';
 import * as React from 'react';
-import { HexagonLayer } from '@deck.gl/layers';
+import { HexagonLayer } from 'deck.gl';
 import * as maptalks from 'maptalks';
 import DeckGLLayer from '../../plugin/deck-layer';
 
@@ -60,12 +60,13 @@ class Hexagon extends React.Component {
       }),
     });
 
-    // require('d3-request').csv(DATA_URL, (error, response) => {
-    //   if (!error) {
-    //     const data = response.map(d => [Number(d.lng), Number(d.lat)]);
-    //     this._animate(data);
-    //   }
-    // });
+    require('d3-request').csv(DATA_URL, (error, response) => {
+      if (!error) {
+        const data = response.map(d => [Number(d.lng), Number(d.lat)]);
+        // this._animate(data);
+        console.log(data); // eslint-disable-line
+      }
+    });
   }
 
   componentWillUnmount() {

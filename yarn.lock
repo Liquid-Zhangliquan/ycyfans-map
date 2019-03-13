@@ -644,19 +644,13 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@deck.gl/core@7.0.0-alpha.2":
-  version "7.0.0-alpha.2"
-  resolved "http://registry.npm.taobao.org/@deck.gl/core/download/@deck.gl/core-7.0.0-alpha.2.tgz#82547e2f268374404a12217acd472d52f204a841"
+"@deck.gl/aggregation-layers@^7.0.0-alpha.4":
+  version "7.0.0-alpha.4"
+  resolved "http://registry.npm.taobao.org/@deck.gl/aggregation-layers/download/@deck.gl/aggregation-layers-7.0.0-alpha.4.tgz#baa69cbfe3ed9716e66111e26df7abafb726b5a8"
   dependencies:
-    gl-matrix "^3.0.0-0"
-    luma.gl "^7.0.0-alpha.2"
-    math.gl "^2.2.0"
-    mjolnir.js "^2.0.0"
-    probe.gl "^2.0.1"
-    seer "^0.2.4"
-    viewport-mercator-project "^6.0.0"
+    d3-hexbin "^0.2.1"
 
-"@deck.gl/core@^7.0.0-alpha.2", "@deck.gl/core@^7.0.0-alpha.4":
+"@deck.gl/core@^7.0.0-alpha.3", "@deck.gl/core@^7.0.0-alpha.4":
   version "7.0.0-alpha.4"
   resolved "http://registry.npm.taobao.org/@deck.gl/core/download/@deck.gl/core-7.0.0-alpha.4.tgz#20eb6a0d5873b4b34f52937fdc629123ee289399"
   dependencies:
@@ -668,22 +662,20 @@
     seer "^0.2.4"
     viewport-mercator-project "^6.0.0"
 
-"@deck.gl/experimental-layers@7.0.0-alpha.2":
-  version "7.0.0-alpha.2"
-  resolved "http://registry.npm.taobao.org/@deck.gl/experimental-layers/download/@deck.gl/experimental-layers-7.0.0-alpha.2.tgz#1e92139c10b41c9272ed775d38ad327eba3da393"
+"@deck.gl/experimental-layers@^7.0.0-alpha.3":
+  version "7.0.0-alpha.3"
+  resolved "http://registry.npm.taobao.org/@deck.gl/experimental-layers/download/@deck.gl/experimental-layers-7.0.0-alpha.3.tgz#69e032c21036237bdd616876230eff1ae754e905"
   dependencies:
-    "@deck.gl/core" "^7.0.0-alpha.2"
-    "@deck.gl/layers" "^7.0.0-alpha.2"
+    "@deck.gl/core" "^7.0.0-alpha.3"
+    "@deck.gl/layers" "^7.0.0-alpha.3"
 
-"@deck.gl/layers@7.0.0-alpha.2":
-  version "7.0.0-alpha.2"
-  resolved "http://registry.npm.taobao.org/@deck.gl/layers/download/@deck.gl/layers-7.0.0-alpha.2.tgz#98d3d1c0832e53c20e7729d1f9e742bde554b939"
+"@deck.gl/geo-layers@^7.0.0-alpha.4":
+  version "7.0.0-alpha.4"
+  resolved "http://registry.npm.taobao.org/@deck.gl/geo-layers/download/@deck.gl/geo-layers-7.0.0-alpha.4.tgz#ca64ac3063f6587c1d0ce0213e4b6fd5c35efa6d"
   dependencies:
-    "@deck.gl/core" "^7.0.0-alpha.2"
-    d3-hexbin "^0.2.1"
-    earcut "^2.0.6"
+    s2-geometry "^1.2.10"
 
-"@deck.gl/layers@^7.0.0-alpha.2":
+"@deck.gl/layers@^7.0.0-alpha.3", "@deck.gl/layers@^7.0.0-alpha.4":
   version "7.0.0-alpha.4"
   resolved "http://registry.npm.taobao.org/@deck.gl/layers/download/@deck.gl/layers-7.0.0-alpha.4.tgz#976f895272a647932b4780743eb5bd82bb164e3e"
   dependencies:
@@ -692,7 +684,11 @@
     d3-hexbin "^0.2.1"
     earcut "^2.0.6"
 
-"@deck.gl/react@^7.0.0-alpha.2":
+"@deck.gl/mesh-layers@^7.0.0-alpha.4":
+  version "7.0.0-alpha.4"
+  resolved "http://registry.npm.taobao.org/@deck.gl/mesh-layers/download/@deck.gl/mesh-layers-7.0.0-alpha.4.tgz#75ca1ffacf23c0ad78d98fb6f9cf063e955232b4"
+
+"@deck.gl/react@^7.0.0-alpha.4":
   version "7.0.0-alpha.4"
   resolved "http://registry.npm.taobao.org/@deck.gl/react/download/@deck.gl/react-7.0.0-alpha.4.tgz#007d2a116c2d35ac06756018f1b5c631c032c36c"
   dependencies:
@@ -2422,13 +2418,16 @@ decamelize@^2.0.0:
   dependencies:
     xregexp "4.0.0"
 
-deck.gl@7.0.0-alpha.2:
-  version "7.0.0-alpha.2"
-  resolved "http://registry.npm.taobao.org/deck.gl/download/deck.gl-7.0.0-alpha.2.tgz#da8094520422639cb8c819f1fbb13a4958a7c354"
+deck.gl@^7.0.0-alpha.4:
+  version "7.0.0-alpha.4"
+  resolved "http://registry.npm.taobao.org/deck.gl/download/deck.gl-7.0.0-alpha.4.tgz#258888e648d25ef27ebe5ed42e18c75195aad228"
   dependencies:
-    "@deck.gl/core" "^7.0.0-alpha.2"
-    "@deck.gl/layers" "^7.0.0-alpha.2"
-    "@deck.gl/react" "^7.0.0-alpha.2"
+    "@deck.gl/aggregation-layers" "^7.0.0-alpha.4"
+    "@deck.gl/core" "^7.0.0-alpha.4"
+    "@deck.gl/geo-layers" "^7.0.0-alpha.4"
+    "@deck.gl/layers" "^7.0.0-alpha.4"
+    "@deck.gl/mesh-layers" "^7.0.0-alpha.4"
+    "@deck.gl/react" "^7.0.0-alpha.4"
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
@@ -3564,7 +3563,7 @@ gh-pages@^1.2.0:
     graceful-fs "4.1.11"
     rimraf "^2.6.2"
 
-gl-matrix@^3.0.0, gl-matrix@^3.0.0-0:
+gl-matrix@^3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/gl-matrix/download/gl-matrix-3.0.0.tgz#888301ac7650e148c3865370e13ec66d08a8381f"
 
@@ -4804,6 +4803,10 @@ loglevel@^1.4.1:
   version "1.6.1"
   resolved "http://registry.npm.taobao.org/loglevel/download/loglevel-1.6.1.tgz#e0fc95133b6ef276cdc8887cdaf24aa6f156f8fa"
 
+long@^3.2.0:
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/long/download/long-3.2.0.tgz#d821b7138ca1cb581c172990ef14db200b5c474b"
+
 longest-streak@^2.0.1:
   version "2.0.2"
   resolved "http://registry.npm.taobao.org/longest-streak/download/longest-streak-2.0.2.tgz#2421b6ba939a443bb9ffebf596585a50b4c38e2e"
@@ -4838,7 +4841,7 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
-luma.gl@^7.0.0-alpha.13, luma.gl@^7.0.0-alpha.2:
+luma.gl@^7.0.0-alpha.13:
   version "7.0.0-alpha.15"
   resolved "http://registry.npm.taobao.org/luma.gl/download/luma.gl-7.0.0-alpha.15.tgz#0c50ccb67ad3ac7e5c1bc3939ebf876fbe3375eb"
   dependencies:
@@ -5151,7 +5154,7 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
-mjolnir.js@^2.0.0, mjolnir.js@^2.0.2:
+mjolnir.js@^2.0.2:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/mjolnir.js/download/mjolnir.js-2.1.0.tgz#e8a4727e86d8f9352d6b6fe9cdc6faab0dcff15e"
   dependencies:
@@ -6295,12 +6298,6 @@ probe.gl@3.0.0-alpha.6, probe.gl@^3.0.0-alpha.5:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-probe.gl@^2.0.1:
-  version "2.1.0"
-  resolved "http://registry.npm.taobao.org/probe.gl/download/probe.gl-2.1.0.tgz#4b5c0c2b4397a0d000f773036d74c0e0fd0f5879"
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-
 process-nextick-args@~2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/process-nextick-args/download/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"
@@ -7416,6 +7413,12 @@ rxjs@^6.3.3, rxjs@^6.4.0:
   resolved "http://registry.npm.taobao.org/rxjs/download/rxjs-6.4.0.tgz#f3bb0fe7bda7fb69deac0c16f17b50b0b8790504"
   dependencies:
     tslib "^1.9.0"
+
+s2-geometry@^1.2.10:
+  version "1.2.10"
+  resolved "http://registry.npm.taobao.org/s2-geometry/download/s2-geometry-1.2.10.tgz#c6ff22f3eccafd0eea491b60b44c141b9887acab"
+  dependencies:
+    long "^3.2.0"
 
 safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
