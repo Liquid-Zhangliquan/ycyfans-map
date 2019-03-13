@@ -27,11 +27,17 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "@deck.gl/core": "^7.0.0-alpha.4",
+    "@deck.gl/experimental-layers": "^7.0.0-alpha.3",
+    "@deck.gl/layers": "^7.0.0-alpha.4",
     "antd": "^3.15.0",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "d3-request": "^1.0.6",
+    "deck.gl": "^7.0.0-alpha.4",
     "history": "^4.7.2",
     "lodash": "^4.17.11",
+    "maptalks": "^0.43.0",
     "path-to-regexp": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",

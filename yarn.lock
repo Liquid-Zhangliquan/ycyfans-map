@@ -644,6 +644,61 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@deck.gl/core@7.0.0-alpha.2":
+  version "7.0.0-alpha.2"
+  resolved "http://registry.npm.taobao.org/@deck.gl/core/download/@deck.gl/core-7.0.0-alpha.2.tgz#82547e2f268374404a12217acd472d52f204a841"
+  dependencies:
+    gl-matrix "^3.0.0-0"
+    luma.gl "^7.0.0-alpha.2"
+    math.gl "^2.2.0"
+    mjolnir.js "^2.0.0"
+    probe.gl "^2.0.1"
+    seer "^0.2.4"
+    viewport-mercator-project "^6.0.0"
+
+"@deck.gl/core@^7.0.0-alpha.2", "@deck.gl/core@^7.0.0-alpha.4":
+  version "7.0.0-alpha.4"
+  resolved "http://registry.npm.taobao.org/@deck.gl/core/download/@deck.gl/core-7.0.0-alpha.4.tgz#20eb6a0d5873b4b34f52937fdc629123ee289399"
+  dependencies:
+    gl-matrix "^3.0.0"
+    luma.gl "^7.0.0-alpha.13"
+    math.gl "^2.2.0"
+    mjolnir.js "^2.0.2"
+    probe.gl "^3.0.0-alpha.5"
+    seer "^0.2.4"
+    viewport-mercator-project "^6.0.0"
+
+"@deck.gl/experimental-layers@7.0.0-alpha.2":
+  version "7.0.0-alpha.2"
+  resolved "http://registry.npm.taobao.org/@deck.gl/experimental-layers/download/@deck.gl/experimental-layers-7.0.0-alpha.2.tgz#1e92139c10b41c9272ed775d38ad327eba3da393"
+  dependencies:
+    "@deck.gl/core" "^7.0.0-alpha.2"
+    "@deck.gl/layers" "^7.0.0-alpha.2"
+
+"@deck.gl/layers@7.0.0-alpha.2":
+  version "7.0.0-alpha.2"
+  resolved "http://registry.npm.taobao.org/@deck.gl/layers/download/@deck.gl/layers-7.0.0-alpha.2.tgz#98d3d1c0832e53c20e7729d1f9e742bde554b939"
+  dependencies:
+    "@deck.gl/core" "^7.0.0-alpha.2"
+    d3-hexbin "^0.2.1"
+    earcut "^2.0.6"
+
+"@deck.gl/layers@^7.0.0-alpha.2":
+  version "7.0.0-alpha.4"
+  resolved "http://registry.npm.taobao.org/@deck.gl/layers/download/@deck.gl/layers-7.0.0-alpha.4.tgz#976f895272a647932b4780743eb5bd82bb164e3e"
+  dependencies:
+    "@loaders.gl/core" "^0.6.2"
+    "@mapbox/tiny-sdf" "^1.1.0"
+    d3-hexbin "^0.2.1"
+    earcut "^2.0.6"
+
+"@deck.gl/react@^7.0.0-alpha.2":
+  version "7.0.0-alpha.4"
+  resolved "http://registry.npm.taobao.org/@deck.gl/react/download/@deck.gl/react-7.0.0-alpha.4.tgz#007d2a116c2d35ac06756018f1b5c631c032c36c"
+  dependencies:
+    "@deck.gl/core" "^7.0.0-alpha.4"
+    prop-types "^15.6.0"
+
 "@hot-loader/react-dom@^16.8.3":
   version "16.8.4"
   resolved "http://registry.npm.taobao.org/@hot-loader/react-dom/download/@hot-loader/react-dom-16.8.4.tgz#aefe598ca26005c1ec3ac11d92d54ff3c1cd219c"
@@ -652,6 +707,57 @@
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.4"
+
+"@loaders.gl/core@^0.6.2":
+  version "0.6.2"
+  resolved "http://registry.npm.taobao.org/@loaders.gl/core/download/@loaders.gl/core-0.6.2.tgz#d4260e27c367e4c41ea7ba69a2d9525ee608511b"
+  dependencies:
+    text-encoding "^0.6.4"
+
+"@luma.gl/constants@^7.0.0-alpha.15":
+  version "7.0.0-alpha.15"
+  resolved "http://registry.npm.taobao.org/@luma.gl/constants/download/@luma.gl/constants-7.0.0-alpha.15.tgz#eca7e19466ebfd07d88e18bc966880779a6f9fd4"
+
+"@luma.gl/core@^7.0.0-alpha.15":
+  version "7.0.0-alpha.15"
+  resolved "http://registry.npm.taobao.org/@luma.gl/core/download/@luma.gl/core-7.0.0-alpha.15.tgz#73b37e3aef8760412207a3be0cddbcfeb326701f"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@luma.gl/constants" "^7.0.0-alpha.15"
+    "@luma.gl/shadertools" "^7.0.0-alpha.15"
+    "@luma.gl/webgl-state-tracker" "^7.0.0-alpha.15"
+    "@luma.gl/webgl2-polyfill" "^7.0.0-alpha.15"
+    math.gl "^2.2.0"
+    probe.gl "3.0.0-alpha.6"
+    seer "^0.2.4"
+
+"@luma.gl/shadertools@^7.0.0-alpha.15":
+  version "7.0.0-alpha.15"
+  resolved "http://registry.npm.taobao.org/@luma.gl/shadertools/download/@luma.gl/shadertools-7.0.0-alpha.15.tgz#3b32c97ed7edff81466385edb767dd0b29c74f36"
+  dependencies:
+    "@luma.gl/constants" "^7.0.0-alpha.15"
+
+"@luma.gl/webgl-state-tracker@^7.0.0-alpha.15":
+  version "7.0.0-alpha.15"
+  resolved "http://registry.npm.taobao.org/@luma.gl/webgl-state-tracker/download/@luma.gl/webgl-state-tracker-7.0.0-alpha.15.tgz#2ebc6a3be9a8f4a495993014361798221cb3747f"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@luma.gl/constants" "^7.0.0-alpha.15"
+
+"@luma.gl/webgl2-polyfill@^7.0.0-alpha.15":
+  version "7.0.0-alpha.15"
+  resolved "http://registry.npm.taobao.org/@luma.gl/webgl2-polyfill/download/@luma.gl/webgl2-polyfill-7.0.0-alpha.15.tgz#8caa0efd23328ee306c1a36ecf3bc912b2b96016"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@luma.gl/constants" "^7.0.0-alpha.15"
+
+"@mapbox/tiny-sdf@^1.1.0":
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/@mapbox/tiny-sdf/download/@mapbox/tiny-sdf-1.1.0.tgz#b0b8f5c22005e6ddb838f421ffd257c1f74f9a20"
+
+"@maptalks/feature-filter@^1.0.0":
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/@maptalks/feature-filter/download/@maptalks/feature-filter-1.0.0.tgz#bfcc7f705e6de5c6c3d3802a3b5081272c877fc8"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1854,6 +1960,10 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
+commander@2, commander@^2.11.0, commander@^2.14.1, commander@^2.19.0, commander@^2.9.0:
+  version "2.19.0"
+  resolved "http://registry.npm.taobao.org/commander/download/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
+
 commander@2.15.1:
   version "2.15.1"
   resolved "http://registry.npm.taobao.org/commander/download/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
@@ -1861,10 +1971,6 @@ commander@2.15.1:
 commander@2.17.x, commander@~2.17.1:
   version "2.17.1"
   resolved "http://registry.npm.taobao.org/commander/download/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
-
-commander@^2.11.0, commander@^2.14.1, commander@^2.19.0, commander@^2.9.0:
-  version "2.19.0"
-  resolved "http://registry.npm.taobao.org/commander/download/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
 commander@~2.13.0:
   version "2.13.0"
@@ -2234,6 +2340,35 @@ cyclist@~0.2.2:
   version "0.2.2"
   resolved "http://registry.npm.taobao.org/cyclist/download/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
 
+d3-collection@1:
+  version "1.0.7"
+  resolved "http://registry.npm.taobao.org/d3-collection/download/d3-collection-1.0.7.tgz#349bd2aa9977db071091c13144d5e4f16b5b310e"
+
+d3-dispatch@1:
+  version "1.0.5"
+  resolved "http://registry.npm.taobao.org/d3-dispatch/download/d3-dispatch-1.0.5.tgz#e25c10a186517cd6c82dd19ea018f07e01e39015"
+
+d3-dsv@1:
+  version "1.1.1"
+  resolved "http://registry.npm.taobao.org/d3-dsv/download/d3-dsv-1.1.1.tgz#aaa830ecb76c4b5015572c647cc6441e3c7bb701"
+  dependencies:
+    commander "2"
+    iconv-lite "0.4"
+    rw "1"
+
+d3-hexbin@^0.2.1:
+  version "0.2.2"
+  resolved "http://registry.npm.taobao.org/d3-hexbin/download/d3-hexbin-0.2.2.tgz#9c5837dacfd471ab05337a9e91ef10bfc4f98831"
+
+d3-request@^1.0.6:
+  version "1.0.6"
+  resolved "http://registry.npm.taobao.org/d3-request/download/d3-request-1.0.6.tgz#a1044a9ef4ec28c824171c9379fae6d79474b19f"
+  dependencies:
+    d3-collection "1"
+    d3-dispatch "1"
+    d3-dsv "1"
+    xmlhttprequest "1"
+
 damerau-levenshtein@^1.0.4:
   version "1.0.4"
   resolved "http://registry.npm.taobao.org/damerau-levenshtein/download/damerau-levenshtein-1.0.4.tgz#03191c432cb6eea168bb77f3a55ffdccb8978514"
@@ -2286,6 +2421,14 @@ decamelize@^2.0.0:
   resolved "http://registry.npm.taobao.org/decamelize/download/decamelize-2.0.0.tgz#656d7bbc8094c4c788ea53c5840908c9c7d063c7"
   dependencies:
     xregexp "4.0.0"
+
+deck.gl@7.0.0-alpha.2:
+  version "7.0.0-alpha.2"
+  resolved "http://registry.npm.taobao.org/deck.gl/download/deck.gl-7.0.0-alpha.2.tgz#da8094520422639cb8c819f1fbb13a4958a7c354"
+  dependencies:
+    "@deck.gl/core" "^7.0.0-alpha.2"
+    "@deck.gl/layers" "^7.0.0-alpha.2"
+    "@deck.gl/react" "^7.0.0-alpha.2"
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
@@ -2528,6 +2671,10 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
+
+earcut@^2.0.6:
+  version "2.1.5"
+  resolved "http://registry.npm.taobao.org/earcut/download/earcut-2.1.5.tgz#829280a9a3a0f5fee0529f0a47c3e4eff09b21e4"
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
@@ -3417,6 +3564,10 @@ gh-pages@^1.2.0:
     graceful-fs "4.1.11"
     rimraf "^2.6.2"
 
+gl-matrix@^3.0.0, gl-matrix@^3.0.0-0:
+  version "3.0.0"
+  resolved "http://registry.npm.taobao.org/gl-matrix/download/gl-matrix-3.0.0.tgz#888301ac7650e148c3865370e13ec66d08a8381f"
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/glob-parent/download/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
@@ -3784,15 +3935,15 @@ humanize-url@^1.0.0:
     normalize-url "^1.0.0"
     strip-url-auth "^1.0.0"
 
-iconv-lite@0.4.23:
-  version "0.4.23"
-  resolved "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
+iconv-lite@0.4, iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
+  version "0.4.24"
+  resolved "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
-iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
-  version "0.4.24"
-  resolved "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
+iconv-lite@0.4.23:
+  version "0.4.23"
+  resolved "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
@@ -4687,6 +4838,12 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+luma.gl@^7.0.0-alpha.13, luma.gl@^7.0.0-alpha.2:
+  version "7.0.0-alpha.15"
+  resolved "http://registry.npm.taobao.org/luma.gl/download/luma.gl-7.0.0-alpha.15.tgz#0c50ccb67ad3ac7e5c1bc3939ebf876fbe3375eb"
+  dependencies:
+    "@luma.gl/core" "^7.0.0-alpha.15"
+
 make-dir@^1.0.0:
   version "1.3.0"
   resolved "http://registry.npm.taobao.org/make-dir/download/make-dir-1.3.0.tgz#79c1033b80515bd6d24ec9933e860ca75ee27f0c"
@@ -4721,6 +4878,14 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+maptalks@^0.43.0:
+  version "0.43.0"
+  resolved "http://registry.npm.taobao.org/maptalks/download/maptalks-0.43.0.tgz#84766cbd8d6da50017d0417d10c0ae60ce3a2b9a"
+  dependencies:
+    "@maptalks/feature-filter" "^1.0.0"
+    simplify-js "^1.2.1"
+    zousan "^2.3.3"
+
 markdown-escapes@^1.0.0:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/markdown-escapes/download/markdown-escapes-1.0.2.tgz#e639cbde7b99c841c0bacc8a07982873b46d2122"
@@ -4732,6 +4897,13 @@ markdown-table@^1.1.0:
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
   resolved "http://registry.npm.taobao.org/math-expression-evaluator/download/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"
+
+math.gl@^2.2.0:
+  version "2.3.1"
+  resolved "http://registry.npm.taobao.org/math.gl/download/math.gl-2.3.1.tgz#4099e0e34f03dbc458e57945583badb3a517ce8f"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    gl-matrix "^3.0.0"
 
 mathml-tag-names@^2.0.1:
   version "2.1.0"
@@ -4978,6 +5150,13 @@ mixin-object@^2.0.1:
   dependencies:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
+
+mjolnir.js@^2.0.0, mjolnir.js@^2.0.2:
+  version "2.1.0"
+  resolved "http://registry.npm.taobao.org/mjolnir.js/download/mjolnir.js-2.1.0.tgz#e8a4727e86d8f9352d6b6fe9cdc6faab0dcff15e"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    hammerjs "^2.0.8"
 
 mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.1"
@@ -6110,6 +6289,18 @@ private@^0.1.6:
   version "0.1.8"
   resolved "http://registry.npm.taobao.org/private/download/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
 
+probe.gl@3.0.0-alpha.6, probe.gl@^3.0.0-alpha.5:
+  version "3.0.0-alpha.6"
+  resolved "http://registry.npm.taobao.org/probe.gl/download/probe.gl-3.0.0-alpha.6.tgz#1658518b19f577c85bdcd20629db396bbffa6552"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+probe.gl@^2.0.1:
+  version "2.1.0"
+  resolved "http://registry.npm.taobao.org/probe.gl/download/probe.gl-2.1.0.tgz#4b5c0c2b4397a0d000f773036d74c0e0fd0f5879"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 process-nextick-args@~2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/process-nextick-args/download/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"
@@ -7216,6 +7407,10 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
+rw@1:
+  version "1.3.3"
+  resolved "http://registry.npm.taobao.org/rw/download/rw-1.3.3.tgz#3f862dfa91ab766b14885ef4d01124bfda074fb4"
+
 rxjs@^6.3.3, rxjs@^6.4.0:
   version "6.4.0"
   resolved "http://registry.npm.taobao.org/rxjs/download/rxjs-6.4.0.tgz#f3bb0fe7bda7fb69deac0c16f17b50b0b8790504"
@@ -7288,6 +7483,10 @@ scss-tokenizer@^0.2.3:
   dependencies:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
+
+seer@^0.2.4:
+  version "0.2.4"
+  resolved "http://registry.npm.taobao.org/seer/download/seer-0.2.4.tgz#6b8a81d09bfe6b3b3ad0268971a65e7f7405135c"
 
 select-hose@^2.0.0:
   version "2.0.0"
@@ -7426,6 +7625,10 @@ shebang-regex@^1.0.0:
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "http://registry.npm.taobao.org/signal-exit/download/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
+
+simplify-js@^1.2.1:
+  version "1.2.3"
+  resolved "http://registry.npm.taobao.org/simplify-js/download/simplify-js-1.2.3.tgz#a3422c1b9884d60421345eb44d2b872662df27f5"
 
 slash@^1.0.0:
   version "1.0.0"
@@ -7984,6 +8187,10 @@ terser@^3.16.1:
     source-map "~0.6.1"
     source-map-support "~0.5.10"
 
+text-encoding@^0.6.4:
+  version "0.6.4"
+  resolved "http://registry.npm.taobao.org/text-encoding/download/text-encoding-0.6.4.tgz#e399a982257a276dae428bb92845cb71bdc26d19"
+
 text-table@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/text-table/download/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
@@ -8415,6 +8622,13 @@ vfile@^3.0.0:
     unist-util-stringify-position "^1.0.0"
     vfile-message "^1.0.0"
 
+viewport-mercator-project@^6.0.0:
+  version "6.1.1"
+  resolved "http://registry.npm.taobao.org/viewport-mercator-project/download/viewport-mercator-project-6.1.1.tgz#d7b2cb3cb772b819f1daab17cf4019102a9102a6"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    gl-matrix "^3.0.0"
+
 vm-browserify@0.0.4:
   version "0.0.4"
   resolved "http://registry.npm.taobao.org/vm-browserify/download/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
@@ -8647,6 +8861,10 @@ x-is-string@^0.1.0:
   version "0.1.0"
   resolved "http://registry.npm.taobao.org/x-is-string/download/x-is-string-0.1.0.tgz#474b50865af3a49a9c4657f05acd145458f77d82"
 
+xmlhttprequest@1:
+  version "1.8.0"
+  resolved "http://registry.npm.taobao.org/xmlhttprequest/download/xmlhttprequest-1.8.0.tgz#67fe075c5c24fef39f9d65f5f7b7fe75171968fc"
+
 xregexp@4.0.0:
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/xregexp/download/xregexp-4.0.0.tgz#e698189de49dd2a18cc5687b05e17c8e43943020"
@@ -8747,3 +8965,7 @@ yargs@^7.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
+
+zousan@^2.3.3:
+  version "2.3.3"
+  resolved "http://registry.npm.taobao.org/zousan/download/zousan-2.3.3.tgz#85432ff253a5fcb6a192416cdebc4e3dc9cb9813"

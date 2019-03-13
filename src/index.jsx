@@ -1,5 +1,6 @@
 import './assets/style/view/index.scss';
 import './assets/style/common/normalize.css';
+import './assets/style/index.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';

@@ -20,6 +20,14 @@ const Index = asyncComponent({
     }, 'index')),
 });
 
+const Hexagon = asyncComponent({
+  resolve: () => new Promise(resolve =>
+    // Webpack's code splitting API w/naming
+    require.ensure([], (require) => {
+      resolve(require('../views/dashboard/Hexagon'));
+    }, 'dashboard')),
+});
+
 const mainRouter = [
   {
     name: '工作区',
@@ -27,16 +35,24 @@ const mainRouter = [
     path: '/index',
     component: Index,
     routes: [],
-    redirect: {
-      from: '/',
-      to: '/login',
-    },
   },
   {
     name: '登录',
     key: 'login',
     path: '/login',
     component: Login,
+  },
+  {
+    name: '柱状图',
+    key: 'hexagon',
+    path: '/hexagon',
+    component: Hexagon,
+  },
+  {
+    redirect: {
+      from: '/',
+      to: '/login',
+    },
   },
 ];
 
