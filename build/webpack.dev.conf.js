@@ -2,11 +2,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const portfinder = require('portfinder');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const utils = require('./helper');
-const portfinder = require('portfinder');
 const baseWebpackConfig = require('./webpack.base.conf');
 
 const HOST = process.env.HOST || '127.0.0.1';
@@ -53,6 +54,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    new ProgressBarPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     // new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     // new webpack.NoEmitOnErrorsPlugin(),
