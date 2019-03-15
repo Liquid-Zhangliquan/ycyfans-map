@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*!
  * maptalks.deckgl v0.0.1
  * LICENSE : MIT

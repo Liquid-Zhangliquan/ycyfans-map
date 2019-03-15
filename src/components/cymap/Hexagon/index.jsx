@@ -1,12 +1,9 @@
 import 'maptalks/dist/maptalks.css';
 import './index.scss';
 import * as React from 'react';
-// import { HexagonLayer } from 'deck.gl';
+import { HexagonLayer } from 'deck.gl';
 import * as maptalks from 'maptalks';
-// import  '../../plugin/maptalks-deckgl/deckgl';
-// import  '../../plugin/maptalks-deckgl/maptalks-deckgl';
-
-// import DeckGLLayer from '../../plugin/deck-layer';
+// import DeckGLLayer from  '../../../plugin/maptalks-deckgl/maptalks-deckgl.js';
 
 // const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
 
@@ -62,9 +59,8 @@ class Hexagon extends React.Component {
         urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
         subdomains: ['a', 'b', 'c', 'd'],
       }),
-
     });
-    // this.deckLayer = new maptalks.DeckGLLayer('kkkk', {});
+    // this.deckLayer = new DeckGLLayer('kkkk', {});
     // this.map.addLayer(this.deckLayer);
     // require('d3-request').csv(DATA_URL, (error, response) => {
     //   debugger
@@ -86,7 +82,7 @@ class Hexagon extends React.Component {
   setRef = (x = null) => {
     this.container = x;
   };
-  
+
   addHexagonLayer() {
     const hexagonLayer = {
       layerType: "HexagonLayer",
