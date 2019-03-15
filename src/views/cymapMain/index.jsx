@@ -1,6 +1,7 @@
 import './index.scss';
 import * as React from 'react';
-import Hexagon from '../../components/cymap/Hexagon';
+// import Hexagon from '../../components/cymap/Hexagon';
+import Hexagon from '../dashboard/Hexagon';
 import Fszb from '../../components/echartComponents/FansRatio';
 import Zfqk from '../../components/echartComponents/Zfqk';
 import Qyph from '../../components/echartComponents/Qyph';

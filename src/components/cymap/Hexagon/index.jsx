@@ -65,8 +65,8 @@ class Hexagon extends React.Component {
         subdomains: ['a', 'b', 'c', 'd'],
       }),
     });
-    this.deckLayer = new DeckGLLayer('kkkk', {});
-    this.map.addLayer(this.deckLayer);
+    //this.deckLayer = new DeckGLLayer('kkkk', {});
+    //this.map.addLayer(this.deckLayer);
     // require('d3-request').csv(DATA_CSVURL, (error, response) => {
     //   debugger
     //   if (!error) {
@@ -81,7 +81,7 @@ class Hexagon extends React.Component {
         this.data = response.map(d => [Number(d.lng), Number(d.lat)]);
         // this._animate(data);
         //this.addHexagonLayer();
-        console.log(this.data); // eslint-disable-line
+        //console.log(this.data); // eslint-disable-line
       }
     });
   }
