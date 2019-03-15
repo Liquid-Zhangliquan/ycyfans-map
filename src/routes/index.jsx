@@ -63,7 +63,7 @@ const mainRouter = [
   {
     name: '柱状图2',
     key: 'cymap',
-    path: '/cymapMain',
+    path: '/',
     component: Cymapmain,
   },
 ];

@@ -1,4 +1,55 @@
-.map-content {
+.cymapMain {
   width: 100%;
   height: 100%;
+  background-color: #282c34;
+  background: url(.././../static/images/background.jpg) center no-repeat;
+  background-size: cover;
+}
+.cymap_mapcontain{
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+.cymapLogo{
+  width: 460px;
+  height: 82px;
+  background: url(.././../static/images/logo.png) center no-repeat;
+  position: absolute;
+  left: 50px;
+  top:30px;
+}
+.fszb_contain{
+  width: 480px;
+  height: 460px;
+  position: absolute;
+  left: 50px;
+  top:150px;
+}
+.zfqk_contain{
+  width: 480px;
+  height: 329px;
+  position: absolute;
+  left: 50px;
+  top:640px;
+}
+.qyph_contain{
+  width: 520px;
+  height: 323px;
+  position: absolute;
+  right: 50px;
+  top:150px;
+}
+.zyfx_contain{
+  width: 520px;
+  height: 262px;
+  position: absolute;
+  right: 50px;
+  top:490px;
+}
+.rcyt_contain{
+  width: 520px;
+  height: 262px;
+  position: absolute;
+  right: 50px;
+  top:770px;
 }
