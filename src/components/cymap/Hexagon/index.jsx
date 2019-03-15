@@ -3,33 +3,15 @@ import './index.scss';
 import * as React from 'react';
 import { HexagonLayer } from 'deck.gl';
 import * as maptalks from 'maptalks';
-// import DeckGLLayer from  '../../../plugin/maptalks-deckgl/maptalks-deckgl.js';
+import { DeckGLLayer } from '../../../plugin/maptalks-deckgl/index';
 
-// const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
+const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
+//失败，返回的是document元素
+const DATA_CSVURL = '../../../static/data/heatmap-data.csv';
+//放置至public下成功
+const DATA_JSONURL = '../../../../public/data/heatmap-datajson.json';
 
-const LIGHT_SETTINGS = {
-  lightsPosition: [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
-  ambientRatio: 0.4,
-  diffuseRatio: 0.6,
-  specularRatio: 0.2,
-  lightsStrength: [0.8, 0.0, 0.8, 0.0],
-  numberOfLights: 2,
-};
 
-const colorRange = [
-  [1, 152, 189],
-  [73, 227, 206],
-  [216, 254, 181],
-  [254, 237, 177],
-  [254, 173, 84],
-  [209, 55, 78],
-];
-
-const options = {
-  radius: 1000,
-  coverage: 1,
-  upperPercentile: 100
-}
 
 const elevationScale = { min: 1, max: 50 };
 
@@ -42,6 +24,29 @@ class Hexagon extends React.Component {
     this.map = null;
     this.deckLayer = null;
     this.data = null;
+    this.LIGHT_SETTINGS = {
+      lightsPosition: [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
+      ambientRatio: 0.4,
+      diffuseRatio: 0.6,
+      specularRatio: 0.2,
+      lightsStrength: [0.8, 0.0, 0.8, 0.0],
+      numberOfLights: 2,
+    };
+
+    this.colorRange = [
+      [1, 152, 189],
+      [73, 227, 206],
+      [216, 254, 181],
+      [254, 237, 177],
+      [254, 173, 84],
+      [209, 55, 78],
+    ];
+
+    this.options = {
+      radius: 1000,
+      coverage: 1,
+      upperPercentile: 100
+    }
 
     this.state = {
       elevationScale: elevationScale.min,
@@ -60,16 +65,25 @@ class Hexagon extends React.Component {
         subdomains: ['a', 'b', 'c', 'd'],
       }),
     });
-    // this.deckLayer = new DeckGLLayer('kkkk', {});
-    // this.map.addLayer(this.deckLayer);
-    // require('d3-request').csv(DATA_URL, (error, response) => {
+    this.deckLayer = new DeckGLLayer('kkkk', {});
+    this.map.addLayer(this.deckLayer);
+    // require('d3-request').csv(DATA_CSVURL, (error, response) => {
     //   debugger
     //   if (!error) {
     //     this.data = response.map(d => [Number(d.lng), Number(d.lat)]);
     //     // this._animate(data);
+    //     //this.addHexagonLayer();
     //     console.log(this.data); // eslint-disable-line
     //   }
     // });
+    require('d3-request').json(DATA_JSONURL, (error, response) => {
+      if (!error) {
+        this.data = response.map(d => [Number(d.lng), Number(d.lat)]);
+        // this._animate(data);
+        //this.addHexagonLayer();
+        console.log(this.data); // eslint-disable-line
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -84,20 +98,25 @@ class Hexagon extends React.Component {
   };
 
   addHexagonLayer() {
+    debugger
+    let _data = this.data
+    let _COLOR_RANGE = this.colorRange
+    let _LIGHT_SETTINGS = this.LIGHT_SETTINGS
+    let _options = this.options
     const hexagonLayer = {
       layerType: "HexagonLayer",
       id: 'heatmap',
-      colorRange: COLOR_RANGE,
-      data,
+      colorRange: _COLOR_RANGE,
+      _data,
       elevationRange: [0, 1000],
       elevationScale: 250,
       extruded: true,
       pickable: true,
       getPosition: d => d,
       onHover: info => { console.log(info) },
-      lightSettings: LIGHT_SETTINGS,
+      lightSettings: _LIGHT_SETTINGS,
       opacity: 1,
-      ...options
+      ..._options
     };
     this.deckLayer.setProps({
       layers: [hexagonLayer]
