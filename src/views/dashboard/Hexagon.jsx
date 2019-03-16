@@ -5,7 +5,8 @@ import { HexagonLayer } from 'deck.gl';
 import * as maptalks from 'maptalks';
 import DeckGLLayer from '../../plugin/deck-layer';
 
-const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
+//const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
+const DATA_JSONURL = '../../../public/data/heatmap-datajson.json';
 
 const LIGHT_SETTINGS = {
   lightsPosition: [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
@@ -60,10 +61,10 @@ class Hexagon extends React.Component {
       }),
     });
 
-    require('d3-request').csv(DATA_URL, (error, response) => {
+    require('d3-request').json(DATA_JSONURL, (error, response) => {
       if (!error) {
         const data = response.map(d => [Number(d.lng), Number(d.lat)]);
-        // this._animate(data);
+        this._animate(data);
         console.log(data); // eslint-disable-line
       }
     });

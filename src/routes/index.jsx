@@ -28,6 +28,14 @@ const Hexagon = asyncComponent({
     }, 'dashboard')),
 });
 
+const Cymapmain = asyncComponent({
+  resolve: () => new Promise(resolve =>
+    // Webpack's code splitting API w/naming
+    require.ensure([], (require) => {
+      resolve(require('../views/cymapMain/index'));
+    }, 'cymapMain')),
+});
+
 const mainRouter = [
   {
     name: '工作区',
@@ -51,6 +59,12 @@ const mainRouter = [
     key: 'hexagon',
     path: '/hexagon',
     component: Hexagon,
+  },
+  {
+    name: '柱状图2',
+    key: 'cymap',
+    path: '/',
+    component: Cymapmain,
   },
 ];
 
