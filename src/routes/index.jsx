@@ -23,12 +23,6 @@ const mainRouter = [
     },
   },
   {
-    name: '柱状图',
-    key: 'hexagon',
-    path: '/hexagon',
-    component: loadable(() => import(/* webpackChunkName: 'hexagon' */ '../views/dashboard/Hexagon')),
-  },
-  {
     name: '柱状图2',
     key: 'cymap',
     path: '/',

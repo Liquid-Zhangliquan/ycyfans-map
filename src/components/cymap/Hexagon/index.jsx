@@ -3,15 +3,28 @@ import './index.scss';
 import * as React from 'react';
 import { HexagonLayer } from 'deck.gl';
 import * as maptalks from 'maptalks';
-import { DeckGLLayer } from '../../../plugin/maptalks-deckgl/index';
+import DeckGLLayer from '@/plugin/deck-layer';
 
-const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
-//失败，返回的是document元素
-const DATA_CSVURL = '../../../static/data/heatmap-data.csv';
-//放置至public下成功
-const DATA_JSONURL = '../../../../public/data/heatmap-datajson.json';
+// const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
+const DATA_JSONURL = 'public/data/heatmap-datajson.json';
 
+const LIGHT_SETTINGS = {
+  lightsPosition: [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
+  ambientRatio: 0.4,
+  diffuseRatio: 0.6,
+  specularRatio: 0.2,
+  lightsStrength: [0.8, 0.0, 0.8, 0.0],
+  numberOfLights: 2,
+};
 
+const colorRange = [
+  [1, 152, 189],
+  [73, 227, 206],
+  [216, 254, 181],
+  [254, 237, 177],
+  [254, 173, 84],
+  [209, 55, 78],
+];
 
 const elevationScale = { min: 1, max: 50 };
 
@@ -23,34 +36,16 @@ class Hexagon extends React.Component {
     this.container = null;
     this.map = null;
     this.deckLayer = null;
-    this.data = null;
-    this.LIGHT_SETTINGS = {
-      lightsPosition: [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
-      ambientRatio: 0.4,
-      diffuseRatio: 0.6,
-      specularRatio: 0.2,
-      lightsStrength: [0.8, 0.0, 0.8, 0.0],
-      numberOfLights: 2,
-    };
-
-    this.colorRange = [
-      [1, 152, 189],
-      [73, 227, 206],
-      [216, 254, 181],
-      [254, 237, 177],
-      [254, 173, 84],
-      [209, 55, 78],
-    ];
-
-    this.options = {
-      radius: 1000,
-      coverage: 1,
-      upperPercentile: 100
-    }
 
     this.state = {
       elevationScale: elevationScale.min,
     };
+
+    this.startAnimationTimer = null;
+    this.intervalTimer = null;
+
+    this._startAnimate = this._startAnimate.bind(this);
+    this._animateHeight = this._animateHeight.bind(this);
   }
 
   componentDidMount() {
@@ -65,23 +60,12 @@ class Hexagon extends React.Component {
         subdomains: ['a', 'b', 'c', 'd'],
       }),
     });
-    //this.deckLayer = new DeckGLLayer('kkkk', {});
-    //this.map.addLayer(this.deckLayer);
-    // require('d3-request').csv(DATA_CSVURL, (error, response) => {
-    //   debugger
-    //   if (!error) {
-    //     this.data = response.map(d => [Number(d.lng), Number(d.lat)]);
-    //     // this._animate(data);
-    //     //this.addHexagonLayer();
-    //     console.log(this.data); // eslint-disable-line
-    //   }
-    // });
+
     require('d3-request').json(DATA_JSONURL, (error, response) => {
       if (!error) {
-        this.data = response.map(d => [Number(d.lng), Number(d.lat)]);
-        // this._animate(data);
-        //this.addHexagonLayer();
-        //console.log(this.data); // eslint-disable-line
+        const data = response.map(d => [Number(d.lng), Number(d.lat)]);
+        this._animate(data);
+        console.log(data); // eslint-disable-line
       }
     });
   }
@@ -97,33 +81,79 @@ class Hexagon extends React.Component {
     this.container = x;
   };
 
-  addHexagonLayer() {
-    debugger
-    let _data = this.data
-    let _COLOR_RANGE = this.colorRange
-    let _LIGHT_SETTINGS = this.LIGHT_SETTINGS
-    let _options = this.options
-    const hexagonLayer = {
-      layerType: "HexagonLayer",
-      id: 'heatmap',
-      colorRange: _COLOR_RANGE,
-      _data,
-      elevationRange: [0, 1000],
-      elevationScale: 250,
-      extruded: true,
-      pickable: true,
-      getPosition: d => d,
-      onHover: info => { console.log(info) },
-      lightSettings: _LIGHT_SETTINGS,
-      opacity: 1,
-      ..._options
-    };
-    this.deckLayer.setProps({
-      layers: [hexagonLayer]
+  _animate(data) {
+    this.setState({
+      data,
     });
+    this._stopAnimate();
+    // wait 1.5 secs to start animation so that all data are loaded
+    this.startAnimationTimer = window.setTimeout(this._startAnimate, 1500);
   }
+
+  _startAnimate() {
+    this.intervalTimer = window.setInterval(this._animateHeight, 20);
+  }
+
+  _stopAnimate() {
+    window.clearTimeout(this.startAnimationTimer);
+    window.clearTimeout(this.intervalTimer);
+  }
+
+  _animateHeight() {
+    // eslint-disable-next-line
+    if (elevationScale.max === this.state.elevationScale) {
+      this._stopAnimate();
+    } else {
+      this.setState({
+        // eslint-disable-next-line
+        elevationScale: this.state.elevationScale + 1,
+      });
+    }
+  }
+
+  _renderLayers() {
+    const {
+      data, radius = 1000, upperPercentile = 100, coverage = 1,
+    } = this.state;
+    if (data) {
+      // eslint-disable-next-line
+      const { onHover } = this.props;
+      const props = {
+        layers: [
+          new HexagonLayer({
+            id: 'heatmap',
+            colorRange,
+            coverage,
+            data,
+            elevationRange: [0, 3000],
+            // eslint-disable-next-line
+            elevationScale: this.state.elevationScale,
+            extruded: true,
+            getPosition: d => d,
+            lightSettings: LIGHT_SETTINGS,
+            onHover,
+            opacity: 1,
+            pickable: Boolean(onHover),
+            radius,
+            upperPercentile,
+          }),
+        ],
+      };
+      if (!this.inited) {
+        this.inited = true;
+        this.deckLayer = new DeckGLLayer('deck', props, {
+          animation: true,
+          renderer: 'webgl',
+        });
+        this.map.addLayer(this.deckLayer);
+      } else if (this.deckLayer) {
+        this.deckLayer.setProps(props);
+      }
+    }
+  }
+
   render() {
-    //this.addHexagonLayer();
+    this._renderLayers();
     return (<div ref={this.setRef} className="map-content" />);
   }
 }

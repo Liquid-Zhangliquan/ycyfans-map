@@ -21,6 +21,10 @@ module.exports = {
       '.json'
     ],
     alias: {
+      '@': utils.resolve('src'),
+      'public': utils.resolve('public'),
+      'components': utils.resolve('src/components'),
+      'utils': utils.resolve('src/utils'),
       'react-dom': '@hot-loader/react-dom' // https://github.com/gatsbyjs/gatsby/issues/11934
     }
   },
