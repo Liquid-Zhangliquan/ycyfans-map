@@ -1,0 +1,10 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+    - node_modules
+before_install: npm i -g yarn
+install: npm install
+before_script:
+script:
+- yarn run build

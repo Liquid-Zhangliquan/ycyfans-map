@@ -1,0 +1,42 @@
+.login {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-color: #333333;
+  &-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0% auto 0;
+    transform: translate(-50%, -50%);
+    width: 390px;
+    height: 370px;
+    max-width: 100%;
+    padding: 50px 30px 30px;
+    background-color: #fff;
+    border-radius: 4px;
+    vertical-align: middle;
+    font-size: 1.167rem;
+    box-sizing: border-box;
+    &__title {
+      font-size: 20px;
+      margin: 0 0 30px;
+      font-family: Microsoft YaHei, Helvetica Neue, sans-serif;
+      text-rendering: optimizeLegibility;
+      color: #333;
+      text-align: left;
+    }
+    .auth-login-form {
+      text-align: left;
+    }
+  }
+  &-form-button {
+    width: 100%;
+  }
+  .form-item-remember {
+    .ant-form-item-control {
+      text-align: left;
+    }
+  }
+}

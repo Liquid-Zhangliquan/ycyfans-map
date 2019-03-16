@@ -1,0 +1,70 @@
+.header {
+  height: 100%;
+  padding: 0 12px 0 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  position: relative;
+  &-right {
+    float: right;
+    height: 100%;
+    &-action {
+      cursor: pointer;
+      padding: 0 12px;
+      display: inline-block;
+      transition: all 0.3s;
+      height: 100%;
+      > i {
+        font-size: 16px;
+        vertical-align: middle;
+        color: rgba(0, 0, 0, 0.65);
+      }
+    }
+    &-account {
+      &-avatar {
+        margin: 10px 8px 20px 0;
+        color: rgba(0, 0, 0, 0.65);
+        background: rgba(255, 255, 255, 0.85);
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.header-menu {
+  :global(.anticon) {
+    margin-right: 8px;
+  }
+  :global(.ant-dropdown-menu-item) {
+    width: 160px;
+  }
+}
+
+.ant-layout {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.logo {
+  height: 64px;
+  line-height: 58px;
+  vertical-align: top;
+  display: inline-block;
+  padding: 0 0 0 24px;
+  cursor: pointer;
+  font-size: 20px;
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+i.trigger {
+  font-size: 20px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+  padding: 0 24px;
+  &:hover {
+    background: #e6f7ff;
+  }
+}

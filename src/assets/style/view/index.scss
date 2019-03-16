@@ -1,0 +1,65 @@
+.ant-layout {
+  &-sider {
+    .ant-layout-sider-children {
+      background: #000;
+    }
+    .ant-menu {
+      background: #000;
+      li {
+        margin: 0;
+        color: #b8b8b8;
+        &.ant-menu-item-selected {
+          color: #1a82ee;
+          background: #14191c;
+        }
+      }
+    }
+    .main-logo {
+      height: 50px;
+      line-height: 50px;
+      color: #fff;
+      padding: 0 20px;
+      text-align: center;
+      background: #1a82ee;
+      .main-trigger {
+        font-size: 18px;
+        line-height: 50px;
+        transition: .3s;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .anticon-menu-fold {
+        float: right;
+      }
+    }
+  }
+  .main-right {
+    height: 100vh;
+    background: #f3f7f8;
+    .main-header {
+      padding: 0 20px;
+      background: #fff;
+      box-shadow: 0 2px 4px 0 rgba(99, 168, 235, 0.2);
+      .main-header-tools {
+        float: right;
+        li {
+          float: left;
+          margin-left: 10px;
+        }
+        .anticon-logout {
+          font-size: 20px;
+          color: #1a82ee;
+        }
+      }
+    }
+    .main-content {
+      flex: none;
+    }
+  }
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+

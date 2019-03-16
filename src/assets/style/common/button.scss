@@ -1,0 +1,26 @@
+.confirm-button {
+  background-color: #20a0ff;
+  box-shadow: 0 4px 10px 0 rgba(73, 127, 255, 0.42);
+  padding: 6px 20px;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 20px;
+  &:hover {
+    background-color: #42abf8;
+    color: #fff;
+  }
+}
+
+.cancel-button {
+  background-color: #fff;
+  border-radius: 20px;
+  border: solid 1px #99a9bf;
+  padding: 6px 20px;
+  font-size: 12px;
+  color: #8492a6;
+  &:hover {
+    background-color: #42abf8;
+    color: #fff;
+    border: 1px solid #42abf8;
+  }
+}
