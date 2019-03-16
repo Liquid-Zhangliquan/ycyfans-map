@@ -23,7 +23,7 @@ const mainRouter = [
     },
   },
   {
-    name: '柱状图2',
+    name: '首页',
     key: 'cymap',
     path: '/',
     component: loadable(() => import(/* webpackChunkName: 'cymapMain' */ '../views/cymapMain/index')),
