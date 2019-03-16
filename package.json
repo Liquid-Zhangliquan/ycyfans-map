@@ -27,21 +27,21 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "@deck.gl/core": "^7.0.0-alpha.4",
-    "@deck.gl/experimental-layers": "^7.0.0-alpha.3",
-    "@deck.gl/layers": "^7.0.0-alpha.4",
+    "@deck.gl/core": "7.0.0-alpha.2",
+    "@deck.gl/experimental-layers": "7.0.0-alpha.2",
+    "@deck.gl/layers": "7.0.0-alpha.2",
+    "@deck.gl/react": "7.0.0-alpha.2",
     "antd": "^3.15.0",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "d3-request": "^1.0.6",
-    "deck.gl": "^7.0.0-alpha.4",
+    "deck.gl": "7.0.0-alpha.2",
     "history": "^4.7.2",
     "lodash": "^4.17.11",
     "maptalks": "^0.43.0",
     "path-to-regexp": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
-    "react-async-component": "^2.0.0",
     "react-dom": "^16.8.3",
     "react-hot-loader": "^4.7.2",
     "react-redux": "^6.0.1",
@@ -53,7 +53,8 @@
     "redux-actions": "^2.6.5",
     "redux-actions-promise": "^1.1.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "@loadable/component": "^5.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",

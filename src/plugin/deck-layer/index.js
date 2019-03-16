@@ -129,11 +129,11 @@ class DeckGLLayer extends maptalks.CanvasLayer {
         parameters: {
           depthMask: true,
           depthTest: true,
-          blendFunc: [
-            renderer.gl.SRC_ALPHA, renderer.gl.ONE_MINUS_SRC_ALPHA,
-            renderer.gl.ONE, renderer.gl.ONE_MINUS_SRC_ALPHA,
-          ],
-          blendEquation: renderer.gl.FUNC_ADD,
+          // blendFunc: [
+          //   renderer.gl.SRC_ALPHA, renderer.gl.ONE_MINUS_SRC_ALPHA,
+          //   renderer.gl.ONE, renderer.gl.ONE_MINUS_SRC_ALPHA,
+          // ],
+          // blendEquation: renderer.gl.FUNC_ADD,
         },
         viewState,
         glOptions: {
