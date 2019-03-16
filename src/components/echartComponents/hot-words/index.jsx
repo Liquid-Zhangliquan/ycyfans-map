@@ -2,8 +2,8 @@ import './index.scss';
 import * as React from 'react';
 
 
-//区域排行
-class index extends React.Component {
+// 热词云图
+class HotWords extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {};
@@ -19,9 +19,8 @@ class index extends React.Component {
 
   render() {
     return (
-    <div className="Qyph">
-    </div>);
+      <div className="hot-words" />);
   }
 }
 
-export default index;
+export default HotWords;

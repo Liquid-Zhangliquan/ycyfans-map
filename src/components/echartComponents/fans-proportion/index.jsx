@@ -2,8 +2,8 @@ import './index.scss';
 import * as React from 'react';
 
 
-//粉丝占比
-class Fansration extends React.Component {
+// 粉丝占比
+class FansProportion extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {};
@@ -19,9 +19,8 @@ class Fansration extends React.Component {
 
   render() {
     return (
-    <div className="Fansration">
-    </div>);
+      <div className="fans-proportion" />);
   }
 }
 
-export default Fansration;
+export default FansProportion;

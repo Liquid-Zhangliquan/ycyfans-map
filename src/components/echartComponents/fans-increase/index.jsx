@@ -2,8 +2,8 @@ import './index.scss';
 import * as React from 'react';
 
 
-//涨粉情况
-class index extends React.Component {
+// 涨粉情况
+class FansIncrease extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {};
@@ -19,9 +19,8 @@ class index extends React.Component {
 
   render() {
     return (
-    <div className="Zfqk">
-    </div>);
+      <div className="fans-increase" />);
   }
 }
 
-export default index;
+export default FansIncrease;

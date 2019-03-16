@@ -1,11 +1,11 @@
 import './index.scss';
 import * as React from 'react';
 import Hexagon from 'components/cymap/Hexagon';
-import Fszb from 'components/echartComponents/FansRatio';
-import Zfqk from 'components/echartComponents/Zfqk';
-import Qyph from 'components/echartComponents/Qyph';
-import Zyfx from 'components/echartComponents/Zyfx';
-import Rcyt from 'components/echartComponents/Rcyt';
+import FansProportion from 'components/echartComponents/fans-proportion';
+import FansIncrease from 'components/echartComponents/fans-increase';
+import RegionalRanking from 'components/echartComponents/regional-ranking';
+import CareerAnalysis from 'components/echartComponents/career-analysis';
+import HotWords from 'components/echartComponents/hot-words';
 
 
 class CymapMain extends React.Component {
@@ -24,25 +24,23 @@ class CymapMain extends React.Component {
 
   render() {
     return (
-      <div className="cymapMain">
-        <div className="cymapLogo" />
-        <div className="cymap_mapcontain">
+      <div className="cymap-main">
+        <div className="cymap-logo" />
+        <div className="cymap-contain">
           <Hexagon />
         </div>
-        <div className="fszb_contain">
-          <Fszb />
+        <div className="cymap-left">
+          <div className="cymap-left__content">
+            <FansProportion />
+            <FansIncrease />
+          </div>
         </div>
-        <div className="zfqk_contain">
-          <Zfqk />
-        </div>
-        <div className="qyph_contain">
-          <Qyph />
-        </div>
-        <div className="zyfx_contain">
-          <Zyfx />
-        </div>
-        <div className="rcyt_contain">
-          <Rcyt />
+        <div className="cymap-right">
+          <div className="cymap-right__content">
+            <RegionalRanking />
+            <CareerAnalysis />
+            <HotWords />
+          </div>
         </div>
       </div>
     );

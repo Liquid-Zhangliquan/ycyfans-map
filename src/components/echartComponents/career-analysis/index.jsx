@@ -2,8 +2,8 @@ import './index.scss';
 import * as React from 'react';
 
 
-//热词云图
-class index extends React.Component {
+// 职业分析
+class CareerAnalysis extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {};
@@ -19,9 +19,8 @@ class index extends React.Component {
 
   render() {
     return (
-    <div className="Rcyt">
-    </div>);
+      <div className="career-analysis" />);
   }
 }
 
-export default index;
+export default CareerAnalysis;

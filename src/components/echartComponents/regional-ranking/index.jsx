@@ -2,8 +2,8 @@ import './index.scss';
 import * as React from 'react';
 
 
-//职业分析
-class index extends React.Component {
+// 区域排行
+class RegionalRanking extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {};
@@ -19,9 +19,8 @@ class index extends React.Component {
 
   render() {
     return (
-    <div className="Zyfx">
-    </div>);
+      <div className="regional-ranking" />);
   }
 }
 
-export default index;
+export default RegionalRanking;
