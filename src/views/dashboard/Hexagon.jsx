@@ -5,7 +5,7 @@ import { HexagonLayer } from 'deck.gl';
 import * as maptalks from 'maptalks';
 import DeckGLLayer from '../../plugin/deck-layer';
 
-//const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
+// const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
 const DATA_JSONURL = '../../../public/data/heatmap-datajson.json';
 
 const LIGHT_SETTINGS = {

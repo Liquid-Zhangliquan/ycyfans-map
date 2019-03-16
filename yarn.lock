@@ -656,6 +656,18 @@
     seer "^0.2.4"
     viewport-mercator-project "^6.0.0"
 
+"@deck.gl/core@^7.0.0-alpha.2":
+  version "7.0.0-alpha.5"
+  resolved "http://registry.npm.taobao.org/@deck.gl/core/download/@deck.gl/core-7.0.0-alpha.5.tgz#d30f00b16c7bc0e8c6dd07c55c19927c7a5b3da7"
+  dependencies:
+    gl-matrix "^3.0.0"
+    luma.gl "^7.0.0-alpha.17"
+    math.gl "^2.2.0"
+    mjolnir.js "^2.0.2"
+    probe.gl "^3.0.0-alpha.6"
+    seer "^0.2.4"
+    viewport-mercator-project "^6.0.0"
+
 "@deck.gl/experimental-layers@7.0.0-alpha.2":
   version "7.0.0-alpha.2"
   resolved "http://registry.npm.taobao.org/@deck.gl/experimental-layers/download/@deck.gl/experimental-layers-7.0.0-alpha.2.tgz#1e92139c10b41c9272ed775d38ad327eba3da393"
@@ -671,11 +683,25 @@
     d3-hexbin "^0.2.1"
     earcut "^2.0.6"
 
+"@deck.gl/layers@^7.0.0-alpha.2":
+  version "7.0.0-alpha.5"
+  resolved "http://registry.npm.taobao.org/@deck.gl/layers/download/@deck.gl/layers-7.0.0-alpha.5.tgz#8de8aa8892d41231cae6fb40d8e129664122dfc0"
+  dependencies:
+    "@loaders.gl/core" "^0.6.2"
+    "@mapbox/tiny-sdf" "^1.1.0"
+    earcut "^2.0.6"
+
 "@deck.gl/react@7.0.0-alpha.2":
   version "7.0.0-alpha.2"
   resolved "http://registry.npm.taobao.org/@deck.gl/react/download/@deck.gl/react-7.0.0-alpha.2.tgz#b2c65c80f71fae209043a6c99d801f734216bcec"
   dependencies:
     "@deck.gl/core" "^7.0.0-alpha.2"
+    prop-types "^15.6.0"
+
+"@deck.gl/react@^7.0.0-alpha.2":
+  version "7.0.0-alpha.5"
+  resolved "http://registry.npm.taobao.org/@deck.gl/react/download/@deck.gl/react-7.0.0-alpha.5.tgz#11392db5e090e699809d966236bae8f2ba7423d9"
+  dependencies:
     prop-types "^15.6.0"
 
 "@hot-loader/react-dom@^16.8.3":
@@ -698,6 +724,50 @@
   resolved "http://registry.npm.taobao.org/@loaders.gl/core/download/@loaders.gl/core-0.6.2.tgz#d4260e27c367e4c41ea7ba69a2d9525ee608511b"
   dependencies:
     text-encoding "^0.6.4"
+
+"@luma.gl/addons@^7.0.0-alpha.17":
+  version "7.0.0-alpha.17"
+  resolved "http://registry.npm.taobao.org/@luma.gl/addons/download/@luma.gl/addons-7.0.0-alpha.17.tgz#4d26078ef5b7a901396949d55babd2197d8cc11d"
+  dependencies:
+    "@luma.gl/constants" "^7.0.0-alpha.15"
+    "@luma.gl/core" "^7.0.0-alpha.17"
+
+"@luma.gl/constants@^7.0.0-alpha.15":
+  version "7.0.0-alpha.15"
+  resolved "http://registry.npm.taobao.org/@luma.gl/constants/download/@luma.gl/constants-7.0.0-alpha.15.tgz#eca7e19466ebfd07d88e18bc966880779a6f9fd4"
+
+"@luma.gl/core@^7.0.0-alpha.17":
+  version "7.0.0-alpha.17"
+  resolved "http://registry.npm.taobao.org/@luma.gl/core/download/@luma.gl/core-7.0.0-alpha.17.tgz#ed66fd790e2870285fe5e10b4676f310dae6887b"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@luma.gl/constants" "^7.0.0-alpha.15"
+    "@luma.gl/shadertools" "^7.0.0-alpha.17"
+    "@luma.gl/webgl-state-tracker" "^7.0.0-alpha.15"
+    "@luma.gl/webgl2-polyfill" "^7.0.0-alpha.15"
+    math.gl "^2.2.0"
+    probe.gl "3.0.0-alpha.7"
+    seer "^0.2.4"
+
+"@luma.gl/shadertools@^7.0.0-alpha.17":
+  version "7.0.0-alpha.17"
+  resolved "http://registry.npm.taobao.org/@luma.gl/shadertools/download/@luma.gl/shadertools-7.0.0-alpha.17.tgz#29db3e6293c941d5ead2032e021bf27d100b11b3"
+  dependencies:
+    "@luma.gl/constants" "^7.0.0-alpha.15"
+
+"@luma.gl/webgl-state-tracker@^7.0.0-alpha.15":
+  version "7.0.0-alpha.15"
+  resolved "http://registry.npm.taobao.org/@luma.gl/webgl-state-tracker/download/@luma.gl/webgl-state-tracker-7.0.0-alpha.15.tgz#2ebc6a3be9a8f4a495993014361798221cb3747f"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@luma.gl/constants" "^7.0.0-alpha.15"
+
+"@luma.gl/webgl2-polyfill@^7.0.0-alpha.15":
+  version "7.0.0-alpha.15"
+  resolved "http://registry.npm.taobao.org/@luma.gl/webgl2-polyfill/download/@luma.gl/webgl2-polyfill-7.0.0-alpha.15.tgz#8caa0efd23328ee306c1a36ecf3bc912b2b96016"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@luma.gl/constants" "^7.0.0-alpha.15"
 
 "@mapbox/tiny-sdf@^1.1.0":
   version "1.1.0"
@@ -4794,7 +4864,7 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
-luma.gl@^7.0.0-alpha.2:
+luma.gl@7.0.0-alpha.2, luma.gl@^7.0.0-alpha.2:
   version "7.0.0-alpha.2"
   resolved "https://registry.npmjs.org/luma.gl/-/luma.gl-7.0.0-alpha.2.tgz#d83ebc095418557c6252a803f8f735de8b59a009"
   dependencies:
@@ -4803,6 +4873,13 @@ luma.gl@^7.0.0-alpha.2:
     probe.gl "^2.0.1"
     seer "^0.2.4"
     webgl-debug "^2.0.0"
+
+luma.gl@^7.0.0-alpha.17:
+  version "7.0.0-alpha.17"
+  resolved "http://registry.npm.taobao.org/luma.gl/download/luma.gl-7.0.0-alpha.17.tgz#77cc1aec0e92fa9d2794195876469df6a2456b1c"
+  dependencies:
+    "@luma.gl/addons" "^7.0.0-alpha.17"
+    "@luma.gl/core" "^7.0.0-alpha.17"
 
 make-dir@^1.0.0:
   version "1.3.0"
@@ -6259,6 +6336,12 @@ pretty-format@^23.6.0:
 private@^0.1.6:
   version "0.1.8"
   resolved "http://registry.npm.taobao.org/private/download/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
+
+probe.gl@2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/probe.gl/download/probe.gl-2.0.1.tgz#e42dfe02eca9ef262cdf89a24e1a4c0856e989e0"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
 
 probe.gl@3.0.0-alpha.7, probe.gl@^3.0.0-alpha.6:
   version "3.0.0-alpha.7"
@@ -8639,6 +8722,10 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   resolved "http://registry.npm.taobao.org/wbuf/download/wbuf-1.7.3.tgz#c1d8d149316d3ea852848895cb6a0bfe887b87df"
   dependencies:
     minimalistic-assert "^1.0.0"
+
+webgl-debug@^2.0.0:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/webgl-debug/download/webgl-debug-2.0.1.tgz#dc11bea3d947764bce061fdb5a23109c13787c95"
 
 webpack-cli@^3.2.3:
   version "3.3.0"
