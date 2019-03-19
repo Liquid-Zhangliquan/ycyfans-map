@@ -12,3 +12,4 @@ yarn-error.log*
 dist/
 dll/
 cache/
+./server/node_modules/
