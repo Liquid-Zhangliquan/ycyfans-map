@@ -1,7 +1,13 @@
 .fans-proportion {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-wrap: wrap;
     background-color: #282c34;
     background: url(../../../assets/images/react-first.png) center no-repeat;
     background-size: cover;
+    .fans-proportion-echarts {
+      width: 50%;
+      height: 50%;
+    }
   }

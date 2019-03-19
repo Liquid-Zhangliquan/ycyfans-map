@@ -1,5 +1,6 @@
-import './index.scss';
 import * as React from 'react';
+import CrescentMoonEcharts from './component/crescentMoonEcharts';
+import './index.scss';
 
 
 // 粉丝占比
@@ -19,7 +20,21 @@ class FansProportion extends React.Component {
 
   render() {
     return (
-      <div className="fans-proportion" />);
+      <div className="fans-proportion">
+        <div className="fans-proportion-echarts">
+          <CrescentMoonEcharts />
+        </div>
+        <div className="fans-proportion-echarts">
+          {/* <EchartsReact /> */}
+        </div>
+        <div className="fans-proportion-echarts">
+          {/* <EchartsReact /> */}
+        </div>
+        <div className="fans-proportion-echarts">
+          {/* <EchartsReact /> */}
+        </div>
+      </div>
+    );
   }
 }
 

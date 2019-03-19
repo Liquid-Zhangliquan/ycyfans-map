@@ -1,5 +1,5 @@
-import './index.scss';
 import * as React from 'react';
+import './index.scss';
 
 
 // 热词云图
