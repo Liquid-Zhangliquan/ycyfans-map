@@ -27,15 +27,12 @@ class CrescentMoonEcharts extends React.Component {
     }
   }
 
-  getOtionTem = (parms = []) => {
-    // console.log(parms);
-    parms[0] = 100;
-    parms[1] = 20;
+  getOtionTem = (parms = [100, 20]) => {
     const option = {
       graphic: [{
         type: 'text',
         left: 'center',
-        top: '44%',
+        top: '43%',
         style: {
           text: '3451',
           fill: '#fff',
@@ -44,7 +41,7 @@ class CrescentMoonEcharts extends React.Component {
       }, {
         type: 'text',
         left: 'center',
-        top: '60%',
+        top: '59%',
         style: {
           text: '月芽人数占比',
           fill: '#fff',
@@ -56,8 +53,8 @@ class CrescentMoonEcharts extends React.Component {
         name: 'Line 1',
         type: 'pie',
         clockWise: true,
-        radius: ['72%', '82%'],
-        center: ['50%', '54%'],
+        radius: ['72%', '84%'],
+        center: ['50%', '53%'],
         startAngle: 15,
         itemStyle: {
           normal: {
@@ -122,6 +119,9 @@ class CrescentMoonEcharts extends React.Component {
 
   render() {
     const { option } = this.state;
+    if (Object.keys(option).length === 0) {
+      return <div />;
+    }
     return (
       <EchartsReact option={option} style={{ height: '100%', width: '100%' }} />
     );

@@ -1,5 +1,8 @@
 import * as React from 'react';
 import CrescentMoonEcharts from './component/crescentMoonEcharts';
+import VillageNameEcharts from './component/villageNameEcharts';
+import NationEcharts from './component/nationEcharts';
+import FansEcharts from './component/fansEcharts';
 import './index.scss';
 
 
@@ -25,13 +28,13 @@ class FansProportion extends React.Component {
           <CrescentMoonEcharts />
         </div>
         <div className="fans-proportion-echarts">
-          {/* <EchartsReact /> */}
+          <VillageNameEcharts />
         </div>
         <div className="fans-proportion-echarts">
-          {/* <EchartsReact /> */}
+          <FansEcharts />
         </div>
         <div className="fans-proportion-echarts">
-          {/* <EchartsReact /> */}
+          <NationEcharts />
         </div>
       </div>
     );
