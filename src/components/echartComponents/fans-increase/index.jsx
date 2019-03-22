@@ -169,6 +169,7 @@ class FansIncrease extends React.Component {
     }
     return (
       <div className="fans-increase">
+        <div className="fans-increase-title">XX时间涨粉关注情况</div>
         <EchartsReact option={option} style={{ height: '100%', width: '100%' }} />
       </div>
     );

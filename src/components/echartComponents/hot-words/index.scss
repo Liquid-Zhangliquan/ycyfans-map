@@ -1,7 +1,16 @@
 .hot-words {
+    position: relative;
     width: 100%;
     height: 100%;
     background-color: #282c34;
     background: url(../../../assets/images/react-five.png) center no-repeat;
     background-size: cover;
+    .hot-words-title {
+      position: absolute;
+      top: 18px;
+      left: 126px;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 500;
+    }
   }

@@ -168,6 +168,7 @@ class CareerAnalysis extends React.Component {
     }
     return (
       <div className="career-analysis">
+        <div className="career-analysis-title">粉丝职业分析</div>
         <EchartsReact option={option} style={{ height: '100%', width: '100%' }} />
       </div>
     );

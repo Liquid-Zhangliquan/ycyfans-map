@@ -19,7 +19,10 @@ class HotWords extends React.Component {
 
   render() {
     return (
-      <div className="hot-words" />);
+      <div className="hot-words">
+        <div className="hot-words-title">热词云图展示</div>
+      </div>
+    );
   }
 }
 

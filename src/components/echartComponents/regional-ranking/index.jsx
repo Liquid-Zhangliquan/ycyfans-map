@@ -167,6 +167,7 @@ class RegionalRanking extends React.Component {
     }
     return (
       <div className="regional-ranking">
+        <div className="regional-ranking-title">粉丝区域排行榜</div>
         <EchartsReact option={option} style={{ height: '100%', width: '100%' }} />
       </div>
     );
