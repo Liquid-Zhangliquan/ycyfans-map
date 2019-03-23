@@ -55,6 +55,7 @@ class Hexagon extends React.Component {
       pitch: 40.5,
       bearing: -27.396674584323023,
       centerCross: true,
+      attribution: false,
       baseLayer: new maptalks.TileLayer('tile', {
         urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
         subdomains: ['a', 'b', 'c', 'd'],
