@@ -1,5 +1,5 @@
 const mysql = require('mysql2/promise');
-// 在上传至服务器之前请删除config.json文件，并在服务器配置变量，通过config.template.json文件生成config.json文件
+// 出于安全性考量，可在上传至服务器之前删除config.json文件，并设置CI/CD Variable ，通过config.template.json文件动态生成config.json文件
 const configJson = require('../config.json');
 
 const pool = mysql.createPool({
