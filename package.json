@@ -40,6 +40,7 @@
     "echarts": "^4.1.0",
     "echarts-for-react": "^2.0.15-beta.0",
     "history": "^4.7.2",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
     "luma.gl": "7.0.0-alpha.2",
     "maptalks": "^0.43.0",
