@@ -34,7 +34,6 @@ class WeatherBox extends React.Component {
 
   getCurrentWeather() {
     let me = this;
-    debugger;
     //获取武汉市天气
     axios.get('http://t.weather.sojson.com/api/weather/city/101200101')
       .then(function (response) {
