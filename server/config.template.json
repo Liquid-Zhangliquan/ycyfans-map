@@ -1,6 +1,6 @@
 {
   "mysqlHost": "MYSQLHOST",
-  "mysqlUser": "MYSQL",
+  "mysqlUser": "MYSQLUSER",
   "mysqlPassword": "MYSQLPASSWORD",
   "mysqlDatabase": "MYSQLDATABASE"
 }
