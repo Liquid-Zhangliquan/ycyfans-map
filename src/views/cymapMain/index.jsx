@@ -1,7 +1,8 @@
 import './index.scss';
 import * as React from 'react';
-import Time from 'components/Time'
-import Weather from 'components/Weather'
+import Time from 'components/Time';
+import Weather from 'components/Weather';
+import CymapStatic from 'components/static';
 import Hexagon from 'components/cymap/Hexagon';
 import FansProportion from 'components/echartComponents/fans-proportion';
 import FansIncrease from 'components/echartComponents/fans-increase';
@@ -28,9 +29,12 @@ class CymapMain extends React.Component {
     return (
       <div className="cymap-main">
         <div className="cymap-logo" />
+        <div className="cymap-static">
+          <CymapStatic />
+        </div>
         <div className="TimeAndWeather">
-          <Time/>
-          <Weather/>
+          <Time />
+          <Weather />
         </div>
         <div className="cymap-contain">
           <Hexagon />

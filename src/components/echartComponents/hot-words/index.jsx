@@ -81,7 +81,7 @@ class HotWords extends React.Component {
         left: '16%',
         right: '4%',
         bottom: '8%',
-        top: '30%',
+        top: '40%',
         height: '60%',
         containLabel: true,
       },
