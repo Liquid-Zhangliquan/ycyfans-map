@@ -9,24 +9,6 @@ import DeckGLLayer from '@/plugin/deck-layer';
 // const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
 const DATA_JSONURL = 'public/data/heatmap-datajson.json';
 
-const LIGHT_SETTINGS = {
-  lightsPosition: [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
-  ambientRatio: 0.4,
-  diffuseRatio: 0.6,
-  specularRatio: 0.2,
-  lightsStrength: [0.8, 0.0, 0.8, 0.0],
-  numberOfLights: 2,
-};
-
-const colorRange = [
-  [1, 152, 189],
-  [73, 227, 206],
-  [216, 254, 181],
-  [254, 237, 177],
-  [254, 173, 84],
-  [209, 55, 78],
-];
-
 const elevationScale = { min: 1, max: 50 };
 
 class Trips extends React.Component {
@@ -51,22 +33,25 @@ class Trips extends React.Component {
 
   componentDidMount() {
     this.map = new maptalks.Map(this.container, {
-      center: [-74, 40.72],
-      zoom: 13,
-      pitch: 40.5,
-      bearing: 0,
+      center: [-74.00216099707364, 40.71357905656234],
+      zoom: 15,
+      pitch: 58.9,
+      bearing: 53.4,
       attribution: false,
       baseLayer: new maptalks.TileLayer('tile', {
         'urlTemplate': 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
         'subdomains': ['a', 'b', 'c', 'd']
       })
     });
+    this.map.on('click',function(e){
+      console.log(e)
+    })
 
     require('d3-request').json(DATA_JSONURL, (error, response) => {
       if (!error) {
         const data = response.map(d => [Number(d.lng), Number(d.lat)]);
         this._animate(data);
-        console.log(data); // eslint-disable-line
+        //console.log(data); // eslint-disable-line
       }
     });
   }
@@ -121,11 +106,10 @@ class Trips extends React.Component {
 
   _renderLayers() {
     const {
-      data, radius = 1000, upperPercentile = 100, coverage = 1,
+      data
     } = this.state;
     if (data) {
       // eslint-disable-next-line
-      const { onHover } = this.props;
       const [loopLength, animationSpeed] = [1800, 30];
       const timestamp = Date.now() / 1000;
       const loopTime = loopLength / animationSpeed;
@@ -173,7 +157,6 @@ class Trips extends React.Component {
       } else if (this.deckLayer) {
         this.deckLayer.setProps(props);
       }
-      // window.requestAnimationFrame(_renderLayers);
     }
   }
 

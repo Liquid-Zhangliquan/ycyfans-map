@@ -37,7 +37,7 @@ class WeatherBox extends React.Component {
     //获取武汉市天气
     axios.get('http://t.weather.sojson.com/api/weather/city/101200101')
       .then(function (response) {
-        console.log(response);
+        //console.log(response);
         if (response.status == 200) {
           let img='../../assets/img/weather/太阳.png';
           switch (response.data.data.forecast[0].type) {
@@ -55,7 +55,7 @@ class WeatherBox extends React.Component {
             lowp: response.data.data.forecast[0].low.replace("低温", ""),
             highp: response.data.data.forecast[0].high.replace("高温", "")
           }
-          console.log(_weather);
+          //console.log(_weather);
           me.setState({
             weather: _weather
           })
