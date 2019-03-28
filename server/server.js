@@ -16,7 +16,14 @@ app.use(bodyParser.json());
 
 // 解决跨域问题
 app.use(cors());
+app.options('*', cors());
+
 app.set('trust proxy', true);
+
+app.use((req, res, next) => {
+  res.setHeader('Content-Type', 'text/html');
+  next();
+});
 
 app.use('/login', login);
 app.use('/mainpage', mainPage);
