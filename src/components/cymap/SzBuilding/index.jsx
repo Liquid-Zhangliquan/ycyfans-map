@@ -3,6 +3,7 @@ import './index.scss';
 import axios from 'axios';
 import get from 'lodash/get';
 import mapArray from 'lodash/map';
+import { point, distance } from '@turf/turf';
 import * as React from 'react';
 import { message } from 'antd';
 import { PolygonLayer } from '@deck.gl/layers';
@@ -68,11 +69,37 @@ class Trips extends React.Component {
         this.setState({
           roaddata: res[0].data,
         });
+        let maxLength = 0;
+        const roaddata = mapArray(get(res, '0.data', []), item => {
+          let last = point(item.segments[0]);
+          let length = 0;
+          const segments = mapArray(item.segments, segment => {
+            length += (distance(last, point(segment), { units: 'miles' }));
+            const coord = [
+              segment[0],
+              segment[1],
+              length,
+            ];
+            last = point(segment);
+            return coord;
+          });
+          maxLength = Math.max(maxLength, length);
+          return {
+            ...item,
+            segments,
+            length,
+          };
+        });
         const data = mapArray(get(res, '1.data', []), item => ({
           fid: item.FID,
           height: item.Floor * 10 + 20,
           geometry: item.json_geometry.coordinates[0],
         }));
+        this.setState({
+          maxLength,
+          roaddata,
+          buildingdata: data,
+        });
         this._animate(data);
 
         this._renderLayers();
@@ -93,10 +120,7 @@ class Trips extends React.Component {
     this.container = x;
   };
 
-  _animate(data) {
-    this.setState({
-      buildingdata: data,
-    });
+  _animate() {
     this._stopAnimate();
     // wait 1.5 secs to start animation so that all data are loaded
     this.startAnimationTimer = window.setTimeout(this._startAnimate, 1500);
@@ -132,11 +156,12 @@ class Trips extends React.Component {
 
   _renderLayers() {
     const {
+      maxLength,
       buildingdata, roaddata,
     } = this.state;
     if (buildingdata && roaddata) {
       // eslint-disable-next-line
-      const [loopLength, animationSpeed] = [1800, 30];
+      const [loopLength, animationSpeed] = [maxLength, 0.6];
       const timestamp = Date.now() / 1000;
       const loopTime = loopLength / animationSpeed;
       const time = ((timestamp % loopTime) / loopTime) * loopLength;
@@ -148,10 +173,9 @@ class Trips extends React.Component {
             data: roaddata,
             getPath: d => d.segments,
             getColor: d => (d.vendor === 0 ? [253, 128, 93] : [23, 184, 190]),
-            opacity: 0.3,
+            opacity: 0.4,
             strokeWidth: 2,
             trailLength: 80,
-            // currentTime: 1500,
             currentTime: time,
           }),
           new PolygonLayer({
