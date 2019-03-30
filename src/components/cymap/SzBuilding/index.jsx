@@ -4,6 +4,8 @@ import axios from 'axios';
 import get from 'lodash/get';
 import mapArray from 'lodash/map';
 import random from 'lodash/random';
+import sortBy from 'lodash/sortBy';
+// import maxBy from 'lodash/maxBy';
 import { point, distance } from '@turf/turf';
 import * as React from 'react';
 import { message } from 'antd';
@@ -70,10 +72,13 @@ class Trips extends React.Component {
         this.setState({
           roaddata: res[0].data,
         });
-        let maxLength = 0; // max: 400
+        // let maxLength = 0; // max: 400
+        // console.log(time);
+        console.time('aa');
         const roaddata = mapArray(get(res, '0.data', []), item => {
           let last = point(item.segments[0]);
-          let length = random(10, 400, true);
+          let length = random(50, 319.680602010129, true);
+          // let length = 0;
           const segments = mapArray(item.segments, segment => {
             length += (distance(last, point(segment), { units: 'kilometers' }) * 10);
             const coord = [
@@ -84,13 +89,17 @@ class Trips extends React.Component {
             last = point(segment);
             return coord;
           });
-          maxLength = Math.max(maxLength, length);
+          // maxLength = Math.max(maxLength, length);
           return {
             ...item,
             segments,
             length,
           };
         });
+        const sq = sortBy(roaddata, ['length']).slice(500, 2500);
+        // maxBy(sq, item => item.length)
+        const maxLength = sq[sq.length - 1].length;
+        console.timeEnd('aa');
         const data = mapArray(get(res, '1.data', []), item => ({
           fid: item.FID,
           height: item.Floor * 10 + 20,
@@ -98,7 +107,7 @@ class Trips extends React.Component {
         }));
         this.setState({
           maxLength,
-          roaddata,
+          roaddata: sq,
           buildingdata: data,
         });
         this._animate(data);
@@ -162,11 +171,11 @@ class Trips extends React.Component {
     } = this.state;
     if (buildingdata && roaddata) {
       // eslint-disable-next-line
-      const [loopLength, animationSpeed] = [maxLength, 20];
+      const [loopLength, animationSpeed] = [maxLength, 10];
       const timestamp = Date.now() / 1000;
       const loopTime = loopLength / animationSpeed;
-      const time = ((timestamp % loopTime) / loopTime) * loopLength;
-      // console.log(time);
+      let time = ((timestamp % loopTime) / loopTime) * loopLength;
+      time = time < 80 ? time + 80 : time;
       const props = {
         layers: [
           new TripsLayer({
