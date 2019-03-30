@@ -20,6 +20,7 @@ module.exports = {
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
 
+    'camelcase': 0,
     'no-plusplus': 0,
     'import/no-unresolved': 0,
     'no-param-reassign': 0,
