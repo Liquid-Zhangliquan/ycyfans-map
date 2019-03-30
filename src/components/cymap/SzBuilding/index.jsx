@@ -3,6 +3,7 @@ import './index.scss';
 import axios from 'axios';
 import get from 'lodash/get';
 import mapArray from 'lodash/map';
+import random from 'lodash/random';
 import { point, distance } from '@turf/turf';
 import * as React from 'react';
 import { message } from 'antd';
@@ -69,12 +70,12 @@ class Trips extends React.Component {
         this.setState({
           roaddata: res[0].data,
         });
-        let maxLength = 0;
+        let maxLength = 0; // max: 400
         const roaddata = mapArray(get(res, '0.data', []), item => {
           let last = point(item.segments[0]);
-          let length = 0;
+          let length = random(10, 400, true);
           const segments = mapArray(item.segments, segment => {
-            length += (distance(last, point(segment), { units: 'miles' }));
+            length += (distance(last, point(segment), { units: 'kilometers' }) * 10);
             const coord = [
               segment[0],
               segment[1],
@@ -161,7 +162,7 @@ class Trips extends React.Component {
     } = this.state;
     if (buildingdata && roaddata) {
       // eslint-disable-next-line
-      const [loopLength, animationSpeed] = [maxLength, 0.6];
+      const [loopLength, animationSpeed] = [maxLength, 20];
       const timestamp = Date.now() / 1000;
       const loopTime = loopLength / animationSpeed;
       const time = ((timestamp % loopTime) / loopTime) * loopLength;
