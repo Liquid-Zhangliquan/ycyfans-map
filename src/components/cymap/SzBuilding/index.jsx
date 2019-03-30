@@ -6,8 +6,8 @@ import { TripsLayer } from '@deck.gl/experimental-layers';
 import * as maptalks from 'maptalks';
 import DeckGLLayer from '@/plugin/deck-layer';
 
-// const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
-const DATA_JSONURL = 'public/data/round1km.json';
+const Road_JSONURL = 'public/data/FSroads.json';
+const Building_JSONURL = 'public/data/round1km.json';
 
 const elevationScale = { min: 1, max: 50 };
 
@@ -35,7 +35,7 @@ class Trips extends React.Component {
     //地王大厦[114.10625205333713, 22.54747332086984]
     //腾讯大厦[113.93070594705296,22.544716216831006]
     //深圳湾体育中心[113.9450917453687, 22.521191452244267]
-    //世界之窗[13.97653011313696, 22.543954735805272]
+    //世界之窗[113.97653011313696, 22.543954735805272]
     this.map = new maptalks.Map(this.container, {
       center: [113.93070594705296, 22.544716216831006],//腾讯大厦
       zoom: 16,
@@ -51,9 +51,19 @@ class Trips extends React.Component {
       console.log(e)
     })
 
-    require('d3-request').json(DATA_JSONURL, (error, response) => {
+    let me = this;
+    //加载道路
+    require('d3-request').json(Road_JSONURL, (error, response) => {
       if (!error) {
-        //const data = response.map(d => [Number(d.lng), Number(d.lat)]);
+        this.setState({
+          roaddata: response,
+        });
+      }
+    });
+
+    //加载建筑
+    require('d3-request').json(Building_JSONURL, (error, response) => {
+      if (!error) {
         const data = response.map(d => {
           let geoobj = {}
           geoobj.fid = d.FID;
@@ -80,7 +90,7 @@ class Trips extends React.Component {
 
   _animate(data) {
     this.setState({
-      data,
+      buildingdata: data,
     });
     this._stopAnimate();
     //wait 1.5 secs to start animation so that all data are loaded
@@ -117,48 +127,30 @@ class Trips extends React.Component {
 
   _renderLayers() {
     const {
-      data
+      buildingdata,roaddata
     } = this.state;
-    if (data) {
+    if (buildingdata&&roaddata) {
       // eslint-disable-next-line
       const [loopLength, animationSpeed] = [1800, 30];
       const timestamp = Date.now() / 1000;
       const loopTime = loopLength / animationSpeed;
       const time = ((timestamp % loopTime) / loopTime) * loopLength;
+      //console.log(time);
       const props = {
         layers: [
-          // new TripsLayer({
-          //   id: 'trips',
-          //   data: 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/trips.json',
-          //   getPath: d => d.segments,
-          //   getColor: d => (d.vendor === 0 ? [253, 128, 93] : [23, 184, 190]),
-          //   opacity: 0.3,
-          //   strokeWidth: 2,
-          //   trailLength: 180,
-          //   currentTime: time
-          // }),
-          // new PolygonLayer({
-          //   id: 'buildings',
-          //   data: 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/buildings.json',
-          //   extruded: true,
-          //   wireframe: false,
-          //   fp64: true,
-          //   opacity: 0.5,
-          //   getPolygon: f => f.polygon,
-          //   getElevation: f => f.height,
-          //   getFillColor: [74, 80, 87],
-          //   lightSettings: {
-          //     lightsPosition: [-74.05, 40.7, 8000, -73.5, 41, 5000],
-          //     ambientRatio: 0.05,
-          //     diffuseRatio: 0.6,
-          //     specularRatio: 0.8,
-          //     lightsStrength: [2.0, 0.0, 0.0, 0.0],
-          //     numberOfLights: 2
-          //   }
-          // }),
+          new TripsLayer({
+            id: 'trips',
+            data: roaddata,
+            getPath: d => d.segments,
+            getColor: d => (d.vendor === 0 ? [253, 128, 93] : [23, 184, 190]),
+            opacity: 0.3,
+            strokeWidth: 2,
+            trailLength: 80,
+            currentTime: 1500
+          }),
           new PolygonLayer({
             id: 'buildings',
-            data: data,
+            data: buildingdata,
             extruded: true,
             wireframe: false,
             fp64: true,

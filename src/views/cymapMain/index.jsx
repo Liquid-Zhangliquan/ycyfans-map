@@ -4,7 +4,7 @@ import Time from 'components/Time';
 import Weather from 'components/Weather';
 import CymapStatic from 'components/static';
 // import Hexagon from 'components/cymap/Hexagon';
-//import Trips from 'components/cymap/trips';
+// import Trips from 'components/cymap/trips';
 import SzBuilding from 'components/cymap/SzBuilding';
 import FansProportion from 'components/echartComponents/fans-proportion';
 import FansIncrease from 'components/echartComponents/fans-increase';
@@ -40,6 +40,7 @@ class CymapMain extends React.Component {
         </div>
         <div className="cymap-contain">
           {/* <Hexagon /> */}
+          {/* <Trips/> */}
           <SzBuilding />
         </div>
         <div className="cymap-left">
