@@ -39,19 +39,19 @@ class Trips extends React.Component {
       bearing: 53.4,
       attribution: false,
       baseLayer: new maptalks.TileLayer('tile', {
-        'urlTemplate': 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
-        'subdomains': ['a', 'b', 'c', 'd']
-      })
+        urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
+        subdomains: ['a', 'b', 'c', 'd'],
+      }),
     });
-    this.map.on('click',function(e){
-      console.log(e)
-    })
+    this.map.on('click', (e) => {
+      console.log(e);
+    });
 
     require('d3-request').json(DATA_JSONURL, (error, response) => {
       if (!error) {
         const data = response.map(d => [Number(d.lng), Number(d.lat)]);
         this._animate(data);
-        //console.log(data); // eslint-disable-line
+        // console.log(data); // eslint-disable-line
       }
     });
   }
@@ -72,7 +72,7 @@ class Trips extends React.Component {
       data,
     });
     this._stopAnimate();
-    //wait 1.5 secs to start animation so that all data are loaded
+    // wait 1.5 secs to start animation so that all data are loaded
     this.startAnimationTimer = window.setTimeout(this._startAnimate, 1500);
   }
 
@@ -106,7 +106,7 @@ class Trips extends React.Component {
 
   _renderLayers() {
     const {
-      data
+      data,
     } = this.state;
     if (data) {
       // eslint-disable-next-line
@@ -124,7 +124,7 @@ class Trips extends React.Component {
             opacity: 0.3,
             strokeWidth: 2,
             trailLength: 180,
-            currentTime: time
+            currentTime: time,
           }),
           new PolygonLayer({
             id: 'buildings',
@@ -142,9 +142,9 @@ class Trips extends React.Component {
               diffuseRatio: 0.6,
               specularRatio: 0.8,
               lightsStrength: [2.0, 0.0, 0.0, 0.0],
-              numberOfLights: 2
-            }
-          })
+              numberOfLights: 2,
+            },
+          }),
         ],
       };
       if (!this.inited) {

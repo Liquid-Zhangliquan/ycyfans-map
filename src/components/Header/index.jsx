@@ -46,6 +46,7 @@ class GlobalHeader extends React.Component {
     // );
     return (
       <div className="header">
+
         Header
       </div>
     );

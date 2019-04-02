@@ -71,7 +71,7 @@ const styleLoaders = function (options) {
 };
 
 const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
+  test: /\.(js?x)$/,
   loader: 'eslint-loader',
   enforce: 'pre',
   include: [

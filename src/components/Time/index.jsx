@@ -1,5 +1,6 @@
 import './index.scss';
 import React from 'react';
+import { string } from 'prop-types';
 
 /**
  * 0 123456
@@ -25,17 +26,21 @@ const EIGHT = '1234567';
 const NINE = '123467';
 
 class TimeBox extends React.Component {
+  static propTypes = {
+    color: string,
+  };
+
   constructor(props) {
     super(props);
     this.state = { times: ['0', '0', '0', '0', '0', '0'] };
   }
 
-  componentDidMount() {
-    this.timerID = setInterval(() => this.getTime(), 1000);
-  }
-
   componentWillMount() {
     clearInterval(this.timerID);
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(() => this.getTime(), 1000);
   }
 
   getTime = () => {

@@ -24,7 +24,7 @@ const RootApp = () => (
 
 // Render the main component into the dom
 if (env === 'development') {
-  window.onload = function () {
+  window.onload = () => {
     const render = Component => {
       ReactDOM.render(
         <AppContainer>
@@ -43,7 +43,7 @@ if (env === 'development') {
     }
   };
 } else {
-  window.onload = function () {
+  window.onload = () => {
     ReactDOM.render(
       <RootApp />,
       document.getElementById('app'),

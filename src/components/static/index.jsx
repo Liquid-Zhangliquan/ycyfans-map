@@ -10,13 +10,13 @@ class CymapStatic extends React.Component {
     allTotal: number,
   };
 
+  static thousand(num) {
+    return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+  }
+
   constructor(props) {
     super(props);
     this.state = {};
-  }
-
-  thousand(num) {
-    return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
   }
 
   render() {
@@ -25,7 +25,7 @@ class CymapStatic extends React.Component {
       <div className="static">
         <div className="static-content">
           <div className="static-title">微博粉丝数</div>
-          <div className="static-total red">{this.thousand(weiboTotal || 59584848)}</div>
+          <div className="static-total red">{CymapStatic.thousand(weiboTotal || 59584848)}</div>
         </div>
         <div className="static-content">
           <div className="static-title">猫眼人气值</div>
