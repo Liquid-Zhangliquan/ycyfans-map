@@ -29,11 +29,11 @@ class CymapStatic extends React.Component {
         </div>
         <div className="static-content">
           <div className="static-title">猫眼人气值</div>
-          <div className="static-total blue">{this.thousand(catTotal || 59584848)}</div>
+          <div className="static-total blue">{CymapStatic.thousand(catTotal || 59584848)}</div>
         </div>
         <div className="static-content">
           <div className="static-title">总助燃次数</div>
-          <div className="static-total yellow">{this.thousand(allTotal || 59584848)}</div>
+          <div className="static-total yellow">{CymapStatic.thousand(allTotal || 59584848)}</div>
         </div>
       </div>
     );

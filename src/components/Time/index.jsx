@@ -138,16 +138,18 @@ class TimeBox extends React.Component {
     return (
       <div className="number">
         <div className="digit minutes">
-          {[1, 2, 3, 4, 5, 6, 7].map(v => (
+          {[1, 2, 3, 4, 5, 6, 7].map((v, index) => (
             <div
+              key={`uuid_${index * 1}`}
               className={`segment ${times[0].includes(v) ? 'on' : ''}`}
               style={{ backgroundColor: color }}
             />
           ))}
         </div>
         <div className="digit minutes">
-          {[1, 2, 3, 4, 5, 6, 7].map(v => (
+          {[1, 2, 3, 4, 5, 6, 7].map((v, index) => (
             <div
+              key={`uuid_${index * 2}`}
               className={`segment ${times[1].includes(v) ? 'on' : ''}`}
               style={{ backgroundColor: color }}
             />
@@ -158,16 +160,18 @@ class TimeBox extends React.Component {
           <div className="circle-boom" style={{ backgroundColor: color }} />
         </div>
         <div className="digit minutes">
-          {[1, 2, 3, 4, 5, 6, 7].map(v => (
+          {[1, 2, 3, 4, 5, 6, 7].map((v, index) => (
             <div
+              key={`uuid_${index * 3}`}
               className={`segment ${times[2].includes(v) ? 'on' : ''}`}
               style={{ backgroundColor: color }}
             />
           ))}
         </div>
         <div className="digit minutes">
-          {[1, 2, 3, 4, 5, 6, 7].map(v => (
+          {[1, 2, 3, 4, 5, 6, 7].map((v, index) => (
             <div
+              key={`uuid_${index * 4}`}
               className={`segment ${times[3].includes(v) ? 'on' : ''}`}
               style={{ backgroundColor: color }}
             />
@@ -178,16 +182,18 @@ class TimeBox extends React.Component {
           <div className="circle-boom" style={{ backgroundColor: color }} />
         </div>
         <div className="digit minutes">
-          {[1, 2, 3, 4, 5, 6, 7].map(v => (
+          {[1, 2, 3, 4, 5, 6, 7].map((v, index) => (
             <div
+              key={`uuid_${index * 5}`}
               className={`segment ${times[4].includes(v) ? 'on' : ''}`}
               style={{ backgroundColor: color }}
             />
           ))}
         </div>
         <div className="digit minutes">
-          {[1, 2, 3, 4, 5, 6, 7].map(v => (
+          {[1, 2, 3, 4, 5, 6, 7].map((v, index) => (
             <div
+              key={`uuid_${index * 10}`}
               className={`segment ${times[5].includes(v) ? 'on' : ''}`}
               style={{ backgroundColor: color }}
             />
