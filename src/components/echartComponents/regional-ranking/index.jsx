@@ -1,5 +1,6 @@
-import './index.scss';
 import * as React from 'react';
+import EchartsReact from "echarts-for-react";
+import './index.scss';
 
 
 // 区域排行
