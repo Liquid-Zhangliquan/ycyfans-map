@@ -7,7 +7,7 @@
  * @description 页面数字滚动插件
  * @基于jquery
  */
-import jQuery from '@/plugin/jquery';
+import jQuery from 'jquery';
 
 (function ($) {
   $.fn.numberAnimate = function (setting) {

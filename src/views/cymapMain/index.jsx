@@ -1,6 +1,8 @@
 import './index.scss';
 import * as React from 'react';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {
+  CSSTransition,
+} from 'react-transition-group';
 import Time from 'components/Time';
 import Weather from 'components/Weather';
 import CymapStatic from 'components/static';
@@ -21,7 +23,7 @@ class CymapMain extends React.Component {
     this.state = {
       type: 1,
     };
-    // this.changeMap = this.changeMap.bind(this);
+    this.changeMap = this.changeMap.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +56,30 @@ class CymapMain extends React.Component {
     }
   }
 
+  getButtons() {
+    const buttons = [
+      {
+        id: 'echartmap',
+        title: 'echart中国',
+        className: 'tab-item',
+      },
+      {
+        id: 'heatmap',
+        title: '3D热力图',
+        className: 'tab-item',
+      },
+      {
+        id: 'tripmap',
+        title: '三维城市',
+        className: 'tab-item',
+      },
+    ];
+    return buttons.map((item, index) => (
+      // eslint-disable-next-line
+      <div {...item} key={item.id} onClick={() => this.changeMap(index + 1)} />
+    ));
+  }
+
   changeMap(parm) {
     console.log(parm);
     if (parm) {
@@ -80,7 +106,7 @@ class CymapMain extends React.Component {
   }
 
   render() {
-    // const item = this.getItem();
+    const item = this.getItem();
     return (
       <div className="cymap-main">
         <div className="cymap-logo" />
@@ -92,22 +118,18 @@ class CymapMain extends React.Component {
           <Weather />
         </div>
         <div className="cymap-tab">
-          <div className="tab-item" title="echart中国" id="echartmap" />
-          <div className="tab-item" title="3D热力图" id="heatmap" />
-          <div className="tab-item" title="三维城市" id="tripmap" />
+          {
+            this.getButtons()
+          }
         </div>
         <div className="cymap-contain">
-          {/* <ReactCSSTransitionGroup
-            transitionName="test"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}
+          <CSSTransition
+            key="ec"
+            timeout={500}
+            classNames="item"
           >
             {item}
-          </ReactCSSTransitionGroup> */}
-          <EchartChinaMap />
-          {/* <Hexagon /> */}
-          {/* <Trips/> */}
-          {/* <SzBuilding /> */}
+          </CSSTransition>
         </div>
         <div className="cymap-left">
           <div className="cymap-left__content">

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { number } from 'prop-types';
-import $ from '@/plugin/jquery';
+import $ from 'jquery';
 
 import '@/plugin/numberAnimate/numberAnimate.css';
 
