@@ -187,7 +187,7 @@ class EchartChina extends React.Component {
     this.h1.style['font-size'] = '18px';
     this.h1.style['padding-bottom'] = '7px';
     this.h1.style.position = 'absolute';
-    this.h1.style.left = `${params.event.event.clientX - 50}px`;
+    this.h1.style.left = `${params.event.event.clientX + 150}px`;
     this.h1.style.top = `${params.event.event.clientY}px`;
     this.h1.style['background-color'] = 'rgba(0, 0,0,.5)';
     // this.h1.style.width = '160px';
