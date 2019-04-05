@@ -18,8 +18,6 @@ class EchartChina extends React.Component {
     };
     this.element = null;
     this.h1 = document.createElement('h1');
-    console.log(this.element);
-    console.log(this.h1);
 
     this.database = null;
     this.mapStack = [];
@@ -164,8 +162,7 @@ class EchartChina extends React.Component {
     this.loadMap(provinceProper[mapname], mapname);
   }
 
-  onChartDbClick = (params) => {
-    console.log(params);
+  onChartDbClick = () => {
     if (this.mapStack.length === 1) {
       return;
     }
@@ -187,7 +184,7 @@ class EchartChina extends React.Component {
     this.h1.style['font-size'] = '18px';
     this.h1.style['padding-bottom'] = '7px';
     this.h1.style.position = 'absolute';
-    this.h1.style.left = `${params.event.event.clientX + 150}px`;
+    this.h1.style.left = `${params.event.event.clientX + 80}px`;
     this.h1.style.top = `${params.event.event.clientY}px`;
     this.h1.style['background-color'] = 'rgba(0, 0,0,.5)';
     // this.h1.style.width = '160px';
