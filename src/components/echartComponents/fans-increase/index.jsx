@@ -23,8 +23,9 @@ class FansIncrease extends React.Component {
   }
 
   getOtionTem = (data) => {
-    data = [1000, 1112, 2583, 1225, 2000, 1562, 1584, 1225, 8520];
-    const xdata = ['06', '07', '08', '09', '10', '11', '12', '13', '14'];
+    // eslint-disable-next-line max-len
+    data = [3156, 2127, 2890, 2643, 2368, 3936, 3754, 3389, 2898, 2278, 2344, 1945];
+    const xdata = ['02', '04', '06', '08', '10', '12', '14', '16', '18', '20', '22', '24'];
     const option = {
       grid: {
         left: '4%',
@@ -68,7 +69,7 @@ class FansIncrease extends React.Component {
       yAxis: {
         show: true,
         position: 'right',
-        name: '单位（千）',
+        name: '单位（个）',
         nameTextStyle: {
           color: '#fff',
           fontSize: 12,
@@ -169,7 +170,7 @@ class FansIncrease extends React.Component {
     }
     return (
       <div className="fans-increase">
-        <div className="fans-increase-title">XX时间涨粉关注情况</div>
+        <div className="fans-increase-title">昨日涨粉情况</div>
         <EchartsReact option={option} style={{ height: '100%', width: '100%' }} />
       </div>
     );
