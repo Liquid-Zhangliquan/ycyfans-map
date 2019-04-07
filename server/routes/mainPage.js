@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
   const [rows, fields] = await pool.execute(selectAll);
   console.log(rows);
   console.log(fields);
+  res.send(rows);
 });
 
 module.exports = router;

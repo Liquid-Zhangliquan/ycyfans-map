@@ -1,5 +1,5 @@
 // sql
-const selectAll = 'select * from test.mingxing';
+const selectAll = 'select * from ...';
 
 module.exports = {
   selectAll,
