@@ -83,7 +83,7 @@ class EchartChina extends React.Component {
           normal: {
             areaColor: '#112246',
             borderColor: '#fd0404cc',
-            borderWidth: 6,
+            borderWidth: 3,
             shadowColor: '#ef0b4b',
             shadowBlur: 350,
             shadowOffsetX: 50,
@@ -94,8 +94,8 @@ class EchartChina extends React.Component {
         emphasis: {
           itemStyle: {
             areaColor: '#ef0b4b',
-            borderColor: '#f94545cc',
-            borderWidth: 3,
+            borderColor: '#ff0c00d9',
+            borderWidth: 5,
             shadowColor: '#fd044ae0',
             shadowBlur: 200,
             shadowOffsetX: 20,
@@ -195,8 +195,10 @@ class EchartChina extends React.Component {
       if (data[i].boy) { boys += data[i].boy; }
     }
     girls = (total - boys);
+    this.h1.style['boder-radius'] = '5px';
     this.h1.style['boder-bottom'] = '1px solid rgba(255,255,255,.3)';
     this.h1.style['font-size'] = '18px';
+    this.h1.style.padding = '5px';
     this.h1.style['padding-bottom'] = '7px';
     this.h1.style.position = 'absolute';
     this.h1.style.left = `${params.event.event.clientX + 80}px`;
@@ -204,9 +206,9 @@ class EchartChina extends React.Component {
     this.h1.style['background-color'] = 'rgba(0, 0,0,.5)';
     // this.h1.style.width = '160px';
     // this.h1.style.height = '110px';
-    this.h1.style.color = 'white';
+    this.h1.style.color = '#60cdda';
     // eslint-disable-next-line no-useless-concat
-    this.h1.innerHTML = `${params.name}<hr style="background-color:rgba(0,0,0,1);">` + `总人数： ${total}<br>` + `村民数： ${boys}<br>` + `月芽数： ${girls}`;
+    this.h1.innerHTML = `${params.name}<hr style="background-color:#60cdda;">` + `总人数： ${total}<br>` + `村民数： ${boys}<br>` + `月芽数： ${girls}`;
     // eslint-disable-next-line no-unused-expressions
     this.element ? null : this.element = document.getElementById('echartChina');
     this.element.append(this.h1);
