@@ -39,7 +39,15 @@ class EchartChina extends React.Component {
     this.convertData(fans_data);
   }
 
-  componentWillUnmount() { }
+  componentWillUnmount() {
+
+  }
+
+  getCitycode = (code) => {
+    // 调用父组件方法
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.getCitycode(code);
+  }
 
   changeMap = (type) => {
     // 调用父组件方法
@@ -161,6 +169,7 @@ class EchartChina extends React.Component {
     const mapname = params.name;
     if (mapname === '' || provinceProper[mapname] === undefined) {
       if (mapname === '深圳市') {
+        this.getCitycode('101280601');
         this.changeMap(2);
       }
       return;

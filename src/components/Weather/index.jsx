@@ -11,7 +11,9 @@ class WeatherBox extends React.Component {
   componentWillMount() { }
 
   componentDidMount() {
-    this.getCurrentWeather();
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.onRef(this);
+    this.getCurrentWeather('101010100');
   }
 
   getCurrentCity() { // eslint-disable-line
@@ -29,10 +31,11 @@ class WeatherBox extends React.Component {
       });
   }
 
-  getCurrentWeather() {
+  getCurrentWeather(citycode) {
     const me = this;
+    const url = `http://t.weather.sojson.com/api/weather/city/${citycode}`;
     // 获取武汉市天气
-    axios.get('http://t.weather.sojson.com/api/weather/city/101200101')
+    axios.get(url)
       .then((response) => {
         // console.log(response);
         if (response.status === 200) {
@@ -72,7 +75,7 @@ class WeatherBox extends React.Component {
       <div className="weather-div">
         {weather.city}
         <img alt="天气图标" src={weather.img} />
-        {weather.lowp}
+        {weather.highp}
       </div>
     );
   }

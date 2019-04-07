@@ -23,6 +23,7 @@ class CymapMain extends React.Component {
       type: 1,
     };
     this.changeMap = this.changeMap.bind(this);
+    this.getCitycode = this.getCitycode.bind(this);
   }
 
   componentDidMount() {
@@ -39,7 +40,7 @@ class CymapMain extends React.Component {
     if (this.state.type === 1) {
       return (
         // eslint-disable-next-line react/no-string-refs
-        <EchartChinaMap key={1} changeMap={this.changeMap} />
+        <EchartChinaMap key={1} changeMap={this.changeMap} getCitycode={this.getCitycode} />
       );
     }
     // eslint-disable-next-line react/destructuring-assignment
@@ -80,6 +81,14 @@ class CymapMain extends React.Component {
     ));
   }
 
+  onRef = (ref) => {
+    this.WeatherComp = ref;
+  }
+
+  getCitycode(code) {
+    this.WeatherComp.getCurrentWeather(code);
+  }
+
   changeMap(parm) {
     if (parm) {
       if (parm === 1) {
@@ -114,7 +123,7 @@ class CymapMain extends React.Component {
         </div>
         <div className="TimeAndWeather">
           <Time />
-          <Weather />
+          <Weather onRef={this.onRef} getCitycode={this.getCitycode} />
         </div>
         <div className="cymap-tab">
           {
