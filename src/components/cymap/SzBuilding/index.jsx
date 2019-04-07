@@ -96,6 +96,7 @@ class Trips extends React.Component {
             length,
           };
         });
+        console.log(roaddata);
         const sq = sortBy(roaddata, ['length']).slice(500, 2500);
         // maxBy(sq, item => item.length)
         const maxLength = sq[sq.length - 1].length;
@@ -107,7 +108,8 @@ class Trips extends React.Component {
         }));
         this.setState({
           maxLength,
-          roaddata: sq,
+          // roaddata: sq,
+          roaddata,
           buildingdata: data,
         });
         this._animate(data);
@@ -175,7 +177,7 @@ class Trips extends React.Component {
       const timestamp = Date.now() / 1000;
       const loopTime = loopLength / animationSpeed;
       let time = ((timestamp % loopTime) / loopTime) * loopLength;
-      time = time < 80 ? time + 80 : time;
+      time = time < 120 ? time + 120 : time;
       const props = {
         layers: [
           new TripsLayer({

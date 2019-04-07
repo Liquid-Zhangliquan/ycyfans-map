@@ -134,7 +134,7 @@ class TimeBox extends React.Component {
 
   render() {
     const { times } = this.state;
-    const { color = '#fff' } = this.props;
+    const { color = '#26d5ec' } = this.props;
     return (
       <div className="number">
         <div className="digit minutes">

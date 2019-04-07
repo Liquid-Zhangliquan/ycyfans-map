@@ -1,15 +1,19 @@
 import 'maptalks/dist/maptalks.css';
 import './index.scss';
+import axios from 'axios';
 import * as React from 'react';
+import { message } from 'antd';
 import { PolygonLayer } from '@deck.gl/layers';
 import { TripsLayer } from '@deck.gl/experimental-layers';
 import * as maptalks from 'maptalks';
 import DeckGLLayer from '@/plugin/deck-layer';
 
-// const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
-const DATA_JSONURL = 'public/data/heatmap-datajson.json';
+// const Trip_JSONURL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/trips.json';
+// const Building_JSONURL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/buildings.json';
+const Trip_JSONURL = 'public/data/trip/trip.json';
+const Building_JSONURL = 'public/data/trip/building.json';
 
-const elevationScale = { min: 1, max: 50 };
+const elevationScale = { min: 1, max: 150 };
 
 class Trips extends React.Component {
   constructor(props, context) {
@@ -33,10 +37,10 @@ class Trips extends React.Component {
 
   componentDidMount() {
     this.map = new maptalks.Map(this.container, {
-      center: [-74.00216099707364, 40.71357905656234],
+      center: [-74.00833043131627, 40.71075554599386],
       zoom: 15,
-      pitch: 58.9,
-      bearing: 53.4,
+      pitch: 50.5,
+      bearing: 14.4,
       attribution: false,
       baseLayer: new maptalks.TileLayer('tile', {
         urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
@@ -47,12 +51,22 @@ class Trips extends React.Component {
       console.log(e);
     });
 
-    require('d3-request').json(DATA_JSONURL, (error, response) => {
-      if (!error) {
-        const data = response.map(d => [Number(d.lng), Number(d.lat)]);
-        this._animate(data);
-        // console.log(data); // eslint-disable-line
+    const road = axios.get(Trip_JSONURL);
+    const building = axios.get(Building_JSONURL);
+    Promise.all([
+      road,
+      building,
+    ]).then(res => {
+      if (res && res.length > 0) {
+        this.setState({
+          tripdata: res[0].data,
+          buildingdata: res[1].data,
+        });
+        this._animate();
+        this._renderLayers();
       }
+    }).catch(error => {
+      message.error(error);
     });
   }
 
@@ -67,10 +81,7 @@ class Trips extends React.Component {
     this.container = x;
   };
 
-  _animate(data) {
-    this.setState({
-      data,
-    });
+  _animate() {
     this._stopAnimate();
     // wait 1.5 secs to start animation so that all data are loaded
     this.startAnimationTimer = window.setTimeout(this._startAnimate, 1500);
@@ -91,6 +102,7 @@ class Trips extends React.Component {
     //   // eslint-disable-next-line
     //   elevationScale: this.state.elevationScale + 1,
     // });
+    // eslint-disable-next-line react/destructuring-assignment
     if (elevationScale.max === this.state.elevationScale) {
       this.setState({
         // eslint-disable-next-line
@@ -106,9 +118,10 @@ class Trips extends React.Component {
 
   _renderLayers() {
     const {
-      data,
+      tripdata,
+      buildingdata,
     } = this.state;
-    if (data) {
+    if (tripdata && buildingdata) {
       // eslint-disable-next-line
       const [loopLength, animationSpeed] = [1800, 30];
       const timestamp = Date.now() / 1000;
@@ -118,7 +131,7 @@ class Trips extends React.Component {
         layers: [
           new TripsLayer({
             id: 'trips',
-            data: 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/trips.json',
+            data: tripdata,
             getPath: d => d.segments,
             getColor: d => (d.vendor === 0 ? [253, 128, 93] : [23, 184, 190]),
             opacity: 0.3,
@@ -128,7 +141,7 @@ class Trips extends React.Component {
           }),
           new PolygonLayer({
             id: 'buildings',
-            data: 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/buildings.json',
+            data: buildingdata,
             extruded: true,
             wireframe: false,
             fp64: true,

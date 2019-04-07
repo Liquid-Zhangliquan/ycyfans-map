@@ -41,6 +41,12 @@ class EchartChina extends React.Component {
 
   componentWillUnmount() { }
 
+  changeMap = (type) => {
+    // 调用父组件方法
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.changeMap(type);
+  }
+
   getOtionTem = (mapname) => {
     const option = {
       backgroundColor: '#000',
@@ -69,7 +75,7 @@ class EchartChina extends React.Component {
           normal: {
             areaColor: '#112246',
             borderColor: '#fd0404cc',
-            borderWidth: 3,
+            borderWidth: 6,
             shadowColor: '#ef0b4b',
             shadowBlur: 350,
             shadowOffsetX: 50,
@@ -80,8 +86,8 @@ class EchartChina extends React.Component {
         emphasis: {
           itemStyle: {
             areaColor: '#ef0b4b',
-            borderColor: '#ff0c00d9',
-            borderWidth: 5,
+            borderColor: '#f94545cc',
+            borderWidth: 3,
             shadowColor: '#fd044ae0',
             shadowBlur: 200,
             shadowOffsetX: 20,
@@ -155,7 +161,7 @@ class EchartChina extends React.Component {
     const mapname = params.name;
     if (mapname === '' || provinceProper[mapname] === undefined) {
       if (mapname === '深圳市') {
-        return;
+        this.changeMap(2);
       }
       return;
     }

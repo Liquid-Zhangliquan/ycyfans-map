@@ -8,8 +8,7 @@ import Weather from 'components/Weather';
 import CymapStatic from 'components/static';
 import EchartChinaMap from 'components/echartComponents/echartChinaMap';
 import Hexagon from 'components/cymap/Hexagon';
-// import Trips from 'components/cymap/trips';
-import SzBuilding from 'components/cymap/SzBuilding';
+import Trips from 'components/cymap/trips';
 import FansProportion from 'components/echartComponents/fans-proportion';
 import FansIncrease from 'components/echartComponents/fans-increase';
 import RegionalRanking from 'components/echartComponents/regional-ranking';
@@ -39,7 +38,8 @@ class CymapMain extends React.Component {
     // eslint-disable-next-line react/destructuring-assignment
     if (this.state.type === 1) {
       return (
-        <EchartChinaMap key={1} />
+        // eslint-disable-next-line react/no-string-refs
+        <EchartChinaMap key={1} changeMap={this.changeMap} />
       );
     }
     // eslint-disable-next-line react/destructuring-assignment
@@ -51,7 +51,7 @@ class CymapMain extends React.Component {
     // eslint-disable-next-line react/destructuring-assignment
     if (this.state.type === 3) {
       return (
-        <SzBuilding key={3} />
+        <Trips key={3} />
       );
     }
   }
@@ -81,7 +81,6 @@ class CymapMain extends React.Component {
   }
 
   changeMap(parm) {
-    console.log(parm);
     if (parm) {
       if (parm === 1) {
         this.setState({

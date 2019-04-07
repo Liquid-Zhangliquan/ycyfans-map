@@ -10,7 +10,8 @@ import * as maptalks from 'maptalks';
 import DeckGLLayer from '@/plugin/deck-layer';
 
 // const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
-const DATA_JSONURL = 'public/data/hexagon/heatmap-datajson.json';
+// const DATA_JSONURL = 'public/data/heatmap-datajson.json';
+const DATA_JSONURL = 'public/data/heatmap.json';
 
 const LIGHT_SETTINGS = {
   lightsPosition: [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
@@ -54,10 +55,10 @@ class Hexagon extends React.Component {
 
   componentDidMount() {
     this.map = new maptalks.Map(this.container, {
-      center: [-1.4157267858730052, 52.232395363869415],
-      zoom: 7,
-      pitch: 48.5,
-      bearing: -32.796674584322545,
+      center: [113.93070594705296, 22.544716216831006], // 腾讯大厦
+      zoom: 11,
+      pitch: 40.5,
+      bearing: 0,
       centerCross: false,
       attribution: false,
       baseLayer: new maptalks.TileLayer('tile', {
@@ -66,16 +67,20 @@ class Hexagon extends React.Component {
       }),
     });
 
-    this.map.on('click', (e) => {
-      console.log(e);
-    });
-
     axios.get(DATA_JSONURL).then(res => {
-      const data = mapArray(get(res, 'data', []), item => [Number(item.lng), Number(item.lat)]);
+      const features = get(res, 'data.features', []);
+      const data = mapArray(features, item => item.geometry.coordinates);
       this._animate(data);
     }).catch(error => {
       message.error(error);
     });
+
+    // require('d3-request').json(DATA_JSONURL, (error, response) => {
+    //   if (!error) {
+    //     const data = response.map(d => [Number(d.lng), Number(d.lat)]);
+    //     console.log(data); // eslint-disable-line
+    //   }
+    // });
   }
 
   componentWillUnmount() {
@@ -121,7 +126,7 @@ class Hexagon extends React.Component {
 
   _renderLayers() {
     const {
-      data, radius = 1000, upperPercentile = 100, coverage = 1,
+      data, radius = 350, upperPercentile = 92.5, coverage = 0.7,
     } = this.state;
     if (data) {
       // eslint-disable-next-line
