@@ -167,6 +167,10 @@ class EchartChina extends React.Component {
 
   onChartClick = (params) => {
     const mapname = params.name;
+    if (mapname === '广东') {
+      console.log(12312);
+      this.getCitycode('101280600');
+    }
     if (mapname === '' || provinceProper[mapname] === undefined) {
       if (mapname === '深圳市') {
         this.getCitycode('101280601');

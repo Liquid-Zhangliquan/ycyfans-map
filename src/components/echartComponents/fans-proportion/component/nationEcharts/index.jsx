@@ -27,7 +27,7 @@ class NationEcharts extends React.Component {
     }
   }
 
-  getOtionTem = (parms = [80, 30]) => {
+  getOtionTem = (parms = [80, 90]) => {
     const option = {
       graphic: [{
         type: 'text',
@@ -43,7 +43,7 @@ class NationEcharts extends React.Component {
         left: 'center',
         top: '52%',
         style: {
-          text: '粉丝关注时长',
+          text: '年龄分布',
           fill: '#fff',
           font: 'normal 14px "Microsoft YaHei", sans-serif',
         },
