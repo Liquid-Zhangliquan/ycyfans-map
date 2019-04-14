@@ -27,14 +27,14 @@ class CrescentMoonEcharts extends React.Component {
     }
   }
 
-  getOtionTem = (parms = [55, 45]) => {
+  getOtionTem = (parms = [15, 85]) => {
     const option = {
       graphic: [{
         type: 'text',
         left: 'center',
         top: '43%',
         style: {
-          text: '55%',
+          text: `${100 * parms[0] / (parms[0] + parms[1])}%`,
           fill: '#fff',
           fontSize: 34,
         },

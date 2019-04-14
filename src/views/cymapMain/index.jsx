@@ -1,5 +1,7 @@
+/* eslint-disable */
 import './index.scss';
 import * as React from 'react';
+import axios from 'axios';
 import {
   CSSTransition,
 } from 'react-transition-group';
@@ -21,13 +23,14 @@ class CymapMain extends React.Component {
     super(props, context);
     this.state = {
       type: 1,
+      cityCode: '', // 城市code
+      echartsData: {}, // echarts 数据
     };
     this.changeMap = this.changeMap.bind(this);
     this.getCitycode = this.getCitycode.bind(this);
   }
 
   componentDidMount() {
-
   }
 
   componentWillUnmount() {
@@ -87,6 +90,11 @@ class CymapMain extends React.Component {
 
   getCitycode(code) {
     this.WeatherComp.getCurrentWeather(code);
+    this.setState({
+      cityCode: code,
+    }, () => {
+      this.changeTotal(code);
+    });
   }
 
   changeMap(parm) {
@@ -113,8 +121,22 @@ class CymapMain extends React.Component {
     }
   }
 
+  changeTotal = (cityCode) => {
+    console.log(cityCode, 125);
+    axios.get('public/data/echartsData.json').then(res => {
+      const data = res.data || [];
+      const value = data.find(v => v.cityCode === cityCode);
+      console.log(value, 128);
+      this.setState({
+        echartsData: value,
+      });
+    });
+  }
+
+
   render() {
     const item = this.getItem();
+    const { cityCode, echartsData } = this.state;
     return (
       <div className="cymap-main">
         <div className="cymap-logo" />
@@ -141,14 +163,14 @@ class CymapMain extends React.Component {
         </div>
         <div className="cymap-left">
           <div className="cymap-left__content">
-            <FansProportion />
-            <FansIncrease />
+            <FansProportion cityCode={cityCode} echartsData={echartsData} />
+            <FansIncrease echartsData={echartsData} />
           </div>
         </div>
         <div className="cymap-right">
           <div className="cymap-right__content">
-            <RegionalRanking />
-            <CareerAnalysis />
+            <RegionalRanking echartsData={echartsData} />
+            <CareerAnalysis echartsData={echartsData} />
             <HotWords />
           </div>
         </div>

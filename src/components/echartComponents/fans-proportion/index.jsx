@@ -17,18 +17,22 @@ class FansProportion extends React.Component {
 
   }
 
-  componentWillUnmount() {
-
-  }
-
   render() {
+    const { echartsData = {} } = this.props;
+    console.log(echartsData);
     return (
       <div className="fans-proportion">
         <div className="fans-proportion-echarts">
-          <CrescentMoonEcharts />
+          <CrescentMoonEcharts
+            data={Object.keys(echartsData).length
+              ? [echartsData.woman, echartsData.man] : undefined}
+          />
         </div>
         <div className="fans-proportion-echarts">
-          <VillageNameEcharts />
+          <VillageNameEcharts
+            data={Object.keys(echartsData).length
+              ? [echartsData.man, echartsData.woman] : undefined}
+          />
         </div>
         <div className="fans-proportion-echarts">
           <FansEcharts />
