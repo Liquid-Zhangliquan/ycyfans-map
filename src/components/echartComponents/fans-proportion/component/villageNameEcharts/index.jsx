@@ -27,7 +27,7 @@ class VillageNameEcharts extends React.Component {
     }
   }
 
-  getOtionTem = (parms = [80, 30]) => {
+  getOtionTem = (parms = [45, 55]) => {
     const option = {
       graphic: [{
         type: 'text',

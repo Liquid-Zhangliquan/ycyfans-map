@@ -34,11 +34,11 @@ class CareerAnalysis extends React.Component {
         value: 650,
       },
       {
-        name: '程序员',
+        name: '运营',
         value: 450,
       },
       {
-        name: '设计师',
+        name: '学生',
         value: 550,
       },
     ];
