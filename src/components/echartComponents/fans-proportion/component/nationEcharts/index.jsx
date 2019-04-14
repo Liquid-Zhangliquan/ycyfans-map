@@ -27,14 +27,32 @@ class NationEcharts extends React.Component {
     }
   }
 
-  getOtionTem = (parms = [80, 90]) => {
+  getOtionTem = (parms = [80, 90, 41, 90]) => {
+    const INDEX = parms.findIndex(v => v === Math.max(...parms));
+    let TEXT = '';
+    switch (INDEX) {
+      case 0:
+        TEXT = '青少年';
+        break;
+      case 1:
+        TEXT = '青年';
+        break;
+      case 2:
+        TEXT = '中年';
+        break;
+      case 3:
+        TEXT = '老年';
+        break;
+      default:
+        TEXT = '青年';
+    }
     const option = {
       graphic: [{
         type: 'text',
         left: 'center',
         top: '36%',
         style: {
-          text: '8.9h',
+          text: TEXT,
           fill: '#fff',
           fontSize: 34,
         },
@@ -75,10 +93,10 @@ class NationEcharts extends React.Component {
               color: { // 完成的圆环的颜色
                 colorStops: [{
                   offset: 0,
-                  color: '#a946b0', // 0% 处的颜色
+                  color: 'rgba(51, 105, 232, 1)', // 0% 处的颜色
                 }, {
                   offset: 1,
-                  color: '#cf4082', // 100% 处的颜色
+                  color: 'rgba(51, 105, 232, 1)', // 100% 处的颜色
                 }],
               },
               label: {
@@ -97,10 +115,54 @@ class NationEcharts extends React.Component {
               color: { // 完成的圆环的颜色
                 colorStops: [{
                   offset: 0,
-                  color: 'transparent', // 0% 处的颜色
+                  color: 'rgba(0, 153, 37, 1)', // 0% 处的颜色
                 }, {
                   offset: 1,
-                  color: 'transparent', // 100% 处的颜色
+                  color: 'rgba(0, 153, 37, 1)', // 100% 处的颜色
+                }],
+              },
+              label: {
+                show: false,
+              },
+              labelLine: {
+                show: false,
+              },
+            },
+          },
+        }, {
+          name: '03',
+          value: parms[2],
+          itemStyle: {
+            normal: {
+              color: { // 完成的圆环的颜色
+                colorStops: [{
+                  offset: 0,
+                  color: 'rgba(238, 178, 17, 1)', // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: 'rgba(238, 178, 17, 1)', // 100% 处的颜色
+                }],
+              },
+              label: {
+                show: false,
+              },
+              labelLine: {
+                show: false,
+              },
+            },
+          },
+        }, {
+          name: '04',
+          value: parms[3],
+          itemStyle: {
+            normal: {
+              color: { // 完成的圆环的颜色
+                colorStops: [{
+                  offset: 0,
+                  color: 'rgba(213, 15, 37, 1)', // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: 'rgba(213, 15, 37, 1)', // 100% 处的颜色
                 }],
               },
               label: {
