@@ -2,8 +2,8 @@
 /*
  * @filename numberAnimate.js
  * @author fy[2016-9-18 17:09:00]
- * @update fy[2016-9-18 17:09:00]
- * @version v1.0
+ * @update fy[2019-4-9 16:22:00]
+ * @version v1.1
  * @description 页面数字滚动插件
  * @基于jquery
  */
@@ -47,6 +47,7 @@ import jQuery from 'jquery';
             <span class="mt-number-animate-span">7</span>\
             <span class="mt-number-animate-span">8</span>\
             <span class="mt-number-animate-span">9</span>\
+            <span class="mt-number-animate-span">0</span>\
             <span class="mt-number-animate-span">.</span>\
           </div>';
 
@@ -85,8 +86,9 @@ import jQuery from 'jquery';
     const runAnimate = function ($parent) {
       $parent.find('.mt-number-animate-dom').each(function () {
         let num = $(this).attr('data-num');
-        num = (num === '.' ? 10 : num);
-        const spanHei = $(this).height() / 11; // 11为元素个数
+        // eslint-disable-next-line no-nested-ternary
+        num = (num === '.' ? 11 : num === 0 ? 10 : num);
+        const spanHei = $(this).height() / 12; // 11为元素个数
         const thisTop = `${-num * spanHei}px`;
         if (thisTop !== $(this).css('top')) {
           if (setting.iniAnimate) {
