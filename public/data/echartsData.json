@@ -6,7 +6,24 @@
     "nation": [336260, 19110, 14200],
     "man": 214350,
     "woman": 141910,
-    "occupation": [19479, 12552, 8900,15000,10936],
+    "occupation": [
+      { "name": "策划", "value": 67252},
+      { "name": "设计师", "value": 94152},
+      { "name": "产品", "value": 66522},
+      { "name": "学生", "value": 99349},
+      { "name": "程序员", "value": 42295}
+    ],
+    "city": [
+      { "name": "深圳", "value": 665},
+      { "name": "广州", "value": 780},
+      { "name": "韶关", "value": 682},
+      { "name": "珠海", "value": 580},
+      { "name": "汕头", "value": 528},
+      { "name": "佛山", "value": 570},
+      { "name": "中江", "value": 470},
+      { "name": "潮州", "value": 460},
+      { "name": "惠州", "value": 400}
+    ],
     "age": [23,43,23,12]
   },
   {
@@ -16,8 +33,26 @@
     "nation": [66660, 1910, 1000],
     "man": 37567,
     "woman": 32003,
-    "occupation": [19479, 12552, 8900,15000,10936],
+    "occupation": [
+      { "name": "设计师", "value": 19479},
+      { "name": "程序员", "value": 12552},
+      { "name": "学生", "value": 8900},
+      { "name": "产品", "value": 15000},
+      { "name": "策划", "value": 10936}
+    ],
+    "city": [
+      { "name": "福田", "value": 200},
+      { "name": "罗湖", "value": 192},
+      { "name": "宝安", "value": 160},
+      { "name": "南山", "value": 130},
+      { "name": "盐田", "value": 120},
+      { "name": "龙岗", "value": 112},
+      { "name": "龙华", "value": 94},
+      { "name": "光明", "value": 88},
+      { "name": "大鹏", "value": 77}
+    ],
     "age": [26,63,43,22]
+
   },
   {
     "cityCode": "101200101",

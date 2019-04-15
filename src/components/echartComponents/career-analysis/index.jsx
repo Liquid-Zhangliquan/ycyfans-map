@@ -3,6 +3,28 @@ import EchartsReact from 'echarts-for-react';
 import echarts from 'echarts';
 import './index.scss';
 
+const DATA = [
+  {
+    name: '程序员',
+    value: 750,
+  },
+  {
+    name: '设计师',
+    value: 350,
+  },
+  {
+    name: '策划',
+    value: 650,
+  },
+  {
+    name: '运营',
+    value: 450,
+  },
+  {
+    name: '学生',
+    value: 550,
+  },
+];
 // 职业分析
 class CareerAnalysis extends React.Component {
   constructor(props, context) {
@@ -13,35 +35,20 @@ class CareerAnalysis extends React.Component {
   }
 
   componentDidMount() {
-    const data = [];
-    this.getOtionTem(data);
+    const { echartsData = {} } = this.props;
+    const occupation = echartsData.occupation || undefined;
+    this.getOtionTem(occupation);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { echartsData = {} } = nextProps;
+    const occupation = echartsData.occupation || undefined;
+    this.getOtionTem(occupation);
   }
 
   componentWillUnmount() {}
 
-  getOtionTem = data => {
-    data = [
-      {
-        name: '程序员',
-        value: 750,
-      },
-      {
-        name: '设计师',
-        value: 350,
-      },
-      {
-        name: '策划',
-        value: 650,
-      },
-      {
-        name: '运营',
-        value: 450,
-      },
-      {
-        name: '学生',
-        value: 550,
-      },
-    ];
+  getOtionTem = (data = DATA) => {
     const xData = [];
     const yData = [];
     data.forEach(v => {

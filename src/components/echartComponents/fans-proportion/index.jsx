@@ -19,7 +19,6 @@ class FansProportion extends React.Component {
 
   render() {
     const { echartsData = {} } = this.props;
-    console.log(echartsData);
     return (
       <div className="fans-proportion">
         <div className="fans-proportion-echarts">

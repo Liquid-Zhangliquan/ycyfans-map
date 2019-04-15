@@ -3,7 +3,34 @@ import EchartsReact from 'echarts-for-react';
 import echarts from 'echarts';
 import './index.scss';
 
-
+const DATA = [{
+  name: '广东',
+  value: 480,
+}, {
+  name: '北京',
+  value: 282,
+}, {
+  name: '广西',
+  value: 710,
+}, {
+  name: '湖北',
+  value: 800,
+}, {
+  name: '四川',
+  value: 660,
+}, {
+  name: '江苏',
+  value: 380,
+}, {
+  name: '湖南',
+  value: 440,
+}, {
+  name: '山东',
+  value: 870,
+}, {
+  name: '内蒙古',
+  value: 880,
+}];
 // 区域排行
 class RegionalRanking extends React.Component {
   constructor(props, context) {
@@ -14,46 +41,22 @@ class RegionalRanking extends React.Component {
   }
 
   componentDidMount() {
-    const data = [];
-    this.getOtionTem(data);
+    const { echartsData = {} } = this.props;
+    const city = echartsData.city || undefined;
+    this.getOtionTem(city);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { echartsData = {} } = nextProps;
+    const city = echartsData.city || undefined;
+    this.getOtionTem(city);
   }
 
   componentWillUnmount() {
 
   }
 
-  getOtionTem = (data) => {
-    data = [{
-      name: '广州',
-      value: 480,
-    }, {
-      name: '深圳',
-      value: 282,
-    }, {
-      name: '江苏',
-      value: 710,
-    }, {
-      name: '上海',
-      value: 800,
-    }, {
-      name: '北京',
-      value: 660,
-    }, {
-      name: '重庆',
-      value: 380,
-    }, {
-      name: '河北',
-      value: 440,
-    }, {
-      name: '湖南',
-      value: 870,
-    }, {
-      name: '武汉',
-      value: 880,
-    }, {
-      name: '成都',
-      value: 700,
-    }];
+  getOtionTem = (data = DATA) => {
     const xData = [];
     const yData = [];
     data.forEach((a) => {

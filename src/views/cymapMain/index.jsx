@@ -16,6 +16,7 @@ import FansIncrease from 'components/echartComponents/fans-increase';
 import RegionalRanking from 'components/echartComponents/regional-ranking';
 import CareerAnalysis from 'components/echartComponents/career-analysis';
 import HotWords from 'components/echartComponents/hot-words';
+import FansModal from 'components/modal/fansModal';
 
 
 class CymapMain extends React.Component {
@@ -172,6 +173,7 @@ class CymapMain extends React.Component {
             <FansIncrease echartsData={echartsData} />
           </div>
         </div>
+        {/* <FansModal /> */}
         <div className="cymap-right">
           <div className="cymap-right__content">
             <RegionalRanking echartsData={echartsData} />

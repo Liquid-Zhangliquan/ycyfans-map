@@ -1,0 +1,12 @@
+.fans-modal {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  width: 500px;
+  height: 810px;
+  z-index: 10;
+  background-image:  url('../../../assets/images/modal/排名.png'), url('../../../assets/images/modal/查看更多.png'), url('../../../assets/images/modal/框.png');
+  background-repeat: no-repeat,no-repeat, no-repeat;
+  background-position: center center,center 97%, center bottom;
+
+}
