@@ -2,3 +2,5 @@ build/*.js
 test/**/*.js
 dist/
 node_modules/
+src/plugin/**/*.js
+src/shader/**

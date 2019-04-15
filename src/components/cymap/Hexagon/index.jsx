@@ -7,7 +7,13 @@ import get from 'lodash/get';
 import mapArray from 'lodash/map';
 import { HexagonLayer } from 'deck.gl';
 import * as maptalks from 'maptalks';
+import randomColor from 'randomcolor';
 import DeckGLLayer from '@/plugin/deck-layer';
+import maptalksgl from '@/plugin/maptalksgl/maptalksgl';
+// import { GlowRingLayer, GlowRing } from '@/plugin/glowring';
+
+import vert from '@/shader/ring.vertex.glsl';
+import frag from '@/shader/ring.fragment.glsl';
 
 // const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
 const DATA_JSONURL = 'public/data/hexagon/heatmap-datajson.json';
@@ -48,6 +54,8 @@ class Hexagon extends React.Component {
     this.startAnimationTimer = null;
     this.intervalTimer = null;
 
+    this.glowringLayer = null;
+
     this._startAnimate = this._startAnimate.bind(this);
     this._animateHeight = this._animateHeight.bind(this);
   }
@@ -66,19 +74,14 @@ class Hexagon extends React.Component {
       }),
     });
 
-     
     this.map.on('click', (e) => {
-      console.log(e,"map的点击事件");
+      console.log(e, 'map的点击事件');
     });
-    /**
-     * @description: 监听地图可视范围变化的事件。
-     * @param {type} 
-     * @return: 
-     */
-    this.map.on('viewchange',()=>{
-      let zoom =this.map.getZoom();
-      console.log(zoom,"地图当前缩放等级")
-    })
+
+    this.map.on('viewchange', () => {
+      const zoom = this.map.getZoom();
+      console.log(zoom, '地图当前缩放等级');
+    });
 
     axios.get(DATA_JSONURL).then(res => {
       const data = mapArray(get(res, 'data', []), item => [Number(item.lng), Number(item.lat)]);
@@ -86,6 +89,8 @@ class Hexagon extends React.Component {
     }).catch(error => {
       message.error(error);
     });
+
+    this.addGrowRingLayer();
   }
 
   componentWillUnmount() {
@@ -167,6 +172,88 @@ class Hexagon extends React.Component {
       } else if (this.deckLayer) {
         this.deckLayer.setProps(props);
       }
+    }
+  }
+
+  addGrowRingLayer() {
+    const { map } = this;
+    // from https://github.com/liubgithub/maptalks.glowring
+    const shader = {
+      vert,
+      frag,
+      // 着色器程序中的uniform变量
+      uniforms: [
+        'iResolution',
+        'iTime',
+        'center',
+        'iRadius',
+        {
+          name: 'projViewModelMatrix',
+          type: 'function',
+          fn(context, props) {
+            return maptalksgl.mat4.multiply([], props.projViewMatrix, props.modelMatrix);
+          },
+        },
+      ],
+      defines: {},
+      extraCommandProps: {
+        // transparent:true,
+        depth: {
+          enable: false,
+        },
+        blend: {
+          enable: true,
+          func: {
+            srcRGB: 'src alpha',
+            srcAlpha: 1,
+            dstRGB: 'one',
+            dstAlpha: 1,
+          },
+          equation: {
+            rgb: 'add',
+            alpha: 'add',
+          },
+          color: [0, 0, 0, 0],
+        },
+      },
+    };
+    const uniforms = {
+      iResolution: [map.width, map.height],
+      iTime: 0.0,
+      center: [0, 0, 0],
+      iRadius: 6.0,
+    };
+    this.glowringLayer = new GlowRingLayer('glowring').addTo(map);
+    this.glowringLayer.registerShader('radar', 'MeshShader', shader, uniforms);
+    this.addGlowRing({
+      center: [13.416935229170008, 52.529564137540376],
+      color: [0.1, 0.9, 0.1],
+      radius: 0.5,
+      speed: 2.0,
+    });
+  }
+
+  addGlowRing(config = {}) {
+    const {
+      center, color, radius, speed, type,
+    } = config;
+    const rc = randomColor({
+      format: 'rgb', // e.g. 'rgb(225,200,20)'
+    });
+    const rgb = rc.toString().match(/\d+/g);
+    const fogColor = rgb.map(item => Number(Math.round(Number(item) / 255).toFixed(1)));
+    if (type === 'radar') {
+      const radar = new GlowRing(center, {
+        shader: 'radar',
+      }).addTo(this.glowringLayer);
+      radar.setColor(color || fogColor);
+      radar.setRadius(radius);
+      radar.setSpeed(speed);
+    } else {
+      const ring = new GlowRing(center).addTo(this.glowringLayer);
+      ring.setColor(color || fogColor);
+      ring.setRadius(radius);
+      ring.setSpeed(speed);
     }
   }
 

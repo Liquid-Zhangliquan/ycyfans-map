@@ -74,13 +74,6 @@ class Hexagon extends React.Component {
     }).catch(error => {
       message.error(error);
     });
-
-    // require('d3-request').json(DATA_JSONURL, (error, response) => {
-    //   if (!error) {
-    //     const data = response.map(d => [Number(d.lng), Number(d.lat)]);
-    //     console.log(data); // eslint-disable-line
-    //   }
-    // });
   }
 
   componentWillUnmount() {

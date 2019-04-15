@@ -52,6 +52,7 @@
     "path-to-regexp": "^3.0.0",
     "probe.gl": "2.0.1",
     "prop-types": "^15.7.2",
+    "randomcolor": "^0.5.4",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-hot-loader": "^4.7.2",
