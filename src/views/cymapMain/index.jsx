@@ -141,6 +141,7 @@ class CymapMain extends React.Component {
     return (
       <div className="cymap-main">
         <div className="cymap-logo" />
+        <div className="cymap-bg" />
         <div className="cymap-static">
           <CymapStatic />
         </div>
