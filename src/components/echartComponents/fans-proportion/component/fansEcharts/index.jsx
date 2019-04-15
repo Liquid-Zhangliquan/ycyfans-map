@@ -27,14 +27,14 @@ class FansEcharts extends React.Component {
     }
   }
 
-  getOtionTem = (parms = [80, 30, 60]) => {
+  getOtionTem = (parms = [880, 30, 60]) => {
     const option = {
       graphic: [{
         type: 'text',
         left: 'center',
         top: '36%',
         style: {
-          text: '40%',
+          text: `${Math.round(100 * parms[0] / (parms[0] + parms[1] + parms[2]))}%`,
           fill: '#fff',
           fontSize: 34,
         },

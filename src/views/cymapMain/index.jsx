@@ -89,6 +89,7 @@ class CymapMain extends React.Component {
   }
 
   getCitycode(code) {
+    debugger
     this.WeatherComp.getCurrentWeather(code);
     this.setState({
       cityCode: code,

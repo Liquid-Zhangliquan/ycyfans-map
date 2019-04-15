@@ -35,10 +35,14 @@ class FansProportion extends React.Component {
           />
         </div>
         <div className="fans-proportion-echarts">
-          <FansEcharts />
+          <FansEcharts data={Object.keys(echartsData).length
+            ? echartsData.nation : undefined}
+          />
         </div>
         <div className="fans-proportion-echarts">
-          <NationEcharts />
+          <NationEcharts data={Object.keys(echartsData).length
+            ? echartsData.age : undefined}
+          />
         </div>
       </div>
     );
