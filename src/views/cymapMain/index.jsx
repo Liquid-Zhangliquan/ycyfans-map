@@ -88,9 +88,10 @@ class CymapMain extends React.Component {
     this.WeatherComp = ref;
   }
 
-  getCitycode(code) {
-    debugger
-    this.WeatherComp.getCurrentWeather(code);
+  getCitycode(code, flag) {
+    if(flag=== 2 ){
+      this.WeatherComp.getCurrentWeather(code);
+    }
     this.setState({
       cityCode: code,
     }, () => {
@@ -104,6 +105,8 @@ class CymapMain extends React.Component {
         this.setState({
           type: 1,
         });
+        // 切换回中国地图时，显示北京当地天气
+        this.WeatherComp.getCurrentWeather('101010100');
       }
       if (parm === 2) {
         this.setState({

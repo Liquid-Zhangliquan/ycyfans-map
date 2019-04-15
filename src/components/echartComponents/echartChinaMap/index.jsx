@@ -43,10 +43,10 @@ class EchartChina extends React.Component {
 
   }
 
-  getCitycode = (code) => {
+  getCitycode = (code, flag) => {
     // 调用父组件方法
     // eslint-disable-next-line react/destructuring-assignment
-    this.props.getCitycode(code);
+    this.props.getCitycode(code, flag);
   }
 
   changeMap = (type) => {
@@ -167,13 +167,14 @@ class EchartChina extends React.Component {
 
   onChartClick = (params) => {
     const mapname = params.name;
+    // 省级不查天气，市级查询天气
     if (mapname === '广东') {
       console.log(12312);
-      this.getCitycode('101280600');
+      this.getCitycode('101280600', 1);
     }
     if (mapname === '' || provinceProper[mapname] === undefined) {
       if (mapname === '深圳市') {
-        this.getCitycode('101280601');
+        this.getCitycode('101280601', 2);
         this.changeMap(2);
       }
       return;
@@ -185,6 +186,8 @@ class EchartChina extends React.Component {
     if (this.mapStack.length === 1) {
       return;
     }
+    // 天气切换回北京 加载中国地图
+    this.getCitycode('101010100', 2);
     this.loadMap(provinceProper['中国'], 'china');
   }
 
