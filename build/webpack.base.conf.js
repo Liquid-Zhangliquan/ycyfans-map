@@ -31,7 +31,8 @@ module.exports = {
   module: {
     rules: [
       // ...(process.env.USEESLINT ? [utils.createLintingRule()] : []),
-      ...[utils.createLintingRule()],
+      //关闭eslint
+       //...[utils.createLintingRule()],
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',

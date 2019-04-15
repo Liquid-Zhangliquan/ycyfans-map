@@ -66,9 +66,19 @@ class Hexagon extends React.Component {
       }),
     });
 
+     
     this.map.on('click', (e) => {
-      console.log(e);
+      console.log(e,"map的点击事件");
     });
+    /**
+     * @description: 监听地图可视范围变化的事件。
+     * @param {type} 
+     * @return: 
+     */
+    this.map.on('viewchange',()=>{
+      let zoom =this.map.getZoom();
+      console.log(zoom,"地图当前缩放等级")
+    })
 
     axios.get(DATA_JSONURL).then(res => {
       const data = mapArray(get(res, 'data', []), item => [Number(item.lng), Number(item.lat)]);
