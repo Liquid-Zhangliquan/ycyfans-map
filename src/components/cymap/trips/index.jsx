@@ -8,6 +8,16 @@ import { TripsLayer } from '@deck.gl/experimental-layers';
 import * as maptalks from 'maptalks';
 import DeckGLLayer from '@/plugin/deck-layer';
 
+import randomColor from 'randomcolor';
+import * as maptalksgl from '@/plugin/maptalksgl/maptalksgl';
+
+import { GlowRingLayer, GlowRing } from '@/plugin/glowring';
+
+import vert from '@/shader/ring.vertex.glsl';
+import frag from '@/shader/ring.fragment.glsl';
+
+import { animateInfo } from '@/utils/window-popover';
+
 // const Trip_JSONURL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/trips.json';
 // const Building_JSONURL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/buildings.json';
 const Trip_JSONURL = 'public/data/trip/trip.json';
@@ -30,6 +40,14 @@ class Trips extends React.Component {
 
     this.startAnimationTimer = null;
     this.intervalTimer = null;
+
+    this.glowringLayer = null;
+
+    this.glowFeature = null;
+
+    this.popover = null;
+
+    this.popoverTimer = null;
 
     this._startAnimate = this._startAnimate.bind(this);
     this._animateHeight = this._animateHeight.bind(this);
@@ -68,12 +86,22 @@ class Trips extends React.Component {
     }).catch(error => {
       message.error(error);
     });
+
+    this.addGrowRingLayer();
+
+    this.popoverTimer = window.setInterval(() => {
+      this._showWindowPopover();
+    }, 3000);
   }
 
   componentWillUnmount() {
     // this.map.remove()
     if (this.deckLayer) {
       this.deckLayer.remove();
+    }
+    if (this.popoverTimer) {
+      window.clearInterval(this.popoverTimer);
+      this.popoverTimer = null;
     }
   }
 
@@ -170,6 +198,107 @@ class Trips extends React.Component {
       } else if (this.deckLayer) {
         this.deckLayer.setProps(props);
       }
+    }
+  }
+
+  _showWindowPopover() {
+    this._removeFeaturePopover();
+    this.popover = animateInfo(this.map, true); // 地图实例和是否自动定位
+    this.addGlowRing({
+      center: this.popover._coordinate,
+      // center: new maptalks.Coordinate([-74.00833043131627, 40.71075554599386]),
+      // color: [0.1, 0.9, 0.1],
+      radius: 2.5,
+      speed: 10.0,
+      // type: 'radar',
+    });
+  }
+
+  _removeFeaturePopover() {
+    if (this.glowFeature) {
+      this.glowFeature.remove();
+    }
+    if (this.popover) {
+      this.popover.remove();
+    }
+  }
+
+  addGrowRingLayer() {
+    const { map } = this;
+    // from https://github.com/liubgithub/maptalks.glowring
+    const shader = {
+      vert,
+      frag,
+      // 着色器程序中的uniform变量
+      uniforms: [
+        'iResolution',
+        'iTime',
+        'center',
+        'iRadius',
+        {
+          name: 'projViewModelMatrix',
+          type: 'function',
+          fn(context, props) {
+            console.log(maptalksgl);
+            return maptalksgl.mat4.multiply([], props.projViewMatrix, props.modelMatrix);
+          },
+        },
+      ],
+      defines: {},
+      extraCommandProps: {
+        // transparent:true,
+        depth: {
+          enable: false,
+        },
+        blend: {
+          enable: true,
+          func: {
+            srcRGB: 'src alpha',
+            srcAlpha: 1,
+            dstRGB: 'one',
+            dstAlpha: 1,
+          },
+          equation: {
+            rgb: 'add',
+            alpha: 'add',
+          },
+          color: [0, 0, 0, 0],
+        },
+      },
+    };
+    const uniforms = {
+      iResolution: [map.width, map.height],
+      iTime: 0.0,
+      center: [0, 0, 0],
+      iRadius: 6.0,
+    };
+    this.glowringLayer = new GlowRingLayer('glowring').addTo(map);
+    this.glowringLayer.registerShader('radar', 'MeshShader', shader, uniforms);
+  }
+
+  addGlowRing(config = {}) {
+    const {
+      center, color, radius, speed, type,
+    } = config;
+    const rc = randomColor({
+      format: 'rgb', // e.g. 'rgb(225,200,20)'
+    });
+    const rgb = rc.toString().match(/\d+/g);
+    const fogColor = rgb.map(item => Number((Number(item) / 255).toFixed(2)));
+    if (type === 'radar') {
+      const radar = new GlowRing(center, {
+        shader: 'radar',
+      }).addTo(this.glowringLayer);
+      radar.setColor(color || fogColor);
+      radar.setRadius(radius);
+      if (speed) radar.setSpeed(speed);
+      this.glowFeature = radar;
+    } else {
+      const ring = new GlowRing(center).addTo(this.glowringLayer);
+      ring.setColor(color || fogColor);
+      ring.setRadius(radius);
+      ring.setSpeed(speed);
+      this.glowFeature = ring;
     }
   }
 

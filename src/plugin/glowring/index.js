@@ -4,8 +4,8 @@
  * (c) 2016-2019 maptalks.org
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('maptalks'), require('@maptalks/gl')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'maptalks', '@maptalks/gl'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('maptalks'), require('@/plugin/maptalksgl/maptalksgl')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'maptalks', '@/plugin/maptalksgl/maptalksgl'], factory) :
   (factory((global.maptalks = global.maptalks || {}),global.maptalks,global.maptalksgl));
 }(this, (function (exports,maptalks,gl) { 'use strict';
 
