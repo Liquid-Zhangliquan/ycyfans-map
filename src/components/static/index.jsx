@@ -22,7 +22,7 @@ class CymapStatic extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.weibo = 7427393;
+    this.weibo = 7438760;
     this.cat = 893250;
     this.tieba = 202659;
   }

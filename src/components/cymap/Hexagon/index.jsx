@@ -77,6 +77,8 @@ class Hexagon extends React.Component {
       console.log(zoom);
       this._removeFeaturePopover();
       if (zoom > 7 && zoom <= 8) {
+        // eslint-disable-next-line react/destructuring-assignment
+        this.props.changemeun(2);
         this.popover = animateRandom(this.map, true, 0, 8);
       } else if (zoom > 8 && zoom <= 9) {
         this.popover = animateRandom(this.map, true, 8, 15);

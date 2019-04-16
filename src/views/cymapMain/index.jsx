@@ -27,9 +27,13 @@ class CymapMain extends React.Component {
       type: 1,
       cityCode: '', // 城市code
       echartsData: {}, // echarts 数据
+      display_name1: 'block', // 原组件显隐
+      display_name2: 'none', // 现组件显影
     };
     this.changeMap = this.changeMap.bind(this);
     this.getCitycode = this.getCitycode.bind(this);
+    this.animateToView = this.animateToView.bind(this);
+    this.changemeun = this.changemeun.bind(this);
   }
 
   componentDidMount() {
@@ -51,13 +55,13 @@ class CymapMain extends React.Component {
     // eslint-disable-next-line react/destructuring-assignment
     if (this.state.type === 2) {
       return (
-        <Hexagon key={2} />
+        <Hexagon key={2} changemeun={this.changemeun} />
       );
     }
     // eslint-disable-next-line react/destructuring-assignment
     if (this.state.type === 3) {
       return (
-        <Trips key={3} />
+        <Trips key={3} onTrip={this.onTrip} showWindowPopover={this.showWindowPopover} />
       );
     }
   }
@@ -86,12 +90,21 @@ class CymapMain extends React.Component {
     ));
   }
 
+  onTrip = (ref) => {
+    this.TripComp = ref;
+  }
+
+  animateToView(option) {
+    this.TripComp.showWindowPopover(option);
+  }
+
+
   onRef = (ref) => {
     this.WeatherComp = ref;
   }
 
   getCitycode(code, flag) {
-    if(flag=== 2 ){
+    if (flag === 2) {
       this.WeatherComp.getCurrentWeather(code);
     }
     this.setState({
@@ -106,6 +119,8 @@ class CymapMain extends React.Component {
       if (parm === 1) {
         this.setState({
           type: 1,
+          display_name1: 'block',
+          display_name2: 'none',
         });
         // 切换回中国地图时，显示北京当地天气
         this.WeatherComp.getCurrentWeather('101010100');
@@ -118,6 +133,8 @@ class CymapMain extends React.Component {
       if (parm === 3) {
         this.setState({
           type: 3,
+          display_name1: 'none',
+          display_name2: 'block',
         });
       }
     } else {
@@ -137,6 +154,20 @@ class CymapMain extends React.Component {
         echartsData: value,
       });
     });
+  }
+
+  changemeun = (flag) => {
+    if (flag === 1) {// 原
+      this.setState({
+        display_name1: 'block',
+        // display_name2: 'block',
+      });
+    } else {// 新
+      this.setState({
+        display_name1: 'none',
+        // display_name2: 'block',
+      });
+    }
   }
 
 
@@ -168,15 +199,19 @@ class CymapMain extends React.Component {
             {item}
           </CSSTransition>
         </div>
-        <DabangModal />
-        <div className="cymap-left">
+        <div className="cymap-left-dabang" style={{ display: this.state.display_name2 }}>
+          <DabangModal />
+        </div>
+        <div className="cymap-right-fans" style={{ display: this.state.display_name2 }}>
+          <FansModal animateToView={this.animateToView} />
+        </div>
+        <div className="cymap-left" style={{ display: this.state.display_name1 }}>
           <div className="cymap-left__content">
             <FansProportion cityCode={cityCode} echartsData={echartsData} />
             <FansIncrease echartsData={echartsData} />
           </div>
         </div>
-        <FansModal />
-        <div className="cymap-right">
+        <div className="cymap-right" style={{ display: this.state.display_name1 }}>
           <div className="cymap-right__content">
             <RegionalRanking echartsData={echartsData} />
             <CareerAnalysis echartsData={echartsData} />

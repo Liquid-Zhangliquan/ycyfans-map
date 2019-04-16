@@ -54,6 +54,8 @@ class Trips extends React.Component {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.onTrip(this);
     this.map = new maptalks.Map(this.container, {
       center: [-74.00833043131627, 40.71075554599386],
       zoom: 15,
@@ -212,6 +214,24 @@ class Trips extends React.Component {
       radius: 2.5,
       speed: 10.0,
       // type: 'radar',
+    });
+  }
+
+  showWindowPopover(options) {
+    this._removeFeaturePopover();
+    this.popover = animateInfo(this.map, false, options);
+    this.map.animateTo({
+      center: this.popover._coordinate,
+      zoom: options.zoom,
+      pitch: options.pitch,
+      bearing: options.bearing,
+    }, {
+      duration: 7000,
+    });
+    this.addGlowRing({
+      center: this.popover._coordinate,
+      radius: 2.5,
+      speed: 10.0,
     });
   }
 
