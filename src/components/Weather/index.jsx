@@ -39,7 +39,7 @@ class WeatherBox extends React.Component {
       .then((response) => {
         // console.log(response);
         if (response.status === 200) {
-          let img = '../../assets/img/weather/太阳.png';
+          let img = require('../../assets/images/weather/太阳.png');
           switch (response.data.data.forecast[0].type) {
             case '晴': img = require('../../assets/images/weather/太阳.png'); break;
             case '多云': img = require('../../assets/images/weather/多云.png'); break;
@@ -48,7 +48,7 @@ class WeatherBox extends React.Component {
             case '中雨': img = require('../../assets/images/weather/下雨.png'); break;
             case '大雨': img = require('../../assets/images/weather/下雨.png'); break;
             default:
-              img = '../../assets/img/weather/太阳.png';
+              img = require('../../assets/images/weather/太阳.png');
               break;
           }
           const _weather = {

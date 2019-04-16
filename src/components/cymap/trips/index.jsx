@@ -89,9 +89,9 @@ class Trips extends React.Component {
 
     this.addGrowRingLayer();
 
-    this.popoverTimer = window.setInterval(() => {
-      this._showWindowPopover();
-    }, 3000);
+    // this.popoverTimer = window.setInterval(() => {
+    //   this._showWindowPopover();
+    // }, 3000);
   }
 
   componentWillUnmount() {

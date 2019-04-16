@@ -63,6 +63,7 @@
     z-index: 9;
   }
   .cymap-left {
+    display: none;
     position: absolute;
     top: 130px;
     width: 480px;
@@ -97,6 +98,7 @@
     z-index: 3;
     overflow: hidden;
     &__content {
+      display: none;
       width: calc(100% + 20px);
       height: 100%;
       overflow-x: hidden;

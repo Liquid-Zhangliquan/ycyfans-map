@@ -8,6 +8,7 @@ import mapArray from 'lodash/map';
 import { HexagonLayer } from 'deck.gl';
 import * as maptalks from 'maptalks';
 import DeckGLLayer from '@/plugin/deck-layer';
+import { animateRandom } from '@/utils/window-popover';
 
 // const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
 const DATA_JSONURL = 'public/data/hexagon/heatmap-datajson.json';
@@ -45,6 +46,7 @@ class Hexagon extends React.Component {
       elevationScale: elevationScale.min,
     };
 
+    this.popover = null;
     this.startAnimationTimer = null;
     this.intervalTimer = null;
 
@@ -67,12 +69,18 @@ class Hexagon extends React.Component {
     });
 
     this.map.on('click', (e) => {
-      console.log(e, 'map的点击事件');
+      console.log(e);
     });
 
-    this.map.on('viewchange', () => {
+    this.map.on('zoomend', () => {
       const zoom = this.map.getZoom();
-      console.log(zoom, '地图当前缩放等级');
+      console.log(zoom);
+      this._removeFeaturePopover();
+      if (zoom > 7 && zoom <= 8) {
+        this.popover = animateRandom(this.map, true, 0, 8);
+      } else if (zoom > 8 && zoom <= 9) {
+        this.popover = animateRandom(this.map, true, 8, 15);
+      }
     });
 
     axios.get(DATA_JSONURL).then(res => {
@@ -93,6 +101,12 @@ class Hexagon extends React.Component {
   setRef = (x = null) => {
     this.container = x;
   };
+
+  _removeFeaturePopover() {
+    if (this.popover) {
+      mapArray(this.popover, item => item.remove());
+    }
+  }
 
   _animate(data) {
     this.setState({

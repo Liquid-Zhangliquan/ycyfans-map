@@ -8,7 +8,7 @@ const fans_info = [
     area: '深圳',
     hobby: '跑步',
     style_lab: 'hello ycy',
-    location: [-74.00833043131627, 40.71075554599386],
+    location: [-5.504763440209672, 54.163612399780305],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -18,7 +18,7 @@ const fans_info = [
     area: '深圳',
     hobby: '画画，唱歌',
     style_lab: '为偶像加油',
-    location: [114.36522552962903, 30.536785877395143],
+    location: [0.48055883552672185, 56.32079880777761],
     img_url: require('../assets/images/girl-box.png'),
   },
   {
@@ -28,7 +28,7 @@ const fans_info = [
     area: '深圳',
     hobby: 'coding',
     style_lab: '为偶像加油',
-    location: [114.36150529481513, 30.540019837004557],
+    location: [1.1263827436652036, 56.09535362032253],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -38,7 +38,7 @@ const fans_info = [
     area: '深圳',
     hobby: '唱歌',
     style_lab: '为偶像加油',
-    location: [114.36916143022925, 30.54064173984419],
+    location: [-4.079166205377078, 50.33703549800893],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -48,7 +48,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.36226012506721, 30.533847233241946],
+    location: [-1.591512108840334, 50.09591198389606],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -58,7 +58,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.36488405880071, 30.531017342891374],
+    location: [-1.4628986308869116, 51.646551356631875],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -68,7 +68,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.361649072006, 30.52926028116091],
+    location: [1.6283752862523215, 51.63946367596222],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -78,7 +78,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.3706531185846, 30.528560557376515],
+    location: [2.432302603881112, 53.71152237002181],
     img_url: require('../assets/images/girl-box.png'),
   },
   {
@@ -88,7 +88,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.3741576876122, 30.53795198113927],
+    location: [-2.284799965335651, 51.58273971499065],
     img_url: require('../assets/images/girl-box.png'),
   },
   {
@@ -98,7 +98,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.36567483335052, 30.53392497630715],
+    location: [-0.8696528443568923, 52.34408339469874],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -108,7 +108,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.36567483335052, 30.53392497630715],
+    location: [-0.45583918512170385, 53.43073125359362],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -118,7 +118,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.36567483335052, 30.53392497630715],
+    location: [-1.1292361009564047, 50.73487870202834],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -128,7 +128,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.36567483335052, 30.53392497630715],
+    location: [-0.06301940295566055, 51.34911158479551],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -138,7 +138,7 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.36567483335052, 30.53392497630715],
+    location: [-0.21039338641276117, 52.11804903746392],
     img_url: require('../assets/images/boy-box.png'),
   },
   {
@@ -148,11 +148,11 @@ const fans_info = [
     area: '深圳',
     hobby: '舞蹈',
     style_lab: '为偶像加油',
-    location: [114.36567483335052, 30.53392497630715],
+    location: [0.8002234725707922, 52.24805962907644],
     img_url: require('../assets/images/boy-box.png'),
   },
 ];
-
+// 地图容器，是否定位，所传信息;rerurn单个uimarker对象
 function animateInfo(map, autoCenter, params) {
   const random_num = Math.floor(Math.random() * 15);
   const current = params || fans_info[random_num];
@@ -210,6 +210,68 @@ function animateInfo(map, autoCenter, params) {
   return popover;
 }
 
+// 地图容器，是否定位，所传信息;rerurn uimarker集合
+function animateRandom(map, autoCenter, start, end) {
+  const fans_infoarr = fans_info.slice(start, end);
+  console.log(fans_infoarr);
+  const uimarkerArr = [];
+  for (let i = 0; i < fans_infoarr.length; i++) {
+    const current = fans_infoarr[i];
+    let html = `${'<div class="content" style= "width:346px;height:313px;">'
+      + '<img src="'}${current.img_url}";stlye="position: absolute;left: 0px;bottom: 0px;">`
+      + '<div style=\'width:60%;height:200px;box-sizing:border-box;text-align;left;position:absolute;top:72px;left:100px;\'>'
+      + '<div style=\'font-size:16px;color:#7ad5f8;display:flex;justify-content:space-between;margin-top:10px\'>'
+      + `<div>姓名</div><div style="color:#fff;text-align:left;width:50%">${current.name}</div></div>`
+      + '<div style=\'font-size:16px;color:#7ad5f8;display:flex;justify-content:space-between;margin-top:10px\'>'
+      + `<div>性别</div><div style="color:#fff;text-align:left;width:50%">${current.sex}</div></div>`
+      + '<div style=\'font-size:16px;color:#7ad5f8;display:flex;justify-content:space-between;margin-top:10px\'>'
+      + `<div>生日</div><div style="color:#fff;text-align:left;width:50%">${current.birthday}</div></div>`
+      + '<div style=\'font-size:16px;color:#7ad5f8;display:flex;justify-content:space-between;margin-top:10px\'>'
+      + `<div>区域</div><div style="color:#fff;text-align:left;width:50%">${current.area}</div></div>`
+      + '<div style=\'font-size:16px;color:#7ad5f8;display:flex;justify-content:space-between;margin-top:10px\'>'
+      + `<div>爱好</div><div style="color:#fff;text-align:left;width:50%">${current.hobby}</div></div>`
+      + '<div style=\'font-size:16px;color:#7ad5f8;display:flex;justify-content:space-between;margin-top:10px\'>'
+      + `<div>个性签名</div><div style="color:#fff;text-align:left;width:50%">${current.style_lab}</div></div>`
+      + '</div>'
+      + '</div>';
+    if (current.sex === '女') {
+      html = `${'<div class="content" style= "width:346px;height:313px;">'
+        + '<img src="'}${current.img_url}";stlye="position: absolute;left: 0px;bottom: 0px;">`
+        + '<div style=\'width:60%;height:200px;box-sizing:border-box;text-align;left;position:absolute;top:72px;left:100px;\'>'
+        + '<div style=\'font-size:16px;color:#e068ff;display:flex;justify-content:space-between;margin-top:10px\'>'
+        + `<div>姓名</div><div style="color:#fff;text-align:left;width:50%">${current.name}</div></div>`
+        + '<div style=\'font-size:16px;color:#e068ff;display:flex;justify-content:space-between;margin-top:10px\'>'
+        + `<div>性别</div><div style="color:#fff;text-align:left;width:50%">${current.sex}</div></div>`
+        + '<div style=\'font-size:16px;color:#e068ff;display:flex;justify-content:space-between;margin-top:10px\'>'
+        + `<div>生日</div><div style="color:#fff;text-align:left;width:50%">${current.birthday}</div></div>`
+        + '<div style=\'font-size:16px;color:#e068ff;display:flex;justify-content:space-between;margin-top:10px\'>'
+        + `<div>区域</div><div style="color:#fff;text-align:left;width:50%">${current.area}</div></div>`
+        + '<div style=\'font-size:16px;color:#e068ff;display:flex;justify-content:space-between;margin-top:10px\'>'
+        + `<div>爱好</div><div style="color:#fff;text-align:left;width:50%">${current.hobby}</div></div>`
+        + '<div style=\'font-size:16px;color:#e068ff;display:flex;justify-content:space-between;margin-top:10px\'>'
+        + `<div>个性签名</div><div style="color:#fff;text-align:left;width:50%">${current.style_lab}</div></div>`
+        + '</div>'
+        + '</div>';
+    }
+    const options = {
+      single: false,
+      width: 346,
+      height: 280,
+      custom: true,
+      autoOpenOn: null,
+      content: html,
+    };
+    const popover = new maptalks.ui.InfoWindow(options);
+    const coordinates = current.location;
+    const coord = new maptalks.Point(coordinates);
+    popover.addTo(map).show(coord);
+    uimarkerArr.push(popover);
+  }
+
+  return uimarkerArr;
+}
+
 export {
   animateInfo,
+  animateRandom,
 };

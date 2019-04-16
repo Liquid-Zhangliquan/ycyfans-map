@@ -10,6 +10,7 @@ class FansModal extends Component {
         <div className="fans-modal-header" />
         <div className="fans-modal-section" />
         <div className="fans-modal-footer" />
+        <div className="fans-modal-footer" />
       </div>
     );
   }

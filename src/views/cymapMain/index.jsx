@@ -173,7 +173,7 @@ class CymapMain extends React.Component {
             <FansIncrease echartsData={echartsData} />
           </div>
         </div>
-        {/* <FansModal /> */}
+        <FansModal />
         <div className="cymap-right">
           <div className="cymap-right__content">
             <RegionalRanking echartsData={echartsData} />
