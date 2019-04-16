@@ -17,6 +17,7 @@ import RegionalRanking from 'components/echartComponents/regional-ranking';
 import CareerAnalysis from 'components/echartComponents/career-analysis';
 import HotWords from 'components/echartComponents/hot-words';
 import FansModal from 'components/modal/fansModal';
+import DabangModal from 'components/modal/dabangModal';
 
 
 class CymapMain extends React.Component {
@@ -167,6 +168,7 @@ class CymapMain extends React.Component {
             {item}
           </CSSTransition>
         </div>
+        <DabangModal />
         <div className="cymap-left">
           <div className="cymap-left__content">
             <FansProportion cityCode={cityCode} echartsData={echartsData} />

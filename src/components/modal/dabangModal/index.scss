@@ -1,0 +1,12 @@
+.dabang-modal {
+  position: absolute;
+  top: 190px;
+  left: 40px;
+  width: 385px;
+  height: 762px;
+  z-index: 10;
+  background-image:  url('../../../assets/images/modal/打榜.png'), url('../../../assets/images/modal/立即打榜.png'), url('../../../assets/images/modal/打榜框.png');
+  background-repeat: no-repeat,no-repeat, no-repeat;
+  background-position: center center,center 97%, center bottom;
+  cursor: pointer;
+}
