@@ -1,0 +1,16 @@
+.content-modal {
+  position: relative;
+width: 1240px;
+height: 810px;
+z-index: 10;
+background-image:  url('../../../assets/images/modal/前一页.png'), url('../../../assets/images/modal/后一页.png'), url('../../../assets/images/modal/内容.png'), url('../../../assets/images/modal/组\ 9.png');
+background-repeat: no-repeat,no-repeat, no-repeat no-repeat;
+background-position: 2% 40%, 98% 40%, center center, center bottom;
+}
+.content-title {
+position: absolute;
+  top: 11px;
+  left: 132px;
+  font-size: 28px;
+  color: #FFF;
+}
