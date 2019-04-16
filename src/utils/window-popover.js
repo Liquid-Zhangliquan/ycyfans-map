@@ -113,8 +113,9 @@ const fans_info = [
   },
 ];
 
-function animateInfo(map, autoCenter) {
+function animateInfo(map, autoCenter, params) {
   const random_num = Math.floor(Math.random() * 11);
+  const current = params || fans_info[random_num];
   const options = {
     single: false,
     width: 346,
@@ -122,25 +123,25 @@ function animateInfo(map, autoCenter) {
     custom: true,
     autoOpenOn: null,
     content: `${'<div class="content" style= "width:346px;height:313px;">'
-      + '<img src="'}${fans_info[random_num].img_url}";stlye="position: absolute;left: 0px;bottom: 0px;">`
+      + '<img src="'}${current.img_url}";stlye="position: absolute;left: 0px;bottom: 0px;">`
       + '<div style=\'width:60%;height:200px;box-sizing:border-box;text-align;left;position:absolute;top:92px;left:100px;\'>'
       + '<div style=\'font-size:16px;color:#FA59F2;display:flex;justify-content:space-between;margin-top:10px\'>'
-      + `<div>姓名</div><div style="color:#fff;text-align:left;width:50%">${fans_info[random_num].name}</div></div>`
+      + `<div>姓名</div><div style="color:#fff;text-align:left;width:50%">${current.name}</div></div>`
       + '<div style=\'font-size:16px;color:#FA59F2;display:flex;justify-content:space-between;margin-top:10px\'>'
-      + `<div>性别</div><div style="color:#fff;text-align:left;width:50%">${fans_info[random_num].sex}</div></div>`
+      + `<div>性别</div><div style="color:#fff;text-align:left;width:50%">${current.sex}</div></div>`
       + '<div style=\'font-size:16px;color:#FA59F2;display:flex;justify-content:space-between;margin-top:10px\'>'
-      + `<div>生日</div><div style="color:#fff;text-align:left;width:50%">${fans_info[random_num].birthday}</div></div>`
+      + `<div>生日</div><div style="color:#fff;text-align:left;width:50%">${current.birthday}</div></div>`
       + '<div style=\'font-size:16px;color:#FA59F2;display:flex;justify-content:space-between;margin-top:10px\'>'
-      + `<div>区域</div><div style="color:#fff;text-align:left;width:50%">${fans_info[random_num].area}</div></div>`
+      + `<div>区域</div><div style="color:#fff;text-align:left;width:50%">${current.area}</div></div>`
       + '<div style=\'font-size:16px;color:#FA59F2;display:flex;justify-content:space-between;margin-top:10px\'>'
-      + `<div>爱好</div><div style="color:#fff;text-align:left;width:50%">${fans_info[random_num].hobby}</div></div>`
+      + `<div>爱好</div><div style="color:#fff;text-align:left;width:50%">${current.hobby}</div></div>`
       + '<div style=\'font-size:16px;color:#FA59F2;display:flex;justify-content:space-between;margin-top:10px\'>'
-      + `<div>个性签名</div><div style="color:#fff;text-align:left;width:50%">${fans_info[random_num].style_lab}</div></div>`
+      + `<div>个性签名</div><div style="color:#fff;text-align:left;width:50%">${current.style_lab}</div></div>`
       + '</div>'
       + '</div>',
   };
   const popover = new maptalks.ui.InfoWindow(options);
-  const coordinates = fans_info[random_num].location;
+  const coordinates = current.location;
   const coord = new maptalks.Point(coordinates);
   popover.addTo(map).show(coord);
   if (autoCenter) {

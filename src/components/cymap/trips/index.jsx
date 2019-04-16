@@ -201,9 +201,10 @@ class Trips extends React.Component {
     }
   }
 
-  _showWindowPopover() {
+  _showWindowPopover(options) {
     this._removeFeaturePopover();
-    this.popover = animateInfo(this.map, true); // 地图实例和是否自动定位
+    // 地图实例和是否自动定位, 第三个为气泡配置不传时从随机列表取
+    this.popover = animateInfo(this.map, true, options);
     this.addGlowRing({
       center: this.popover._coordinate,
       // center: new maptalks.Coordinate([-74.00833043131627, 40.71075554599386]),
