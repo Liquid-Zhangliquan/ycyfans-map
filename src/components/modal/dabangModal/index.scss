@@ -5,8 +5,23 @@
   width: 385px;
   height: 762px;
   z-index: 10;
-  background-image:  url('../../../assets/images/modal/打榜.png'), url('../../../assets/images/modal/立即打榜.png'), url('../../../assets/images/modal/打榜框.png');
-  background-repeat: no-repeat,no-repeat, no-repeat;
-  background-position: center center,center 97%, center bottom;
+  background:  url('../../../assets/images/modal/打榜.png'), url('../../../assets/images/modal/立即打榜.png'), url('../../../assets/images/modal/打榜框.png'), linear-gradient(#082237,#082237);
+  background-repeat: no-repeat,no-repeat, no-repeat, no-repeat;
+  background-position: center center,center 97%, center bottom, 20% bottom;
   cursor: pointer;
+  padding-top: 74px;
+  .dabang-modal-title {
+    position: absolute;
+    font-size: 26px;
+    color: #fff;
+    top: 12px;
+    left: 110px;
+  }
+  .dabang-modal-section {
+    height: 124px;
+    transition: all 0.3s;
+    &:hover {
+      background: rgba(255,255,255,0.1);
+    }
+  }
 }

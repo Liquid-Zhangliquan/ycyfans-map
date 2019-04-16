@@ -8,6 +8,11 @@ class DabangModal extends Component {
       // eslint-disable-next-line react/jsx-filename-extension
       <div className="dabang-modal">
         <div className="dabang-modal-title">热词云图展示</div>
+        <div className="dabang-modal-section"></div>
+        <div className="dabang-modal-section"></div>
+        <div className="dabang-modal-section"></div>
+        <div className="dabang-modal-section"></div>
+        <div className="dabang-modal-section"></div>
       </div>
     );
   }
