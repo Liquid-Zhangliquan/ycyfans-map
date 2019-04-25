@@ -45,6 +45,7 @@ class GlobalHeader extends React.Component {
     //   </Menu>
     // );
     return (
+      // eslint-disable-next-line
       <div className="header">
         Header
       </div>

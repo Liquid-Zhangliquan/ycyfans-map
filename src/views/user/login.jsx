@@ -1,25 +1,34 @@
 import './login.scss';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import {
+  Form, Icon, Input, Button, Checkbox,
+} from 'antd';
 import PropTypes from 'prop-types';
+
 const FormItem = Form.Item;
 class LoginForm extends React.Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onchange = this.onchange.bind(this);
     this.state = {
       type: 'account',
-      autoLogin: true
-    }
+      autoLogin: true,
+    };
   }
 
-  handleSubmit (e) {
+  onchange = (event) => {
+    const { autoLogin } = this.state;
+    console.log(event, autoLogin);
+  };
+
+  handleSubmit(e) {
+    const { form } = this.props;
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    form.validateFields((err, values) => {
       if (!err) {
-        const type = this.state.type;
+        const { type } = this.state;
         const { dispatch, history } = this.props;
         if (!err) {
           history.push('/index/dashboard');
@@ -36,12 +45,8 @@ class LoginForm extends React.Component {
     });
   }
 
-  onchange = (event) => {
-    console.log(event)
-  };
-
   render() {
-    const { getFieldDecorator } = this.props.form;
+    const { form: { getFieldDecorator } } = this.props;
     return (
       <div className="login">
         <div className="login-form">
@@ -51,14 +56,14 @@ class LoginForm extends React.Component {
               {getFieldDecorator('userName', {
                 rules: [{ required: true, message: '请输入用户名!' }],
               })(
-                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />
+                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />,
               )}
             </FormItem>
             <FormItem>
               {getFieldDecorator('password', {
                 rules: [{ required: true, message: '请输入密码!' }],
               })(
-                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码" />
+                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码" />,
               )}
             </FormItem>
             <FormItem className="form-item-remember">
@@ -66,7 +71,7 @@ class LoginForm extends React.Component {
                 valuePropName: 'checked',
                 initialValue: true,
               })(
-                <Checkbox onChange={this.onchange}>记住我</Checkbox>
+                <Checkbox onChange={this.onchange}>记住我</Checkbox>,
               )}
             </FormItem>
             <FormItem>
@@ -80,9 +85,8 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = {
-  getFieldDecorator: PropTypes.func,
   dispatch: PropTypes.any,
-  history: PropTypes.any
+  history: PropTypes.any,
 };
 
 const Login = Form.create()(LoginForm);

@@ -69,12 +69,13 @@ class Index extends React.Component {
   }
 
   toggleCollapse = () => {
+    const { collapsed } = this.state;
     this.setState({
-      collapsed: !this.state.collapsed,
+      collapsed: !collapsed,
     });
   };
 
-  handleMenuClick = ({ item, key }) => {
+  handleMenuClick = ({ item, key }) => { // eslint-disable-line
     const { history } = this.props;
     history.push(key);
   };
@@ -174,6 +175,7 @@ class Index extends React.Component {
 
   render() {
     const { route } = this.props;
+    const { collapsed } = this.state;
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider
@@ -181,14 +183,14 @@ class Index extends React.Component {
           collapsible
           width={210}
           trigger={null}
-          collapsed={this.state.collapsed}
+          collapsed={collapsed}
           onCollapse={this.onCollapse}
         >
           <div className="main-logo">
-            {this.state.collapsed ? '' : '菜单'}
+            {collapsed ? '' : '菜单'}
             <Icon
               className="main-trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              type={collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggleCollapse}
             />
           </div>
@@ -197,7 +199,7 @@ class Index extends React.Component {
         <Layout>
           <Header style={{ padding: 0, height: 50 }}>
             <GlobalHeader
-              collapsed={this.state.collapsed}
+              collapsed={collapsed}
               onMenuClick={this.handleHeaderClick}
               onCollapse={this.handleMenuCollapse}
             />

@@ -1,0 +1,29 @@
+.static {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  .static-content {
+    width: 300px;
+    text-align: center;
+    .static-title {
+      font-size: 26px;
+      color: #c2c3c3;
+      font-weight: normal;
+      padding-bottom: 6px;
+    }
+    .static-total {
+      font-size: 46px;
+      font-weight: 500;
+      &.red {
+        color: #ff005f;
+      }
+      &.blue {
+        color: #00e3ff;
+      }
+      &.yellow {
+        color: #ff8800;
+      }
+    }
+  }
+}

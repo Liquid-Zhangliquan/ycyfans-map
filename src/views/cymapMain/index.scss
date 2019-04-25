@@ -12,14 +12,46 @@
     position: absolute;
     left: 50px;
     top:30px;
+    z-index: 9;
   }
-
+  .cymap-static {
+    position: absolute;
+    left: 650px;
+    top:28px;
+    z-index: 9;
+  }
+  .cymap-tab {
+    position: absolute;
+    left: 50%;
+    bottom:50px;
+    transform: translate(-50%,-50%);
+    width: 120px;
+    height: 20px;
+    z-index: 9;
+    .tab-item{
+      cursor: pointer;
+      float: left;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      margin-left: 20px;
+      background: #24d6ec;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+    }
+  }
   .cymap-contain{
     width: 100%;
     height: 100%;
     opacity: 0.5;
   }
-
+  .TimeAndWeather{
+    position: absolute;
+    right: 50px;
+    top:30px;
+    z-index: 9;
+  }
   .cymap-left {
     position: absolute;
     top: 130px;
@@ -73,5 +105,23 @@
         height: 262px;
       }
     }
+  }
+  .test-enter{
+    transform: translateX(-200px);
+    opacity: 0.01;
+  }
+  .test-enter.test-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 500ms ease-in-out;
+  }
+  .test-leave {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .test-leave.test-leave-active {
+    transition: all 500ms ease-in;
+    opacity: 0;
+    transform: translateX(300px);
   }
 }

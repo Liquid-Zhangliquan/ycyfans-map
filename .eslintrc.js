@@ -16,10 +16,14 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'no-console': 0,
+
+    'react/prop-types': 0,
     'react/forbid-prop-types': 0,
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
 
+    'camelcase': 0,
     'no-plusplus': 0,
     'import/no-unresolved': 0,
     'no-param-reassign': 0,

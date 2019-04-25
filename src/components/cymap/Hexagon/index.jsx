@@ -1,12 +1,16 @@
 import 'maptalks/dist/maptalks.css';
 import './index.scss';
+import axios from 'axios';
 import * as React from 'react';
+import { message } from 'antd';
+import get from 'lodash/get';
+import mapArray from 'lodash/map';
 import { HexagonLayer } from 'deck.gl';
 import * as maptalks from 'maptalks';
 import DeckGLLayer from '@/plugin/deck-layer';
 
 // const DATA_URL = 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv';
-const DATA_JSONURL = 'public/data/heatmap-datajson.json';
+const DATA_JSONURL = 'public/data/hexagon/heatmap-datajson.json';
 
 const LIGHT_SETTINGS = {
   lightsPosition: [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
@@ -52,21 +56,25 @@ class Hexagon extends React.Component {
     this.map = new maptalks.Map(this.container, {
       center: [-1.4157267858730052, 52.232395363869415],
       zoom: 7,
-      pitch: 40.5,
-      bearing: -27.396674584323023,
-      centerCross: true,
+      pitch: 48.5,
+      bearing: -32.796674584322545,
+      centerCross: false,
+      attribution: false,
       baseLayer: new maptalks.TileLayer('tile', {
         urlTemplate: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
         subdomains: ['a', 'b', 'c', 'd'],
       }),
     });
 
-    require('d3-request').json(DATA_JSONURL, (error, response) => {
-      if (!error) {
-        const data = response.map(d => [Number(d.lng), Number(d.lat)]);
-        this._animate(data);
-        console.log(data); // eslint-disable-line
-      }
+    this.map.on('click', (e) => {
+      console.log(e);
+    });
+
+    axios.get(DATA_JSONURL).then(res => {
+      const data = mapArray(get(res, 'data', []), item => [Number(item.lng), Number(item.lat)]);
+      this._animate(data);
+    }).catch(error => {
+      message.error(error);
     });
   }
 

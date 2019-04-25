@@ -1,0 +1,97 @@
+.number {
+    height: 40px;
+    margin-bottom: 4px;
+}
+.digit {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 40px;
+    margin: 0 5px;
+  }
+  .segment {
+    background: #c00;
+    border-radius: 5px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .segment.on {
+    opacity: 1;
+    box-shadow:  0 0 50px rgba(255,0,0,0.7);
+    transition:  opacity 0s;
+  }
+  .digit .segment:nth-child(1) {
+    top:0px;
+    left:4px;
+    right:4px;
+    height:4px;
+    transition-delay: 0s;
+  }
+  
+  .digit .segment:nth-child(2) {
+    top:4px;
+    right:0px;
+    width:4px;
+    height:15px;
+    height:calc(50% - 5px);
+    transition-delay: 0.01s;
+  }
+  
+  .digit .segment:nth-child(3) {
+    bottom:4px;
+    right:0px;
+    width:4px;
+    height:15px;
+    height:calc(50% - 5px);
+    transition-delay: 0.04s;
+  }
+  .digit .segment:nth-child(4) {
+    bottom:0px;
+    right:4px;
+    height:4px;
+    left:4px;
+    transition-delay: 0.06s;
+  }
+  .digit .segment:nth-child(5) {
+    bottom:4px;
+    left:0px;
+    width:4px;
+    height:15px;
+    height:calc(50% - 5px);
+    transition-delay: 0.08s;
+  }
+  .digit .segment:nth-child(6) {
+    top:4px;
+    left:0px;
+    width:4px;
+    height:15px;
+    height:calc(50% - 5px);
+    transition-delay: 0.1s;
+  }
+  .digit .segment:nth-child(7) {
+    bottom:19px;
+    bottom:calc(50% - 1px);
+    right:4px;
+    left:4px;
+    height:4px;
+    transition-delay: 0.12s;
+  }
+  .circle {
+    width: 4px;
+    position: relative;
+    height: 100%;
+    display: inline-block;
+  }
+  .circle-boom {
+    position: absolute;
+    top: 28%;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #c00;
+  }
+  .circle-boom:last-child {
+    top: 68%;
+  }
