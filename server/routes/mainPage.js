@@ -10,6 +10,8 @@ router.get('/', async (req, res) => {
   const [rows, fields] = await pool.execute(selectAll);
   console.log(rows);
   console.log(fields);
+
+  res.setHeader('Content-Type', 'application/json');
   res.send(rows);
 });
 
