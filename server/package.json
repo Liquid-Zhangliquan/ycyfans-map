@@ -16,6 +16,6 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^1.6.5",
-    "validator": "^10.11.0"
+    "validator": "^13.7.0"
   }
 }
